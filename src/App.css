@@ -1,16 +1,24 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 .background {
-    background-image: url(
-        "src/assets/bg.png"
-    );
-    background-size: cover;
-    height: 100vh;
+  background-image: url("public/images/bg.png");
+  background-size: cover;
+  height: 100vh;
 
- 
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
+}
+.titleimage {
+  display: block;
+  margin-inline: auto;
+  width: 40%;
+}
+.crown {
+  position: absolute;
+  top: 45px;
+  left: 435px;
+  width: 5%;
 }
 
