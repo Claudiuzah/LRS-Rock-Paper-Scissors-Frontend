@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
 }
 .background {
   background-image: url("public/images/bg.png");
@@ -12,116 +10,106 @@
 
   background-repeat: no-repeat;
 }
-.titleimage {
-  display: block;
-  margin-inline: auto;
-  width: 40%;
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
+
+.titleimage {
+  width: 40%;
+  margin-inline: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .crown {
   position: absolute;
-  top: 45.5px;
-  left: 450px;
+  top: 50px;
+  left: 490px;
+  height: auto;
   width: 5%;
 }
-.containertitle {
-  display: block;
+
+.button {
+  display: inline-block;
+  padding: 25 px 100 px;
+  background-color: black;
+  color: #fff;
+  font-size: 35px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.7s ease;
+  width: 100%;
+  height: 80px;
 }
-.loginbox {
-  width: 390px;
-  background: #222;
+
+.button:hover {
+  background-color: rgb(226, 107, 38);
+}
+
+.buttonsbox {
+  width: 400px;
   justify-content: center;
   align-items: center;
   padding: 40px;
   border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
   margin-inline: auto;
-  margin-top: -4.3%;
 }
-.content {
+.inputbox {
   position: relative;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
-}
-.contenth2 {
-  font-size: 2em;
-  color: rgb(226, 107, 38);
-  text-transform: uppercase;
-  font-family: 'Regular 400';
 }
 .form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
-.inputBox {
+.button span {
   position: relative;
-  width: 100%;
 }
-.input { 
-  position: relative;
-  width: 100%;
-  background: #333;
-  border: none;
-  outline: none;
-  padding: 25px 10px 7.5px;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: 500;
-  font-size: 1em;
-} 
-.i {
+.playergif {
   position: absolute;
-  left: 0;
-  padding: 15px 10px;
-  font-style: normal;
-  color: #aaa;
-  transition: 0.5s;
-  pointer-events: none;
+  top: 50%;
+  right: 675px;
+  transform: translateY(28%);
+  height: auto;
+  width: 60px;
 }
-.input:focus ~ i {
-  transform: translateY(-7.5px);
-  font-size: 0.8em;
-  color: #fff;
+.settingsgif {
+  position: absolute;
+  top: 50%;
+  right: 675px;
+  transform: translateY(370%);
+  height: auto;
+  width: 60px;
 }
-.input:valid ~ i {
-  transform: translateY(-7.5px);
-  font-size: 0.8em;
-  color: #fff;
+.multiplayergif1 {
+  position: absolute;
+  top: 50%;
+  right: 665px;
+  transform: translateY(190%);
+  height: auto;
+  width: 60px;
 }
-.buttonlogin[type="submit"] {
-  padding: 10px;
-  background: rgb(226, 107, 38);
-  color: #000;
-  font-weight: 600;
-  font-size: 1.35em;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  width: 100%;
+.multiplayergif2 {
+  position: absolute;
+  top: 50%;
+  right: 690px;
+  transform: translateY(190%);
+  height: auto;
+  width: 60px;
 }
-.buttonlogin[type="submit"]:active
-{
-  opacity: 0.6;
+.multiplayergif3 {
+  position: absolute;
+  top: 50%;
+  right: 675px;
+  transform: translateY(210%);
+  height: auto;
+  width: 60px;
 }
-@media (max-width: 900px)
-{
-  section span 
-  {
-    width: calc(10vw - 2px);
-    height: calc(10vw - 2px);
-  }
-}
-@media (max-width: 600px)
-{
-  section span 
-  {
-    width: calc(20vw - 2px);
-    height: calc(20vw - 2px);
-  }
-}
-
-
