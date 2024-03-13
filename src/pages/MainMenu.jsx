@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; //
+import { Link } from "react-router-dom";
 import "../App.css";
 
 function MainMenu() {
@@ -7,32 +7,35 @@ function MainMenu() {
     <>
       <div className="background">
         <div>
-          <img src="./images/title.png" className="titleimage" alt="" />
-          <img src="./video/crown.gif" className="crown" />
-          <div className="buttonsbox">
-            <div className="form">
-              <button className="button">
+          <img src="./images/title.png" className="titleimagemenu" alt="" />
+          <img src="./video/crown.gif" className="crownmenu" />
+          <div className="buttonsboxmenu">
+            <div className="formmenu">
+              <button className="buttonmenu">
                 <span>Singleplayer</span>
-                <img src="public\video\player.gif" className="playergif" />
+                <img src="public\video\player.gif" className="playergifmenu" />
               </button>
-              <button className="button">
+              <button className="buttonmenu">
                 <span>Multiplayer</span>
                 <img
                   src="public\video\player.gif"
-                  className="multiplayergif1"
+                  className="multiplayergif1menu"
                 />
                 <img
                   src="public\video\player.gif"
-                  className="multiplayergif2"
+                  className="multiplayergif2menu"
                 />
                 <img
                   src="public\video\player.gif"
-                  className="multiplayergif3"
+                  className="multiplayergif3menu"
                 />
               </button>
-              <button className="button">
+              <button className="buttonmenu">
                 <span>Settings</span>
-                <img src="public\video\settings.gif" className="settingsgif" />
+                <img
+                  src="public\video\settings.gif"
+                  className="settingsgifmenu"
+                />
               </button>
             </div>
           </div>

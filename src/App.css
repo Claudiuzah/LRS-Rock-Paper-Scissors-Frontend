@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
 }
 
-.centered {
+.centeredmenu {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,7 +19,7 @@
   text-align: center;
 }
 
-.titleimage {
+.titleimagemenu {
   width: 40%;
   margin-inline: auto;
   display: block;
@@ -27,7 +27,7 @@
   max-height: 100%;
 }
 
-.crown {
+.crownmenu {
   position: absolute;
   top: 50px;
   left: 490px;
@@ -35,7 +35,7 @@
   width: 5%;
 }
 
-.button {
+.buttonmenu {
   display: inline-block;
   padding: 25 px 100 px;
   background-color: black;
@@ -48,11 +48,11 @@
   height: 80px;
 }
 
-.button:hover {
+.buttonmenu:hover {
   background-color: rgb(226, 107, 38);
 }
 
-.buttonsbox {
+.buttonsboxmenu {
   width: 400px;
   justify-content: center;
   align-items: center;
@@ -60,20 +60,20 @@
   border-radius: 4px;
   margin-inline: auto;
 }
-.inputbox {
+.inputboxmenu {
   position: relative;
   width: 100%;
 }
-.form {
+.formmenu {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-.button span {
+.buttonmenu span {
   position: relative;
 }
-.playergif {
+.playergifmenu {
   position: absolute;
   top: 50%;
   right: 675px;
@@ -81,7 +81,7 @@
   height: auto;
   width: 60px;
 }
-.settingsgif {
+.settingsgifmenu {
   position: absolute;
   top: 50%;
   right: 675px;
@@ -89,7 +89,7 @@
   height: auto;
   width: 60px;
 }
-.multiplayergif1 {
+.multiplayergif1menu {
   position: absolute;
   top: 50%;
   right: 665px;
@@ -97,7 +97,7 @@
   height: auto;
   width: 60px;
 }
-.multiplayergif2 {
+.multiplayergif2menu {
   position: absolute;
   top: 50%;
   right: 690px;
@@ -105,7 +105,7 @@
   height: auto;
   width: 60px;
 }
-.multiplayergif3 {
+.multiplayergif3menu {
   position: absolute;
   top: 50%;
   right: 675px;
