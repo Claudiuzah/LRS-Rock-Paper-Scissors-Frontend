@@ -3,14 +3,79 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.centeredstart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    text-align: center; 
+  }
+  
+  
+  .buttonstart {
+    display: inline-block;
+    padding: 15px 50px;
+    background-color: black;
+    color: #fff; 
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 20px; 
+    transition: background-color 0.3s ease; 
+    position: relative; 
+    margin-bottom: 15%;
+
+    
+  }
+  
+  .button span {
+    position: relative; 
+    text-align: left;
+  }
+  
+  .playergifstart {
+    position: absolute;
+    top: 50%;
+    right: 25px; 
+    transform: translate(47%,-50%);
+    height: auto;
+    width: 50px;
+  }
+  
+  
+  
+  .button:hover {
+    background-color: #E26A26; 
+  }
+  
+
+
 .background {
     background-image: url(
-        "src/assets/bg.png"
+        "public/images/bg.png"
     );
     background-size: cover;
     height: 100vh;
 
  
     background-repeat: no-repeat;
+}
+
+.crownstart {
+  position: absolute;
+  top: 40px;
+  left: -10px;
+  height: auto;
+  width: 75px;
+}
+
+
+.titleimagestart {
+  width: 605px;
+  height: auto;
+  display: block;
+  max-width: 1000px;
+  max-height: 100%;
+  margin-bottom: 50px;
 }
 
