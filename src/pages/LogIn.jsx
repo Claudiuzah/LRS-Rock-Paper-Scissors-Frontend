@@ -1,36 +1,65 @@
 import "../App.css";
-// import Loginbox from "./components/loginbox";
+import { Link } from 'react-router-dom';
+
+// import React, { useState } from 'react';
+// import { Container, TextInput, Button } from '@mantine/core';
+// import { AUTHENTICATE, API_SELF } from '../constants/constants';
+// import { useLogin } from './login-provider';
+
+
+// Function to fetch data
 
 function Login() {
+  // const [username, setUsername] = useState('David');
+  //   const [password, setPassword] = useState('password');
+  //   const { isLoggedIn, login, logout } = useLogin();
+  //   async function logging() {
+  //       const data = await postUser(username, password);
+  //       setUser(data.id);
+  //       setusername(data.name);
+  //       setTimeout(() => {
+  //         hidelogin();
+  //         login();
+  //       }, 200);
+
+  //   }
+
   return (
     <>
       <div className="background">
-        <div className="containertitle">
-          <img src="./images/title.png" className="titleimage" alt="" />
-          <img src="./video/crown.gif" className="crown" alt="" />
+        <div className="logincontainertitle">
+          <img src="./images/title.png" className="logintitleimage" alt="" />
+          <img src="./video/crown.gif" className="logincrown" alt="" />
         </div>
 
-        {/* <Loginbox/> */}
+        {/* <Loginbox/>  */}
 
         <div>
           <div className="loginbox">
-            <div className="content">
-              <div className="contenth2">
-                <h2>Sign In</h2>
+            <div className="loginboxcontent">
+              <div className="logincontenth2">
+                <h2>Log In</h2>
               </div>
 
-              <div className="form">
-                <div className="inputbox">
-                  <input type="text" required className="input" />
-                  <i className="i">username</i>
+              <div className="loginform">
+                <div className="logininputbox">
+                  <input type="text" required className="logininput" />
+                  <i className="logini">username</i>
                 </div>
 
-                <div class="inputbox">
-                  <input type="password" required className="input" />
-                  <i className="i">password</i>
+                <div class="logininputbox">
+                  <input type="password" required className="logininput" />
+                  <i className="logini">password</i>
                 </div>
 
-                <div class="inputbox">
+                <div class="loginlinks">
+                 <a>You dont have an account?</a> 
+                 <Link to="/register">
+                 <a href="#" className="loginlinks2">Signup</a>
+                 </Link>
+                </div>
+
+                <div class="logininputbox">
                   <input type="submit" value="Login" className="buttonlogin" />
                 </div>
               </div>
