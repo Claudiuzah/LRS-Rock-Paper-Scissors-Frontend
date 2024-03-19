@@ -7,7 +7,6 @@
   background-image: url("public/images/bg.png");
   background-size: cover;
   height: 100vh;
-
   background-repeat: no-repeat;
 }
 
@@ -27,10 +26,16 @@
   max-height: 100%;
 }
 
+.parent-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .crownmenu {
   position: absolute;
-  top: 50px;
-  left: 490px;
+  top: 3.5rem;
+  left: 29.5rem;
   height: auto;
   width: 5%;
 }
@@ -53,15 +58,16 @@
 }
 
 .buttonsboxmenu {
+  position: relative;
   width: 400px;
-  justify-content: center;
-  align-items: center;
+  top: -30rem;
+  right: 0%;
   padding: 40px;
   border-radius: 4px;
   margin-inline: auto;
 }
 .inputboxmenu {
-  position: relative;
+  position: absolute;
   width: 100%;
 }
 .formmenu {
@@ -75,41 +81,99 @@
 }
 .playergifmenu {
   position: absolute;
-  top: 50%;
-  right: 675px;
-  transform: translateY(28%);
+  top: 3rem;
+  right: -12rem;
+  transform: translateX(-400%);
   height: auto;
   width: 60px;
 }
 .settingsgifmenu {
   position: absolute;
-  top: 50%;
-  right: 675px;
-  transform: translateY(370%);
+  top: 54%;
+  right: 1rem;
+  transform: translateX(-80%);
   height: auto;
   width: 60px;
 }
 .multiplayergif1menu {
   position: absolute;
-  top: 50%;
-  right: 665px;
+  top: 5%;
+  right: 3rem;
   transform: translateY(190%);
   height: auto;
   width: 60px;
 }
 .multiplayergif2menu {
   position: absolute;
-  top: 50%;
-  right: 690px;
+  top: 8%;
+  right: 2rem;
   transform: translateY(190%);
   height: auto;
   width: 60px;
 }
 .multiplayergif3menu {
   position: absolute;
-  top: 50%;
-  right: 675px;
-  transform: translateY(210%);
+  top: 21%;
+  right: 4rem;
+  transform: translateY(100%);
   height: auto;
   width: 60px;
+}
+
+.my-component {
+  position: relative;
+  top: -49rem;
+  left: -40rem;
+  padding-right: 10rem; /* pr-20 */
+  padding-left: 2rem; /* pl-9 */
+  border-radius: 1.875rem; /* rounded-3xl */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1); /* shadow-sm */
+  backdrop-filter: blur(2.5px); /* backdrop-blur-[2.5px] */
+  background-color: rgba(255, 255, 255, 0.6); /* bg-white bg-opacity-60 */
+  max-width: 30rem; /* max-w-[424px] */
+  display: flex;
+  gap: 0.625rem; /* gap-5 */
+}
+
+@media (max-width: 47.25rem) {
+  .my-component {
+    gap: 0; /* max-md:gap-0 */
+  }
+}
+
+.player-avatar {
+  flex: 0 0 auto; /* flex-none */
+  width: 5rem; /* w-3/12 */
+}
+
+.player-avatar img {
+  position: relative;
+  top: 0.5rem;
+  width: 4.125rem; /* w-[66px] */
+  height: 4.125rem; /* h-[66px] */
+  border-radius: 2.5rem; /* rounded-[40px] */
+  background-color: rgba(0, 0, 0, 0.1); /* bg-black bg-opacity-10 */
+}
+
+.player-info {
+  flex: 1 1 0%; /* flex-grow */
+}
+
+.player-info .player-name {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 500; /* font-medium */
+  line-height: 1.5; /* leading-6 */
+  color: #000; /* text-black */
+  white-space: nowrap; /* whitespace-nowrap */
+  overflow: hidden; /* text-ellipsis */
+  text-overflow: ellipsis; /* text-ellipsis */
+}
+
+.player-info .player-stats {
+  font-size: 1rem; /* text-base */
+  line-height: 1.25; /* leading-4 */
+  color: rgba(0, 0, 0, 0.5); /* text-black text-opacity-50 */
+  white-space: nowrap; /* whitespace-nowrap */
+  overflow: hidden; /* text-ellipsis */
+  text-overflow: ellipsis; /* text-ellipsis */
 }
