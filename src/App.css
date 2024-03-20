@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
+}
+.groupcontainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
 }
 .background {
   background-image: url("public/images/bg.png");
@@ -12,14 +19,15 @@
 
   background-repeat: no-repeat;
 }
-.logintitleimage {
+.background .logintitleimage {
   display: block;
   margin-inline: auto;
   width: 40%;
+  /* position: absolute; */
 }
-.logincrown {
+.logintitleimage .logincrown {
   position: absolute;
-  top: 45.5px;
+  top: 30px;
   left: 450px;
   width: 5%;
 }
@@ -27,7 +35,7 @@
   display: block;
 }
 .loginbox {
-  width: 390px;
+  width: 350px;
   background: #222;
   justify-content: center;
   align-items: center;
@@ -35,7 +43,7 @@
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
   margin-inline: auto;
-  margin-top: -4.3%;
+  margin-top: -85px;
 }
 .loginboxcontent {
   position: relative;
@@ -50,7 +58,7 @@
   font-size: 2em;
   color: rgb(226, 107, 38);
   text-transform: uppercase;
-  font-family: 'Regular 400';
+  font-family: "Regular 400";
 }
 .loginform {
   width: 100%;
@@ -62,7 +70,7 @@
   position: relative;
   width: 100%;
 }
-.logininput { 
+.logininput {
   position: relative;
   width: 100%;
   background: #333;
@@ -73,7 +81,7 @@
   color: #fff;
   font-weight: 500;
   font-size: 1em;
-} 
+}
 .logini {
   position: absolute;
   left: 0;
@@ -103,28 +111,22 @@
   cursor: pointer;
   width: 100%;
 }
-.buttonlogin[type="submit"]:active
-{
+.buttonlogin[type="submit"]:active {
   opacity: 0.6;
 }
-@media (max-width: 900px)
-{
-  section span 
-  {
+@media (max-width: 900px) {
+  section span {
     width: calc(10vw - 2px);
     height: calc(10vw - 2px);
   }
 }
-@media (max-width: 600px)
-{
-  section span 
-  {
+@media (max-width: 600px) {
+  section span {
     width: calc(20vw - 2px);
     height: calc(20vw - 2px);
   }
 }
-.loginlinks 
-{
+.loginlinks {
   position: relative;
   width: 100%;
   display: flex;
@@ -132,18 +134,15 @@
   color: #fff;
 }
 
-.loginlinks2
-{
+.loginlinks2 {
   color: #e26b26;
   font-weight: 600;
-} 
+}
 
-.signuplinks2
-{
+.signuplinks2 {
   color: #e26b26;
   font-weight: 600;
-} 
-
+}
 
 /* ###############################################################################AMALIA */
 
@@ -156,20 +155,27 @@
 }
 
 .titleimagemenu {
-  width: 40%;
-  margin-inline: auto;
+  width: 650px;
+  height: auto;
   display: block;
-  max-width: 100%;
+  max-width: 1000px;
   max-height: 100%;
- 
+  margin-bottom: -40px;
+  margin-top: 40%;
+}
+
+.parent-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .crownmenu {
   position: absolute;
-  top: 50px;
-  left: 490px;
+  top: 315px;
+  left: 0px;
   height: auto;
-  width: 5%;
+  width: 75px;
 }
 
 .buttonmenu {
@@ -188,17 +194,29 @@
 .buttonmenu:hover {
   background-color: rgb(226, 107, 38);
 }
-
+.groupcontainer_menu {
+  display: flex;
+  flex-direction: column;
+  row-gap: -50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+  margin-top: -54px;
+  
+}
 .buttonsboxmenu {
+  position: relative;
   width: 400px;
-  justify-content: center;
-  align-items: center;
+  top: 0px;
+  right: 0%;
   padding: 40px;
   border-radius: 4px;
-  margin-inline: auto;
+  margin: auto;
 }
 .inputboxmenu {
-  position: relative;
+  position: absolute;
   width: 100%;
 }
 .formmenu {
@@ -212,43 +230,58 @@
 }
 .playergifmenu {
   position: absolute;
-  top: 50%;
-  right: 675px;
-  transform: translateY(28%);
+  top: 3rem;
+  right: -12rem;
+  transform: translateX(-400%);
   height: auto;
   width: 60px;
 }
 .settingsgifmenu {
   position: absolute;
-  top: 50%;
-  right: 675px;
-  transform: translateY(370%);
+  top: 54%;
+  right: 1rem;
+  transform: translateX(-80%);
   height: auto;
   width: 60px;
 }
 .multiplayergif1menu {
   position: absolute;
-  top: 50%;
-  right: 665px;
+  top: 5%;
+  right: 3rem;
   transform: translateY(190%);
   height: auto;
   width: 60px;
 }
 .multiplayergif2menu {
   position: absolute;
-  top: 50%;
-  right: 690px;
+  top: 8%;
+  right: 2rem;
   transform: translateY(190%);
   height: auto;
   width: 60px;
 }
 .multiplayergif3menu {
   position: absolute;
-  top: 50%;
-  right: 675px;
-  transform: translateY(210%);
+  top: 21%;
+  right: 4rem;
+  transform: translateY(100%);
   height: auto;
   width: 60px;
+}
+
+.my-component {
+  position: relative;
+  top: -49rem;
+  left: -40rem;
+  padding-right: 10rem; /* pr-20 */
+  padding-left: 2rem; /* pl-9 */
+  border-radius: 1.875rem; /* rounded-3xl */
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1); /* shadow-sm */
+  backdrop-filter: blur(2.5px); /* backdrop-blur-[2.5px] */
+  background-color: rgba(255, 255, 255, 0.6); /* bg-white bg-opacity-60 */
+  max-width: 30rem; /* max-w-[424px] */
+  display: flex;
+  gap: 0.625rem; /* gap-5 */
 }
 /* ################################################################################COSMIN */
 .centeredstart {
@@ -256,59 +289,53 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
-  text-align: center; 
+  text-align: center;
 }
-
 
 .buttonstart {
   display: inline-block;
   padding: 15px 50px;
   background-color: black;
-  color: #fff; 
+  color: #fff;
   font-size: 30px;
   text-decoration: none;
-  border-radius: 20px; 
-  transition: background-color 0.3s ease; 
-  position: relative; 
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  position: relative;
   margin-bottom: 15%;
-
-  
 }
 
 .button span {
-  position: relative; 
+  position: relative;
   text-align: left;
 }
 
 .playergifstart {
   position: absolute;
   top: 50%;
-  right: 25px; 
-  transform: translate(47%,-50%);
+  right: 25px;
+  transform: translate(47%, -50%);
   height: auto;
   width: 50px;
 }
 
-
-
 .buttonstart:hover {
-  background-color: #E26A26; 
+  background-color: #e26a26;
 }
 
 .crownstart {
-position: absolute;
-top: 40px;
-left: -10px;
-height: auto;
-width: 75px;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  height: auto;
+  width: 75px;
 }
 
-
 .titleimagestart {
-width: 650px;
-height: auto;
-display: block;
-max-width: 1000px;
-max-height: 100%;
-margin-bottom: 50px;
+  width: 650px;
+  height: auto;
+  display: block;
+  max-width: 1000px;
+  max-height: 100%;
+  margin-bottom: 0px;
 }

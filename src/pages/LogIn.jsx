@@ -27,9 +27,10 @@ function Login() {
   return (
     <>
       <div className="background">
+        <div className="groupcontainer">
         <div className="logincontainertitle">
-          <img src="./images/title.png" className="logintitleimage" alt="" />
-          <img src="./video/crown.gif" className="logincrown" alt="" />
+          <img src="./images/title.png" className="titleimagestart" alt="" />
+          <img src="./video/crown.gif" className="crownstart" alt="" />
         </div>
 
         {/* <Loginbox/>  */}
@@ -65,6 +66,7 @@ function Login() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
