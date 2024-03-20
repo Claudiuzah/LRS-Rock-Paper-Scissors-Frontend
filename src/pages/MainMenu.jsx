@@ -6,12 +6,12 @@ function MainMenu() {
   return (
     <>
       <div className="background">
-        <img src="./images/title.png" className="titleimagemenu" />
-        <img src="./video/crown.gif" className="crownmenu" />
-
-        <div class="crownmenu"></div>
+        <div className="parent-container">
+          <img src="./images/title.png" className="titleimagemenu" />
+          <img src="./video/crown.gif" className="crownmenu" />
+          <div class="crownmenu"></div>
+        </div>
       </div>
-
       <div className="buttonsboxmenu">
         <div className="formmenu">
           <button className="buttonmenu">
