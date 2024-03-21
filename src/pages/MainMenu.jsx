@@ -37,7 +37,7 @@ function MainMenu() {
                 </button>
               </Link>
               <button className="buttonmenu">
-                <span>Settings </span>
+                <span>Settings</span>
                 <img
                   src="public\video\settings.gif"
                   className="settingsgifmenu"

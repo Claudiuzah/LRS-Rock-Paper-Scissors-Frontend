@@ -132,17 +132,14 @@
   justify-content: space-between;
   color: #fff;
 }
-
 .loginlinks2 {
   color: #e26b26;
   font-weight: 600;
 }
-
 .signuplinks2 {
   color: #e26b26;
   font-weight: 600;
 }
-
 /* ###############################################################################AMALIA */
 
 .centeredmenu {
@@ -282,12 +279,10 @@
     gap: 0;
   }
 }
-
 .player-avatar {
   flex: 0 0 auto;
   width: 5rem;
 }
-
 .player-avatar img {
   position: relative;
   top: 0.5rem;
@@ -297,11 +292,9 @@
   border-radius: 2.5rem;
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 .player-info {
   flex: 1 1 0%;
 }
-
 .player-info .player-name {
   font-size: 1.875rem;
   font-weight: 500;
@@ -311,7 +304,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .player-info .player-stats {
   font-size: 1rem;
   line-height: 1.25;
@@ -320,7 +312,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 /* ################################################################################COSMIN */
 .centeredstart {
   position: absolute;
