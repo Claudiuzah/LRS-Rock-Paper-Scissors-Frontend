@@ -5,7 +5,7 @@ function Multiplayer() {
     <div className="background">
       <div className="my-component">
         <div className="player-avatar">
-          <img src="public/images/avatar.png" alt="Player Avatar" />
+          <img src="/public/images/avatar.png" alt="Player Avatar" />
         </div>
         <div className="player-info">
           <div className="player-name">Mr. Gabi </div>
