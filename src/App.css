@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 .groupcontainer {
   position: absolute;
@@ -13,27 +13,14 @@
   text-align: center;
 }
 .background {
-  background-image: url("public/images/bg.png");
-  background-size: cover;
-  height: 100vh;
+  background-image: url('images/orange_background_.jpg');
+  background-repeat: repeat;
+}
 
-  background-repeat: no-repeat;
+html {
+  background-image: url('images/bg.png');
 }
-.background .logintitleimage {
-  display: block;
-  margin-inline: auto;
-  width: 40%;
-  /* position: absolute; */
-}
-.logintitleimage .logincrown {
-  position: absolute;
-  top: 30px;
-  left: 450px;
-  width: 5%;
-}
-.logincontainertitle {
-  display: block;
-}
+
 .loginbox {
   width: 350px;
   background: #222;
@@ -58,7 +45,7 @@
   font-size: 2em;
   color: rgb(226, 107, 38);
   text-transform: uppercase;
-  font-family: "Regular 400";
+  font-family: 'Regular 400';
 }
 .loginform {
   width: 100%;
@@ -101,7 +88,7 @@
   font-size: 0.8em;
   color: #fff;
 }
-.buttonlogin[type="submit"] {
+.buttonlogin[type='submit'] {
   padding: 10px;
   background: #e26b26;
   color: #000;
@@ -111,7 +98,7 @@
   cursor: pointer;
   width: 100%;
 }
-.buttonlogin[type="submit"]:active {
+.buttonlogin[type='submit']:active {
   opacity: 0.6;
 }
 @media (max-width: 900px) {
@@ -204,7 +191,6 @@
   transform: translate(-50%, -55%);
   text-align: center;
   margin-top: -54px;
-  
 }
 .buttonsboxmenu {
   position: relative;
@@ -224,9 +210,6 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
-.buttonmenu span {
-  position: relative;
 }
 .playergifmenu {
   position: absolute;
@@ -276,12 +259,57 @@
   padding-right: 10rem; /* pr-20 */
   padding-left: 2rem; /* pl-9 */
   border-radius: 1.875rem; /* rounded-3xl */
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1); /* shadow-sm */
+  box-shadow:
+    0px 1px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 3px rgba(0, 0, 0, 0.1); /* shadow-sm */
   backdrop-filter: blur(2.5px); /* backdrop-blur-[2.5px] */
   background-color: rgba(255, 255, 255, 0.6); /* bg-white bg-opacity-60 */
   max-width: 30rem; /* max-w-[424px] */
   display: flex;
   gap: 0.625rem; /* gap-5 */
+}
+
+@media (max-width: 47.25rem) {
+  .my-component {
+    gap: 0; /* max-md:gap-0 */
+  }
+}
+
+.player-avatar {
+  flex: 0 0 auto; /* flex-none */
+  width: 5rem; /* w-3/12 */
+}
+
+.player-avatar img {
+  position: relative;
+  top: 0.5rem;
+  width: 4.125rem; /* w-[66px] */
+  height: 4.125rem; /* h-[66px] */
+  border-radius: 2.5rem; /* rounded-[40px] */
+  background-color: rgba(0, 0, 0, 0.1); /* bg-black bg-opacity-10 */
+}
+
+.player-info {
+  flex: 1 1 0%;
+}
+
+.player-info .player-name {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 500; /* font-medium */
+  line-height: 1.5; /* leading-6 */
+  color: #000; /* text-black */
+  white-space: nowrap; /* whitespace-nowrap */
+  overflow: hidden; /* text-ellipsis */
+  text-overflow: ellipsis; /* text-ellipsis */
+}
+
+.player-info .player-stats {
+  font-size: 1rem; /* text-base */
+  line-height: 1.25; /* leading-4 */
+  color: rgba(0, 0, 0, 0.5); /* text-black text-opacity-50 */
+  white-space: nowrap; /* whitespace-nowrap */
+  overflow: hidden; /* text-ellipsis */
+  text-overflow: ellipsis; /* text-ellipsis */
 }
 /* ################################################################################COSMIN */
 .centeredstart {
@@ -318,12 +346,12 @@
   height: auto;
   width: 50px;
 }
-
+/* ##########################################################################################################COMUN */
 .buttonstart:hover {
   background-color: #e26a26;
 }
 
-.crownstart {
+.crown {
   position: absolute;
   top: 55px;
   left: 0px;
@@ -331,11 +359,80 @@
   width: 75px;
 }
 
-.titleimagestart {
+.titleimage {
   width: 650px;
   height: auto;
   display: block;
   max-width: 1000px;
   max-height: 100%;
   margin-bottom: 0px;
+}
+/* #########################################################################################SINGLEPLAYER */
+
+.centersingle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.containersingle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: center;
+  gap: 100px;
+}
+.playersingle {
+  margin: 10px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.round-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  margin: 2px;
+  cursor: pointer;
+}
+.round-btn:hover {
+  background-color: #e26a26;
+}
+h1 {
+  font-size: 24px;
+  margin: 0;
+  background-color: #000;
+  color: #e26a26;
+  padding: 8px;
+}
+.scoresingle {
+  padding: 1px;
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: #000;
+  color: #ffffff;
+}
+.actionsingle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  color: #000;
+}
+.exitgif {
+  width: 50px;
+  height: 50px;
+}
+.exitbutton {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff00;
+  border: 2px solid transparent;
+}
+.left {
+  text-align: left;
 }
