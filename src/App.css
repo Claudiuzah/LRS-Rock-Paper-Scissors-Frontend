@@ -286,7 +286,7 @@
 .player-avatar img {
   position: relative;
   top: 0.5rem;
-  left: -1.5rem;
+  left: 1rem;
   width: 4.125rem;
   height: 4.125rem;
   border-radius: 2.5rem;
@@ -312,6 +312,67 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* #################################################################### Multiplayer */
+.center_multiplayer {
+  text-align: center;
+}
+.container_multiplayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: center;
+}
+.container_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: center;
+}
+.player_list {
+  margin: 10px;
+  width: 300px;
+  height: 780px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(2.5px);
+}
+.player_lobby {
+  margin: 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(2.5px);
+  width: 800px;
+  height: 780px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.multiplayer_title {
+  font-size: 90px;
+}
+.title_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: center;
+}
+.box_profile {
+  border-radius: 20px;
+  position: relative;
+  margin: 10px;
+  width: 300px;
+  height: 90px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.5px);
+  background-color: rgba(255, 255, 255, 0.6);
+  /* max-width: 30rem; */
+  display: flex;
+  /* gap: 0.625rem; */
+}
+.container_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 325px;
+}
+
 /* ################################################################################COSMIN */
 .centeredstart {
   position: absolute;
