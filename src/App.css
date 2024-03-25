@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+.background {
+  background-image: url('public/images/bg.png');
+  background-size: cover;
+  height: 100vh;
+
+  background-repeat: no-repeat;
+}
+.logintitleimage {
+  display: block;
+  margin-inline: auto;
+  width: 40%;
+}
+.logincrown {
+  position: absolute;
+  top: 45.5px;
+  left: 450px;
+  width: 5%;
+}
+.logincontainertitle {
+  display: block;
+}
+.loginbox {
+  width: 390px;
+  background: #222;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+  margin-inline: auto;
+  margin-top: -4.3%;
+}
+.loginboxcontent {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+.logincontenth2 {
+  font-size: 2em;
+  color: rgb(226, 107, 38);
+  text-transform: uppercase;
+  font-family: 'Regular 400';
+}
+.loginform {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.logininputBox {
+  position: relative;
+  width: 100%;
+}
+.logininput {
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+.logini {
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.logininput:focus ~ i {
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+.logininput:valid ~ i {
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+.buttonlogin[type='submit'] {
+  padding: 10px;
+  background: #e26b26;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  width: 100%;
+}
+.buttonlogin[type='submit']:active {
+  opacity: 0.6;
+}
+@media (max-width: 900px) {
+  section span {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+}
+@media (max-width: 600px) {
+  section span {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
+}
+.loginlinks {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.loginlinks2 {
+  color: #e26b26;
+  font-weight: 600;
+}
+
+.signuplinks2 {
+  color: #e26b26;
+  font-weight: 600;
+}
+
+/* ###############################################################################AMALIA */
+
+.centeredmenu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.titleimagemenu {
+  width: 40%;
+  margin-inline: auto;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.crownmenu {
+  position: absolute;
+  top: 50px;
+  left: 490px;
+  height: auto;
+  width: 5%;
+}
+
+.buttonmenu {
+  display: inline-block;
+  padding: 25 px 100 px;
+  background-color: black;
+  color: #fff;
+  font-size: 35px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.7s ease;
+  width: 100%;
+  height: 80px;
+}
+
+.buttonmenu:hover {
+  background-color: rgb(226, 107, 38);
+}
+
+.buttonsboxmenu {
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 4px;
+  margin-inline: auto;
+}
+.inputboxmenu {
+  position: relative;
+  width: 100%;
+}
+.formmenu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.buttonmenu span {
+  position: relative;
+}
+.playergifmenu {
+  position: absolute;
+  top: 50%;
+  right: 675px;
+  transform: translateY(28%);
+  height: auto;
+  width: 60px;
+}
+.settingsgifmenu {
+  position: absolute;
+  top: 50%;
+  right: 675px;
+  transform: translateY(370%);
+  height: auto;
+  width: 60px;
+}
+.multiplayergif1menu {
+  position: absolute;
+  top: 50%;
+  right: 665px;
+  transform: translateY(190%);
+  height: auto;
+  width: 60px;
+}
+.multiplayergif2menu {
+  position: absolute;
+  top: 50%;
+  right: 690px;
+  transform: translateY(190%);
+  height: auto;
+  width: 60px;
+}
+.multiplayergif3menu {
+  position: absolute;
+  top: 50%;
+  right: 675px;
+  transform: translateY(210%);
+  height: auto;
+  width: 60px;
+}
+/* ################################################################################COSMIN */
+.centeredstart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+
+.buttonstart {
+  display: inline-block;
+  padding: 15px 50px;
+  background-color: black;
+  color: #fff;
+  font-size: 30px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  margin-bottom: 15%;
+}
+
+.button span {
+  position: relative;
+  text-align: left;
+}
+
+.playergifstart {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translate(47%, -50%);
+  height: auto;
+  width: 50px;
+}
+
+.buttonstart:hover {
+  background-color: #e26a26;
+}
+
+.crownstart {
+  position: absolute;
+  top: 40px;
+  left: -10px;
+  height: auto;
+  width: 75px;
+}
+
+.titleimagestart {
+  width: 650px;
+  height: auto;
+  display: block;
+  max-width: 1000px;
+  max-height: 100%;
+  margin-bottom: 50px;
+}
