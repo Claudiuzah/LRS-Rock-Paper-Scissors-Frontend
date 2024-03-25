@@ -16,7 +16,6 @@
   background-image: url("public/images/bg.png");
   background-size: cover;
   height: 100vh;
-
   background-repeat: no-repeat;
 }
 .background .logintitleimage {
@@ -40,7 +39,6 @@
   align-items: center;
   padding: 40px;
   border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
   margin-inline: auto;
   margin-top: -85px;
 }
