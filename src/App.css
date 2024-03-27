@@ -12,10 +12,6 @@
   transform: translate(-50%, -55%);
   text-align: center;
 }
-.background {
-  background-image: url('images/orange_background_.jpg');
-  background-repeat: repeat;
-}
 
 html {
   background-image: url('images/bg.png');
@@ -28,7 +24,6 @@ html {
   align-items: center;
   padding: 40px;
   border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
   margin-inline: auto;
   margin-top: -85px;
 }
@@ -120,18 +115,15 @@ html {
   justify-content: space-between;
   color: #fff;
 }
-
 .loginlinks2 {
   color: #e26b26;
   font-weight: 600;
 }
-
 .signuplinks2 {
   color: #e26b26;
   font-weight: 600;
 }
-
-/* ###############################################################################AMALIA */
+/* ###############################################################################MainMenu */
 
 .centeredmenu {
   position: absolute;
@@ -151,12 +143,6 @@ html {
   margin-top: 40%;
 }
 
-.parent-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
 .crownmenu {
   position: absolute;
   top: 315px;
@@ -167,7 +153,6 @@ html {
 
 .buttonmenu {
   display: inline-block;
-  padding: 25 px 100 px;
   background-color: black;
   color: #fff;
   font-size: 35px;
@@ -176,6 +161,9 @@ html {
   transition: background-color 0.7s ease;
   width: 100%;
   height: 80px;
+  padding: 8px 14%;
+  padding-left: 0rem;
+  text-align: center;
 }
 
 .buttonmenu:hover {
@@ -184,13 +172,13 @@ html {
 .groupcontainer_menu {
   display: flex;
   flex-direction: column;
-  row-gap: -50px;
+  /* row-gap: -50px; */
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
   text-align: center;
-  margin-top: -54px;
+  margin-top: -60px;
 }
 .buttonsboxmenu {
   position: relative;
@@ -214,7 +202,7 @@ html {
 .playergifmenu {
   position: absolute;
   top: 3rem;
-  right: -12rem;
+  right: -11.5rem;
   transform: translateX(-400%);
   height: auto;
   width: 60px;
@@ -229,24 +217,24 @@ html {
 }
 .multiplayergif1menu {
   position: absolute;
-  top: 5%;
-  right: 3rem;
+  top: 7%;
+  right: 4.5rem;
   transform: translateY(190%);
   height: auto;
   width: 60px;
 }
 .multiplayergif2menu {
   position: absolute;
-  top: 8%;
-  right: 2rem;
+  top: 7%;
+  right: 2.5rem;
   transform: translateY(190%);
   height: auto;
   width: 60px;
 }
 .multiplayergif3menu {
   position: absolute;
-  top: 21%;
-  right: 4rem;
+  top: 20%;
+  right: 3.5rem;
   transform: translateY(100%);
   height: auto;
   width: 60px;
@@ -254,63 +242,121 @@ html {
 
 .my-component {
   position: relative;
-  top: -49rem;
+  top: -45rem;
   left: -40rem;
-  padding-right: 10rem; /* pr-20 */
-  padding-left: 2rem; /* pl-9 */
-  border-radius: 1.875rem; /* rounded-3xl */
+  padding-right: 10rem;
+  padding-left: 2rem;
+  border-radius: 1.875rem;
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.05),
-    0px 1px 3px rgba(0, 0, 0, 0.1); /* shadow-sm */
-  backdrop-filter: blur(2.5px); /* backdrop-blur-[2.5px] */
-  background-color: rgba(255, 255, 255, 0.6); /* bg-white bg-opacity-60 */
-  max-width: 30rem; /* max-w-[424px] */
+    0px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.5px);
+  background-color: rgba(255, 255, 255, 0.6);
+  max-width: 30rem;
   display: flex;
-  gap: 0.625rem; /* gap-5 */
+  gap: 0.625rem;
 }
-
 @media (max-width: 47.25rem) {
   .my-component {
-    gap: 0; /* max-md:gap-0 */
+    gap: 0;
   }
 }
-
 .player-avatar {
-  flex: 0 0 auto; /* flex-none */
-  width: 5rem; /* w-3/12 */
+  flex: 0 0 auto;
+  width: 5rem;
 }
-
 .player-avatar img {
   position: relative;
   top: 0.5rem;
-  width: 4.125rem; /* w-[66px] */
-  height: 4.125rem; /* h-[66px] */
-  border-radius: 2.5rem; /* rounded-[40px] */
-  background-color: rgba(0, 0, 0, 0.1); /* bg-black bg-opacity-10 */
+  left: 1rem;
+  width: 4.125rem;
+  height: 4.125rem;
+  border-radius: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
 }
-
 .player-info {
   flex: 1 1 0%;
 }
-
 .player-info .player-name {
-  font-size: 1.875rem; /* text-3xl */
-  font-weight: 500; /* font-medium */
-  line-height: 1.5; /* leading-6 */
-  color: #000; /* text-black */
-  white-space: nowrap; /* whitespace-nowrap */
-  overflow: hidden; /* text-ellipsis */
-  text-overflow: ellipsis; /* text-ellipsis */
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.player-info .player-stats {
+  font-size: 1rem;
+  line-height: 1.25;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* #################################################################### Multiplayer */
+.center_multiplayer {
+  text-align: center;
+}
+.container_multiplayer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: center;
+}
+.container_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: center;
+}
+.player_list {
+  margin: 10px;
+  width: 300px;
+  height: 780px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(2.5px);
+}
+.player_lobby {
+  margin: 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(2.5px);
+  width: 800px;
+  height: 780px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+.multiplayer_title {
+  font-size: 90px;
+}
+.title_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: center;
+}
+.box_profile {
+  border-radius: 20px;
+  position: relative;
+  margin: 10px;
+  width: 300px;
+  height: 90px;
+  box-shadow:
+    0px 1px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.5px);
+  background-color: rgba(255, 255, 255, 0.6);
+  /* max-width: 30rem; */
+  display: flex;
+  /* gap: 0.625rem; */
+}
+.container_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 325px;
 }
 
-.player-info .player-stats {
-  font-size: 1rem; /* text-base */
-  line-height: 1.25; /* leading-4 */
-  color: rgba(0, 0, 0, 0.5); /* text-black text-opacity-50 */
-  white-space: nowrap; /* whitespace-nowrap */
-  overflow: hidden; /* text-ellipsis */
-  text-overflow: ellipsis; /* text-ellipsis */
-}
 /* ################################################################################COSMIN */
 .centeredstart {
   position: absolute;

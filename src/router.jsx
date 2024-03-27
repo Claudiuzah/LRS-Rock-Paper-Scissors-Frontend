@@ -4,6 +4,7 @@ import Login from './pages/LogIn';
 import Mainmenu from './pages/MainMenu';
 import Register from './pages/SignUp';
 import SinglePlayer from './pages/SinglePlayer';
+import Multiplayer from './pages/lobby';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: '/menu',
     element: <Mainmenu />,
+  },
+  {
+    path: '/lobby',
+    element: <Multiplayer />,
   },
   {
     path: '/single',
