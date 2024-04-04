@@ -2,8 +2,9 @@
   "root": true,
   "env": {
     "browser": true,
-    "es2020": true
-  },
+    "es2020": true,
+    "commonjs": true
+    },
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",

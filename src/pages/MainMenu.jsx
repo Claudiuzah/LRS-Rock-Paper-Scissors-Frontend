@@ -1,10 +1,26 @@
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button, Group, Text } from '@mantine/core';
 
 function MainMenu() {
+  const [opened, { close, open }] = useDisclosure(false);
+
   return (
     <>
       <div className='background'>
+        <>
+          <Modal opened={opened} onClose={close} size='auto' centered>
+            <Text>Are you sure you want to exit?</Text>
+
+            <Group mt='xl'>
+              <Link to='/menu'>
+                <Button>Yes</Button>
+              </Link>
+              <Button onClick={close}>No</Button>
+            </Group>
+          </Modal>
+        </>
         <div className='groupcontainer_menu'>
           <img src='./images/title.png' className='titleimagemenu' alt='' />
           <img src='./video/crown.gif' className='crownmenu' />
@@ -25,7 +41,7 @@ function MainMenu() {
                   <img src='video/player.gif' className='multiplayergif3menu' />
                 </button>
               </Link>
-              <button className='buttonmenu'>
+              <button onClick={open} className='buttonmenu'>
                 <span>Settings</span>
                 <img src='video/settings.gif' className='settingsgifmenu' />
               </button>

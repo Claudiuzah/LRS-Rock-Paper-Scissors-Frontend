@@ -1,7 +1,46 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { useState } from 'react';
+import { API_SELF, LOGIN } from './constants.js';
+
+import useSignIn from 'react-auth-kit/hooks/useSignIn';
+
+const signInUser = async (username, password) => {
+  const response = await fetch(`${API_SELF}${LOGIN}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `grant_type=password&clientId=my-trusted-client&username=${username}&password=${password}&scope=user_info`,
+  });
+
+  return await response.json();
+};
 
 function Loginbox() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const signIn = useSignIn();
+
+  const navigate = useNavigate();
+
+  async function logging() {
+    const data = await signInUser(username, password);
+    console.log(data);
+    if (data.access_token) {
+      signIn({
+        auth: {
+          token: data.access_token,
+          type: 'bearer',
+        },
+      });
+      navigate('/menu');
+    } else {
+      navigate('/auth');
+    }
+  }
+
   return (
     <>
       <div>
@@ -13,12 +52,24 @@ function Loginbox() {
 
             <div className='loginform'>
               <div className='logininputbox'>
-                <input type='text' required className='logininput' />
+                <input
+                  type='text'
+                  required
+                  value={username}
+                  className='logininput'
+                  onChange={(event) => setUsername(event.target.value)}
+                />
                 <i className='logini'>username</i>
               </div>
 
               <div className='logininputbox'>
-                <input type='password' required className='logininput' />
+                <input
+                  type='password'
+                  required
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  className='logininput'
+                />
                 <i className='logini'>password</i>
               </div>
 
@@ -30,7 +81,7 @@ function Loginbox() {
               </div>
 
               <div className='logininputbox'>
-                <input type='submit' value='Login' className='buttonlogin' />
+                <input type='submit' value='Login' onClick={logging} className='buttonlogin' />
               </div>
             </div>
           </div>

@@ -13,7 +13,7 @@
   text-align: center;
 }
 
-html {
+body {
   background-image: url('images/bg.png');
 }
 
@@ -294,7 +294,7 @@ html {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* #################################################################### Multiplayer */
+/* #################################################################### Lobby */
 .center_multiplayer {
   text-align: center;
 }
@@ -357,7 +357,7 @@ html {
   width: 325px;
 }
 
-/* ################################################################################COSMIN */
+/* ################################################################################START */
 .centeredstart {
   position: absolute;
   top: 50%;
@@ -415,6 +415,12 @@ html {
 }
 /* #########################################################################################SINGLEPLAYER */
 
+.scissors {
+  width: 75%;
+}
+.backgroundsingle {
+  background-image: url(images/orange_background_.jpg);
+}
 .centersingle {
   text-align: center;
   display: flex;
@@ -481,4 +487,7 @@ h1 {
 }
 .left {
   text-align: left;
+}
+.centermodal {
+  position: absolute;
 }
