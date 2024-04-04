@@ -86,7 +86,7 @@ function Singleplayer() {
     }
   };
   return (
-    <html className='background'>
+    <html className='backgroundsingle'>
       <div className='centersingle'>
         <h1>Rock Paper Scissors</h1>
         <div className='left'>

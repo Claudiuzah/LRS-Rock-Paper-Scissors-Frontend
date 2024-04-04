@@ -1,20 +1,6 @@
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-// cy.request('/api/auth/csrf').then(({ body: { csrfToken } }) => {
-//     cy.request({
-//       method: 'POST',
-//       url: '/api/auth/callback/credentials',
-//       form: true,
-//       body: {
-//         username,
-//         password,
-//         csrfToken
-//       }
-//     }).then(() => {
-//       cy.getCookie('next-auth.session-token').should('exist')
-//     })
-// })
 function Register() {
   return (
     <>

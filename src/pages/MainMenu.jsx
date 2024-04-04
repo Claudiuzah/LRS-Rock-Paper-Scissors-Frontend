@@ -1,14 +1,16 @@
 import '../App.css';
 import { Link } from 'react-router-dom';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal } from '@mantine/core';
 
 function MainMenu() {
+  const [opened, { open, close }] = useDisclosure(false);
   return (
     <>
-      <div className='background'>
+      <div>
         <div className='groupcontainer_menu'>
-          <img src='./images/title.png' className='titleimagemenu' alt='' />
+          <img src='./images/title.png' className='titleimagemenu' />
           <img src='./video/crown.gif' className='crownmenu' />
-
           <div className='buttonsboxmenu'>
             <div className='formmenu'>
               <Link to='/single'>
@@ -25,7 +27,7 @@ function MainMenu() {
                   <img src='video/player.gif' className='multiplayergif3menu' />
                 </button>
               </Link>
-              <button className='buttonmenu'>
+              <button type='button' onClick={open} className='buttonmenu'>
                 <span>Settings</span>
                 <img src='video/settings.gif' className='settingsgifmenu' />
               </button>
@@ -45,6 +47,15 @@ function MainMenu() {
           </div>
         </div>
       </div>
+      <Modal
+        opened={opened}
+        onClose={close}
+        withCloseButton={false}
+        centered={true}
+        lockScroll={false}
+      >
+        SETTINGS
+      </Modal>
     </>
   );
 }
