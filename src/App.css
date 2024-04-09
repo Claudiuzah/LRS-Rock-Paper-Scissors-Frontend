@@ -14,6 +14,7 @@
 }
 
 body {
+body {
   background-image: url('images/bg.png');
 }
 
@@ -490,6 +491,12 @@ body {
 }
 /* #########################################################################################SINGLEPLAYER */
 
+.scissors {
+  width: 75%;
+}
+.backgroundsingle {
+  background-image: url(images/orange_background_.jpg);
+}
 .centersingle {
   text-align: center;
   display: flex;

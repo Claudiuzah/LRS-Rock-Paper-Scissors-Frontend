@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
-import { FaHandPaper, FaHandRock, FaHandScissors } from 'react-icons/fa';
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button, Group, Text } from '@mantine/core';
 
 const actions = {
   rock: 'scissors',
@@ -26,11 +27,20 @@ export function Calculatewinner(action1, action2) {
   }
   return null;
 }
+export function Scissors() {
+  return <img src='./images/scissors.png' className='scissors' />;
+}
+export function Rock() {
+  return <img src='./images/rock.png' className='scissors' />;
+}
+export function Paper() {
+  return <img src='./images/paper.png' className='scissors' />;
+}
 export function Actionicon({ action, ...props }) {
   const icons = {
-    rock: FaHandRock,
-    paper: FaHandPaper,
-    scissors: FaHandScissors,
+    rock: Rock,
+    paper: Paper,
+    scissors: Scissors,
   };
   const Icon = icons[action];
 
@@ -85,16 +95,29 @@ function Singleplayer() {
       setPlayerScore(playerScore - 1);
     }
   };
+
+  const [opened, { close, open }] = useDisclosure(false);
+
   return (
     <html className='backgroundsingle'>
+      <>
+        <Modal opened={opened} onClose={close} size='auto' centered>
+          <Text>Are you sure you want to exit?</Text>
+
+          <Group mt='xl'>
+            <Link to='/menu'>
+              <Button>Yes</Button>
+            </Link>
+            <Button onClick={close}>No</Button>
+          </Group>
+        </Modal>
+      </>
       <div className='centersingle'>
         <h1>Rock Paper Scissors</h1>
         <div className='left'>
-          <Link to='/menu'>
-            <button className='exitbutton'>
-              <img src='video/exist.gif' className='exitgif' />
-            </button>
-          </Link>
+          <button onClick={open} className='exitbutton'>
+            <img src='video/exist.gif' className='exitgif' />
+          </button>
         </div>
         <div className='containersingle'>
           <Player name='Player' score={playerScore} action={playerAction} />

@@ -6,9 +6,9 @@ import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <MantineProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <MantineProvider>
       <Router />
-    </React.StrictMode>
-  </MantineProvider>,
+    </MantineProvider>
+  </React.StrictMode>,
 );
