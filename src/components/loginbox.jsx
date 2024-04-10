@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { API_SELF, LOGIN } from './constants.js';
 
-import useSignIn from 'react-auth-kit/hooks/useSignIn';
+// import useSignIn from 'react-auth-kit/hooks/useSignIn';
 
 const signInUser = async (username, password) => {
   const response = await fetch(`${API_SELF}${LOGIN}`, {
@@ -21,7 +21,7 @@ const signInUser = async (username, password) => {
 function Loginbox() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const signIn = useSignIn();
+  // const signIn = useSignIn();
 
   const navigate = useNavigate();
 
@@ -29,12 +29,12 @@ function Loginbox() {
     const data = await signInUser(username, password);
     console.log(data);
     if (data.access_token) {
-      signIn({
-        auth: {
-          token: data.access_token,
-          type: 'bearer',
-        },
-      });
+      // signIn({
+      //   auth: {
+      //     token: data.access_token,
+      //     type: 'bearer',
+      //   },
+      // });
       navigate('/menu');
     } else {
       navigate('/auth');

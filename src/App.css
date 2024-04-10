@@ -491,3 +491,19 @@ h1 {
 .centermodal {
   position: absolute;
 }
+/* //////////////////////////////////////////////////////////////////////////////////////audioPlayer.css */
+.audio-button {
+  background-image: url("video/audio_off.gif");
+  background-size: cover;
+  width: 60px;
+  height: 60px;
+  border: 2px solid transparent;
+  background:cover;
+  background-color: transparent;
+  padding: 10px;
+  font-size: 12px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+/*/////////////////////////////////////////////////////////////////////////////////////////////*/
