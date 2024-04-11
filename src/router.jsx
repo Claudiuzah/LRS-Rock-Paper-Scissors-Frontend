@@ -4,7 +4,7 @@ import Login from './pages/LogIn';
 import Mainmenu from './pages/MainMenu';
 import Register from './pages/SignUp';
 import SinglePlayer from './pages/SinglePlayer';
-import Multiplayer from './pages/lobby';
+import LobbyRoom from './pages/lobby';
 // import AuthProvider from 'react-auth-kit/AuthProvider';
 // import createStore from 'react-auth-kit/createStore';
 
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/lobby',
-    element: <Multiplayer />,
+    element: <LobbyRoom />,
   },
   {
     path: '/single',
