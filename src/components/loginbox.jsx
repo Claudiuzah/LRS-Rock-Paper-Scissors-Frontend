@@ -1,10 +1,8 @@
 import '../App.css';
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { API_SELF, LOGIN } from './constants.js';
-
-import useSignIn from 'react-auth-kit/hooks/useSignIn';
+import { useSignIn } from 'react-auth-kit/hooks/useSignIn';
 
 const signInUser = async (username, password) => {
   const response = await fetch(`${API_SELF}${LOGIN}`, {
@@ -23,22 +21,22 @@ function Loginbox() {
   const [password, setPassword] = useState('');
   const signIn = useSignIn();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   async function logging() {
     const data = await signInUser(username, password);
     console.log(data);
-    signIn({
-      auth: {
-        token: data.access_token,
-        type: data.token_type,
-      },
-    });
-    console.log(data.access_token);
-    // navigate('/menu');
-    // if (1 === '2') {
-    //   navigate('/auth');
-    // }
+    if (data.access_token) {
+      signIn({
+        auth: {
+          token: data.access_token,
+          type: 'bearer',
+        },
+      });
+      navigate('/menu');
+    } else {
+      navigate('/auth');
+    }
   }
 
   return (
