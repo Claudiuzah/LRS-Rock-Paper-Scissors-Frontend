@@ -398,28 +398,6 @@ body {
 .left_lobby {
   text-align: left;
 }
-.lobby_button {
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  color: #ffffff;
-  background-color: #4caf50;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: relative;
-  bottom: -13rem;
-  right: -18rem;
-  width: 10rem;
-  height: 4rem;
-}
-
-.lobby_button:hover {
-  background-color: #324033;
-}
 
 .close {
   color: #aaaaaa;
@@ -436,7 +414,7 @@ body {
 }
 */
 
-/* ################################################################################COSMIN */
+/* ################################################################################ StartPage*/
 .centeredstart {
   position: absolute;
   top: 50%;

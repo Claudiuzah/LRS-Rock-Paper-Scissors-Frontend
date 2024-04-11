@@ -42,9 +42,6 @@ function LobbyRoom() {
                   <div className='player_card'>Player6</div>
                   <div className='player_card'>Player7</div>
                 </div>
-                <Link to='/multiplayer'>
-                  <button class='lobby_button'>Start</button>
-                </Link>
               </div>
             </div>
           </div>
