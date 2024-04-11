@@ -581,4 +581,26 @@ h1 {
   top: 10px;
   right: 10px;
 }
-/*/////////////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////////////Multiplayer*/
+
+.clockM {
+  position :absolute;
+  right: 100px;
+  left : 1000px;
+  height: auto;
+  display: block;
+  max-width: 1000px;
+  max-height: 100%;
+  margin-bottom: 0px;
+
+}
+
+.tableM{
+  position : absolute;
+  width: 650px;
+  height: auto;
+  display: block;
+  max-width: 1000px;
+  max-height: 100%;
+  margin-bottom: 0px;
+}

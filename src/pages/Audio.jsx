@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Audio() {
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const audioElement = document.getElementById('audio-element');
+    audioElement.loop = true;
+  }, []);
+
   const playMusic = () => {
     const audioElement = document.getElementById('audio-element');
     if (isPlaying) {
@@ -19,6 +25,7 @@ function Audio() {
       ? 'url(/video/audio_off.gif)'
       : 'url(/video/audio_on.gif)';
   };
+
   return (
     <>
       <button className='audio-button' onClick={playMusic}></button>

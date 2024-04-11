@@ -1,9 +1,20 @@
 import '../App.css';
+import { Link } from 'react-router-dom';
+
 function MultiPlayer() {
   return (
     <div>
-      <img src='video/clock.gif' className='clockmultiplayer' />
-      <img src='images/table.png' className='tableM' />
+      <div className='left'>
+        <Link to='/menu'>
+          <button className='exitbutton'>
+            <img src='video/exist.gif' className='exitgif' />
+          </button>
+        </Link>
+      </div>
+      <div>
+        <img src='video/clock.gif' className='clockM' />
+        <img src='images/table.png' className='tableM' />
+      </div>
     </div>
   );
 }
