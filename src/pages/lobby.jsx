@@ -1,7 +1,7 @@
 import '../App.css';
 import { Link } from 'react-router-dom';
 
-function Multiplayer() {
+function LobbyRoom() {
   return (
     <>
       <div className='background'>
@@ -51,4 +51,4 @@ function Multiplayer() {
   );
 }
 
-export default Multiplayer;
+export default LobbyRoom;

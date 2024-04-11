@@ -4,6 +4,9 @@ import Login from './pages/LogIn';
 import Mainmenu from './pages/MainMenu';
 import Register from './pages/SignUp';
 import SinglePlayer from './pages/SinglePlayer';
+import LobbyRoom from './pages/lobby';
+// import AuthProvider from 'react-auth-kit/AuthProvider';
+// import createStore from 'react-auth-kit/createStore';
 import MultiPlayer from './pages/MultiPlayer.jsx';
 import Audio from './pages/Audio.jsx';
 
@@ -23,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/menu',
     element: <Mainmenu />,
+  },
+  {
+    path: '/lobby',
+    element: <LobbyRoom />,
   },
   {
     path: '/single',
