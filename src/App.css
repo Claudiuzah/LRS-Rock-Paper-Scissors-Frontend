@@ -360,6 +360,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   vertical-align: center;
+  flex-flow: space-evenly;
 }
 
 .player_card {
@@ -397,25 +398,27 @@ body {
 .left_lobby {
   text-align: left;
 }
-
-/* .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+.lobby_button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  bottom: -13rem;
+  right: -18rem;
+  width: 10rem;
+  height: 4rem;
 }
 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+.lobby_button:hover {
+  background-color: #324033;
 }
 
 .close {
@@ -430,7 +433,8 @@ body {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}  */
+}
+*/
 
 /* ################################################################################COSMIN */
 .centeredstart {
@@ -568,12 +572,12 @@ h1 {
 }
 /* //////////////////////////////////////////////////////////////////////////////////////audioPlayer.css */
 .audio-button {
-  background-image: url("video/audio_off.gif");
+  background-image: url('video/audio_off.gif');
   background-size: cover;
   width: 60px;
   height: 60px;
   border: 2px solid transparent;
-  background:cover;
+  background: cover;
   background-color: transparent;
   padding: 10px;
   font-size: 12px;
