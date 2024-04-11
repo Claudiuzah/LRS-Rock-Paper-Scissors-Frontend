@@ -1,5 +1,5 @@
 import '../App.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 import { API_SELF, LOGIN } from './constants.js';
@@ -23,7 +23,7 @@ function Loginbox() {
   const [password, setPassword] = useState('');
   // const signIn = useSignIn();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function logging() {
     const data = await signInUser(username, password);
