@@ -583,24 +583,37 @@ h1 {
 }
 /*/////////////////////////////////////////////////////////////////////////////////////////////Multiplayer*/
 
+.clockContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px; 
+  color: white;
+}
+
 .clockM {
   position :absolute;
-  right: 100px;
-  left : 1000px;
+  right: 50%;
+  left: 50%;
   height: auto;
   display: block;
-  max-width: 1000px;
+  max-width: 100%;
   max-height: 100%;
   margin-bottom: 0px;
 
 }
 
 .tableM{
-  position : absolute;
-  width: 650px;
-  height: auto;
-  display: block;
-  max-width: 1000px;
-  max-height: 100%;
-  margin-bottom: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50px;
+  max-height: 50px;
 }
