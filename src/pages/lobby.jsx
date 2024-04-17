@@ -2,8 +2,9 @@ import '../App.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function Multiplayer() {
+function LobbyRoom() {
   const navigate = useNavigate();
   const auth = useAuthUser();
   console.log(auth);
@@ -22,6 +23,13 @@ function Multiplayer() {
     <>
       <div className='background'>
         <div className='center_multiplayer'>
+          <div className='left'>
+            <Link to='/menu'>
+              <button className='exitbutton'>
+                <img src='video/exist.gif' className='exitgif' />
+              </button>
+            </Link>
+          </div>
           <div className='container_multiplayer'>
             <div className='container_list'>
               <div className='container_profile'></div>
@@ -41,7 +49,17 @@ function Multiplayer() {
             </div>
             <div className='title_box'>
               <div className='multiplayer_title'>Create room</div>
-              <div className='player_lobby'></div>
+              <div className='player_lobby'>
+                <div className='container_playerlb'>
+                  <div className='player_card'>Player1</div>
+                  <div className='player_card'>Player2</div>
+                  <div className='player_card'>Player3</div>
+                  <div className='player_card'>Player4</div>
+                  <div className='player_card'>Player5</div>
+                  <div className='player_card'>Player6</div>
+                  <div className='player_card'>Player7</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -50,4 +68,4 @@ function Multiplayer() {
   );
 }
 
-export default Multiplayer;
+export default LobbyRoom;

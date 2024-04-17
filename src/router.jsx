@@ -4,7 +4,11 @@ import Login from './pages/LogIn';
 import Mainmenu from './pages/MainMenu';
 import Register from './pages/SignUp';
 import SinglePlayer from './pages/SinglePlayer';
-import Multiplayer from './pages/lobby';
+import LobbyRoom from './pages/lobby';
+// import AuthProvider from 'react-auth-kit/AuthProvider';
+// import createStore from 'react-auth-kit/createStore';
+import MultiPlayer from './pages/MultiPlayer.jsx';
+import Audio from './pages/Audio.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,19 +29,24 @@ const router = createBrowserRouter([
   },
   {
     path: '/lobby',
-    element: <Multiplayer />,
+    element: <LobbyRoom />,
   },
   {
     path: '/single',
     element: <SinglePlayer />,
   },
+  {
+    path: '/multiplayer',
+    element: <MultiPlayer />,
+  },
 ]);
 
 function Router() {
   return (
-    <>
+    <def>
       <RouterProvider router={router} />
-    </>
+      <Audio />
+    </def>
   );
 }
 
