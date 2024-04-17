@@ -1,5 +1,5 @@
 import '../App.css';
-import Signupbox from '../components/signinbox';
+import Signupbox from '../components/signupbox';
 
 function Register() {
   return (

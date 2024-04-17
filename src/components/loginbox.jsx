@@ -14,6 +14,7 @@ const signInUser = async (username, password) => {
     },
     body: `grant_type=password&clientId=my-trusted-client&username=${username}&password=${password}&scope=user_info`,
   });
+  if (!response.ok) console.log('error');
 
   return await response.json();
 };
@@ -26,15 +27,21 @@ function Loginbox() {
   const navigate = useNavigate();
 
   async function logging() {
+    console.log('test');
     const data = await signInUser(username, password);
     console.log(data);
-    if (data.access_token) {
+    if (data) {
       signIn({
         auth: {
           token: data.access_token,
           type: 'bearer',
         },
+        userState: {
+          name: data.user_data.username,
+          id: data.user_data.id,
+        },
       });
+
       navigate('/menu');
     } else {
       navigate('/auth');

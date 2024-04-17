@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../App.css';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button, Group, Text } from '@mantine/core';
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import { useEffect } from 'react';
 
 const actions = {
   rock: 'scissors',
@@ -98,17 +100,48 @@ function Singleplayer() {
 
   const [opened, { close, open }] = useDisclosure(false);
 
+  const navigate = useNavigate();
+  const auth = useAuthUser();
+  console.log(auth);
+
+  useEffect(() => {
+    if (!auth) {
+      navigate('/auth');
+      console.log('User is not logged in.');
+    } else {
+      console.log('User is logged in.');
+    }
+  }, [auth]);
+
   return (
-    <html className='backgroundsingle'>
+    <main className='backgroundsingle'>
       <>
-        <Modal opened={opened} onClose={close} size='auto' centered>
-          <Text>Are you sure you want to exit?</Text>
+        <Modal
+          opened={opened}
+          onClose={close}
+          size='auto'
+          overlayProps={{
+            backgroundOpacity: 0.55,
+            blur: 3,
+          }}
+          styles={{
+            content: { backgroundColor: 'gray' },
+            header: { backgroundColor: 'gray' },
+          }}
+          className='mantine-Modal-content'
+          centered
+        >
+          <Text color='white' size='xl'>
+            Are you sure you want to exit?
+          </Text>
 
           <Group mt='xl'>
             <Link to='/menu'>
-              <Button>Yes</Button>
+              <Button color='orange'>Yes</Button>
             </Link>
-            <Button onClick={close}>No</Button>
+            <Button color='orange' onClick={close}>
+              No
+            </Button>
           </Group>
         </Modal>
       </>
@@ -120,8 +153,8 @@ function Singleplayer() {
           </button>
         </div>
         <div className='containersingle'>
-          <Player name='Player' score={playerScore} action={playerAction} />
-          <Player name='Computer' score={computerScore} action={computerAction} />
+          <Player name={auth.name} score={playerScore} action={playerAction} />
+          <Player name='Bot' score={computerScore} action={computerAction} />
         </div>
         <div>
           <Actionbutton action='rock' onActionSelected={onActionSelected} />
@@ -130,7 +163,7 @@ function Singleplayer() {
         </div>
         <Showwinner winner={winner} />
       </div>
-    </html>
+    </main>
   );
 }
 

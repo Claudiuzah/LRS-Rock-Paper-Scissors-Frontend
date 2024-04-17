@@ -13,10 +13,6 @@
   text-align: center;
 }
 
-body {
-  background-image: url('images/bg.png');
-}
-
 .loginbox {
   width: 350px;
   background: #222;
@@ -70,6 +66,7 @@ body {
   padding: 15px 10px;
   font-style: normal;
   color: #aaa;
+  /* color: red; */
   transition: 0.5s;
   pointer-events: none;
 }
@@ -77,11 +74,13 @@ body {
   transform: translateY(-7.5px);
   font-size: 0.8em;
   color: #fff;
+  /* color: red; */
 }
 .logininput:valid ~ i {
   transform: translateY(-7.5px);
   font-size: 0.8em;
   color: #fff;
+  /* color: red; */
 }
 .buttonlogin[type='submit'] {
   padding: 10px;
@@ -413,6 +412,9 @@ body {
   max-height: 100%;
   margin-bottom: 0px;
 }
+body {
+  background-image: url('images/bg.png');
+}
 /* #########################################################################################SINGLEPLAYER */
 
 .scissors {
@@ -420,6 +422,7 @@ body {
 }
 .backgroundsingle {
   background-image: url(images/orange_background_.jpg);
+  height: 100vh;
 }
 .centersingle {
   text-align: center;
@@ -490,4 +493,10 @@ h1 {
 }
 .centermodal {
   position: absolute;
+}
+/* ###################################################################################################### YOU ARE NOT LOGGED IN */
+
+.notlogin {
+  background-image: url(images/background2.jpg);
+  width: 100vh;
 }

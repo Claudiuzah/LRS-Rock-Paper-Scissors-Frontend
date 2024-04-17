@@ -1,8 +1,23 @@
 import '../App.css';
-
-// import { Link } from "react-router-dom";
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Multiplayer() {
+  const navigate = useNavigate();
+  const auth = useAuthUser();
+  console.log(auth);
+
+  useEffect(() => {
+    if (!auth) {
+      navigate('/auth');
+      console.log('User is not logged in.');
+    } else {
+      console.log('User is logged in.');
+    }
+  }, [auth]);
+  if (!auth) return;
+
   return (
     <>
       <div className='background'>

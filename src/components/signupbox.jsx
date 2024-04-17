@@ -20,11 +20,9 @@ async function postUser(username, password) {
 function Signupbox() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (e) => {
     setUsername(e.target.value);
-    setErrorMessage('');
   };
 
   const handleSignUp = async (e) => {
@@ -35,11 +33,24 @@ function Signupbox() {
     setUsername(data.id);
     setUsername(data.name);
     setTimeout(() => {}, 200);
-
-    navigate('/auth');
+    if (data) {
+      navigate('/auth');
+    } else {
+      navigate('/register');
+    }
   };
+
   const navigate = useNavigate();
   useEffect(() => {}, []);
+
+  // const form = useForm({
+  //   initialValues: { name: '', password: '' },
+
+  //   validate: {
+  //     name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+  //     password: (value) => (value.length < 8 ? 'Password must have at least 8 characters' : null),
+  //   },
+  // });
   return (
     <>
       <div>
@@ -59,7 +70,6 @@ function Signupbox() {
                   className='logininput'
                 />
                 <i className='logini'>username</i>
-                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
               </div>
 
               <div className='logininputbox'>
