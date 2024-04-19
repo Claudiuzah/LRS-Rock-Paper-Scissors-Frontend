@@ -1,19 +1,16 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Startpage from './pages/StartPage';
-import Login from './pages/LogIn';
-import Mainmenu from './pages/MainMenu';
-import Register from './pages/SignUp';
-import SinglePlayer from './pages/SinglePlayer';
-import LobbyRoom from './pages/lobby';
-// import AuthProvider from 'react-auth-kit/AuthProvider';
-// import createStore from 'react-auth-kit/createStore';
-import MultiPlayer from './pages/MultiPlayer.jsx';
-import Audio from './pages/Audio.jsx';
+import StartPage from 'src/pages/StartPage';
+import Login from 'src/pages/LogIn';
+import MainMenu from 'src/pages/MainMenu';
+import Register from 'src/pages/SignUp';
+import SinglePlayer from 'src/pages/SinglePlayer';
+import LobbyRoom from 'src/pages/Lobby';
+// import Audio from 'src/pages/Audio';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Startpage />,
+    element: <StartPage />,
   },
   {
     path: '/auth',
@@ -25,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/menu',
-    element: <Mainmenu />,
+    element: <MainMenu />,
   },
   {
     path: '/lobby',
@@ -35,18 +32,18 @@ const router = createBrowserRouter([
     path: '/single',
     element: <SinglePlayer />,
   },
-  {
-    path: '/multiplayer',
-    element: <MultiPlayer />,
-  },
+  // {
+  //   path: '/multiplayer',
+  //   element: <MultiPlayer />,
+  // },
 ]);
 
 function Router() {
   return (
-    <def>
+    <main>
       <RouterProvider router={router} />
-      <Audio />
-    </def>
+      {/* <Audio /> */}
+    </main>
   );
 }
 

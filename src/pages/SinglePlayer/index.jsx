@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../App.css';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button, Group, Text } from '@mantine/core';
+import styles from './index.module.css';
 
 const actions = {
   rock: 'scissors',
@@ -28,13 +28,13 @@ export function Calculatewinner(action1, action2) {
   return null;
 }
 export function Scissors() {
-  return <img src='./images/scissors.png' className='scissors' />;
+  return <img src='./images/scissors.png' className={styles.scissors} />;
 }
 export function Rock() {
-  return <img src='./images/rock.png' className='scissors' />;
+  return <img src='./images/rock.png' className={styles.rock} />;
 }
 export function Paper() {
-  return <img src='./images/paper.png' className='scissors' />;
+  return <img src='./images/paper.png' className={styles.paper} />;
 }
 export function Actionicon({ action, ...props }) {
   const icons = {
@@ -48,16 +48,18 @@ export function Actionicon({ action, ...props }) {
 }
 export function Player({ name = 'Player', score = 0, action = 'rock' }) {
   return (
-    <div className='playersingle'>
-      <div className='scoresingle'>{`${name}: ${score}`}</div>
-      <div className='actionsingle'>{action && <Actionicon action={action} size={300} />}</div>
+    <div className={styles.playerSingle}>
+      <div className={styles.scoreSingle}>{`${name}: ${score}`}</div>
+      <div className={styles.actionSingle}>
+        {action && <Actionicon action={action} size={300} />}
+      </div>
     </div>
   );
 }
 
 export function Actionbutton({ action = 'rock', onActionSelected }) {
   return (
-    <button className='round-btn' onClick={() => onActionSelected(action)}>
+    <button className={styles.roundBtn} onClick={() => onActionSelected(action)}>
       <Actionicon action={action} size={50} />
     </button>
   );
@@ -99,7 +101,7 @@ function Singleplayer() {
   const [opened, { close, open }] = useDisclosure(false);
 
   return (
-    <html className='backgroundsingle'>
+    <html className={styles.backgroundSingle}>
       <>
         <Modal opened={opened} onClose={close} size='auto' centered>
           <Text>Are you sure you want to exit?</Text>
@@ -112,14 +114,14 @@ function Singleplayer() {
           </Group>
         </Modal>
       </>
-      <div className='centersingle'>
+      <div className={styles.centerSingle}>
         <h1>Rock Paper Scissors</h1>
-        <div className='left'>
-          <button onClick={open} className='exitbutton'>
-            <img src='video/exist.gif' className='exitgif' />
+        <div className={styles.left}>
+          <button onClick={open} className={styles.exitButton}>
+            <img src='video/exist.gif' className={styles.exitGif} />
           </button>
         </div>
-        <div className='containersingle'>
+        <div className={styles.containerSingle}>
           <Player name='Player' score={playerScore} action={playerAction} />
           <Player name='Computer' score={computerScore} action={computerAction} />
         </div>

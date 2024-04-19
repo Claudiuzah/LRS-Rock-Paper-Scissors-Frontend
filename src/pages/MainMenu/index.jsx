@@ -1,8 +1,8 @@
-import '../App.css';
 import { Link } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import { useState } from 'react';
+import styles from './index.module.css';
 
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
@@ -11,36 +11,40 @@ function MainMenu() {
   return (
     <>
       <div>
-        <div className='groupcontainer_menu'>
-          <img src='./images/title.png' className='titleimagemenu' />
-          <img src='./video/crown.gif' className='crownmenu' />
-          <div className='buttonsboxmenu'>
-            <div className='formmenu'>
+        <div className={styles.groupContainerMenu}>
+          <img src='./images/title.png' className={styles.titleImageMenu} />
+          <img src='./video/crown.gif' className={styles.crownMenu} />
+          <div className={styles.buttonsBoxMenu}>
+            <div className={styles.formMenu}>
               <Link to='/single'>
-                <button className='buttonmenu'>
+                <button className={styles.buttonMenu}>
                   <span>Singleplayer</span>
-                  <img src='video/player.gif' className='playergifmenu' />
+                  <img src='video/player.gif' className={styles.playerGifMenu} />
                 </button>
               </Link>
               <Link to='/lobby'>
-                <button className='buttonmenu'>
+                <button className={styles.buttonMenu}>
                   <span>Multiplayer</span>
-                  <img src='video/player.gif' className='multiplayergif1menu' />
-                  <img src='video/player.gif' className='multiplayergif2menu' />
-                  <img src='video/player.gif' className='multiplayergif3menu' />
+                  <img src='video/player.gif' className={styles.multiplayerGif1Menu} />
+                  <img src='video/player.gif' className={styles.multiplayerGif2Menu} />
+                  <img src='video/player.gif' className={styles.multiplayerGif3Menu} />
                 </button>
               </Link>
-              <button type='button' onClick={open} className='buttonmenu'>
+              <button type='button' onClick={open} className={styles.buttonMenu}>
                 <span>Settings</span>
-                <img src='video/settings.gif' className='settingsgifmenu' />
+                <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
-              <div className='my-component'>
-                <div className='player-avatar'>
-                  <img src='images/avatar.png' alt='Player Avatar' />
+              <div className={styles.myComponent}>
+                <div className={styles.playerAvatar}>
+                  <img
+                    src='images/avatar.png'
+                    alt='Player Avatar'
+                    className={styles.playerAvatarImg}
+                  />
                 </div>
-                <div className='player-info'>
-                  <div className='player-name'>Mr. Gabi </div>
-                  <div className='player-stats'>
+                <div className={styles.playerInfo}>
+                  <div className={styles.playerName}>Mr. Gabi </div>
+                  <div className={styles.playerStats}>
                     Total wins: 0<br />
                     Score: 0
                   </div>

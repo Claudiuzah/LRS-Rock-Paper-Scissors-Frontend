@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+.groupContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+
+body {
+  background-image: url('images/bg.png');
+}
+.scissors {
+  width: 75%;
+}
+.rock {
+  width: 75%;
+}
+.paper {
+  width: 75%;
+}
+.playerSingle {
+  margin: 10px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.scoreSingle {
+  padding: 1px;
+  font-size: xx-large;
+  font-weight: bold;
+  background-color: #000;
+  color: #ffffff;
+}
+.roundBtn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  margin: 2px;
+  cursor: pointer;
+}
+.roundBtn:hover {
+  background-color: #e26a26;
+}
+.backgroundSingle {
+  background-image: url(images/orange_background_.jpg);
+  height: 100vh;
+}
+.centerSingle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.left {
+  text-align: left;
+}
+.exitButton {
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff00;
+  border: 2px solid transparent;
+}
+.exitGif {
+  width: 50px;
+  height: 50px;
+}
+.containerSingle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: center;
+  gap: 100px;
+}
+h1 {
+  font-size: 24px;
+  margin: 0;
+  background-color: #000;
+  color: #e26a26;
+  padding: 8px;
+}
