@@ -73,6 +73,14 @@ export function Showwinner({ winner = 0 }) {
   };
   return <h2>{text[winner]}</h2>;
 }
+export function Roundmessage() {
+  const round = 1;
+  return (
+    <main className='roundMessage'>
+      <h1>Round {round}</h1>
+    </main>
+  );
+}
 
 function Singleplayer() {
   const [playerAction, setPlayerAction] = useState('');
@@ -112,7 +120,7 @@ function Singleplayer() {
       console.log('User is logged in.');
     }
   }, [auth]);
-
+  if (!auth) return;
   return (
     <main className='backgroundsingle'>
       <>
@@ -152,6 +160,7 @@ function Singleplayer() {
             <img src='video/exist.gif' className='exitgif' />
           </button>
         </div>
+
         <div className='containersingle'>
           <Player name={auth.name} score={playerScore} action={playerAction} />
           <Player name='Bot' score={computerScore} action={computerAction} />
@@ -163,6 +172,7 @@ function Singleplayer() {
         </div>
         <Showwinner winner={winner} />
       </div>
+      <Roundmessage />
     </main>
   );
 }

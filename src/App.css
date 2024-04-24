@@ -122,7 +122,7 @@
   color: #e26b26;
   font-weight: 600;
 }
-/* ############################################################################### MainMenu */
+/* ###############################################################################MainMenu */
 
 .centeredmenu {
   position: absolute;
@@ -171,6 +171,7 @@
 .groupcontainer_menu {
   display: flex;
   flex-direction: column;
+  /* row-gap: -50px; */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -292,7 +293,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* #################################################################### Lobby */
 .center_multiplayer {
   text-align: center;
 }
@@ -411,9 +411,7 @@
   text-decoration: none;
   cursor: pointer;
 }
-*/
-
-/* ################################################################################ StartPage*/
+/* ################################################################################START */
 .centeredstart {
   position: absolute;
   top: 50%;
@@ -548,9 +546,16 @@ h1 {
 .left {
   text-align: left;
 }
-.backgroundsingle {
-  background-image: url(images/orange_background_.jpg);
+.centermodal {
+  position: absolute;
 }
+/* ###################################################################################################### YOU ARE NOT LOGGED IN */
+
+.notlogin {
+  background-image: url(images/background2.jpg);
+  width: 100vh;
+}
+
 /* //////////////////////////////////////////////////////////////////////////////////////audioPlayer.css */
 .audio-button {
   background-image: url('video/audio_off.gif');
@@ -566,10 +571,14 @@ h1 {
   top: 10px;
   right: 10px;
 }
-/*/////////////////////////////////////////////////////////////////////////////////////////////*/
-/* ###################################################################################################### YOU ARE NOT LOGGED IN */
+/* ################################################################################################## */
 
-.notlogin {
-  background-image: url(images/background2.jpg);
-  width: 100vh;
+.onlineplayer {
+  /* Group 5 */
+  background-color: #e26b26;
+  display: flex;
+  width: 311px;
+  height: 98px;
+  left: 45px;
+  top: 186px;
 }

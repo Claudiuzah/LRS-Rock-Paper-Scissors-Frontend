@@ -3,6 +3,7 @@ import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import SocketComponent from '../components/onlineplayerssocket';
 
 function LobbyRoom() {
   const navigate = useNavigate();
@@ -45,7 +46,11 @@ function LobbyRoom() {
                   </div>
                 </div>
               </div>
-              <div className='player_list'>Player 1</div>
+              <div className='player_list'>
+                <div>
+                  <SocketComponent />
+                </div>
+              </div>
             </div>
             <div className='title_box'>
               <div className='multiplayer_title'>Create room</div>
