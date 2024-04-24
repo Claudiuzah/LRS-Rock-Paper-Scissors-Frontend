@@ -33,13 +33,15 @@ function MultiPlayer() {
           <img src='video/exist.gif' className='exitgif' alt='Exit' />
         </button>
       </Link>
-      <img src='video/clock.gif' className='clockM' alt='Clock' />
-      <div className='clockContainer'>
-        <div id='timer' className='timer'>
-          {remainingTime}
-        </div>
+      <div className='containerT'>
+        <button className='clockbutton'>
+          <img src='video/clock.gif' className='clockImg' alt='Clock' />
+          <div id='timer' className='timerT'>
+            {remainingTime}
+          </div>
+        </button>
       </div>
-      <div className='container'>
+      <div className='containerTABLE'>
         <img src='images/table.png' className='tableM' alt='Table' />
       </div>
     </div>

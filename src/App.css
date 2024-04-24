@@ -583,37 +583,48 @@ h1 {
 }
 /*/////////////////////////////////////////////////////////////////////////////////////////////Multiplayer*/
 
-.clockContainer {
+.containerT {
+
   position: relative;
-  display: inline-block;
-}
 
-.timer {
+}
+.containerTABLE{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+.timerT {
+  background: none;
+  font-size: 20px;
+  color: black;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px; 
-  color: white;
+  top: 23px;
+  left: 25px;
 }
 
-.clockM {
-  position :absolute;
-  right: 50%;
-  left: 50%;
-  height: auto;
+.clockImg {
   display: block;
-  max-width: 100%;
-  max-height: 100%;
-  margin-bottom: 0px;
-
+  width: 100%;
+  background-color: transparent;
 }
 
-.tableM{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 50px;
-  max-height: 50px;
+.tableM {
+  position: relative;
+  width: 100%; 
+  max-width: 600px;
+  height: auto;
+  max-height: 600px;
+  display: flex;
+  top: 150px;
+}
+.clockbutton {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  background: none;
+  border: none  ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
