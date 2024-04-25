@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+.centeredstart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+
+.buttonstart {
+  display: inline-block;
+  padding: 15px 50px;
+  background-color: black;
+  color: #fff;
+  font-size: 30px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+  position: relative;
+  margin-bottom: 15%;
+}
+/* 
+.button_span {
+  position: relative;
+  text-align: left;
+} */
+
+.playergifstart {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translate(47%, -50%);
+  height: auto;
+  width: 50px;
+}
+.groupcontainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  text-align: center;
+}
+
+.crown {
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  height: auto;
+  width: 75px;
+}
+
+.titleimage {
+  width: 650px;
+  height: auto;
+  display: block;
+  max-width: 1000px;
+  max-height: 100%;
+  margin-bottom: 0px;
+}
+.buttonstart:hover {
+  background-color: #e26a26;
+}

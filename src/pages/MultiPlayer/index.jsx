@@ -1,6 +1,6 @@
-import '../App.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import styles from './index.module.css';
 
 function MultiPlayer() {
   const [remainingTime, setRemainingTime] = useState(15);
@@ -29,24 +29,24 @@ function MultiPlayer() {
   return (
     <div>
       <Link to='/menu'>
-        <button className='exitbutton'>
-          <img src='video/exist.gif' className='exitgif' alt='Exit' />
+        <button className={styles.exitButtonM}>
+          <img src='video/exist.gif' className={styles.exitGifM} alt='Exit' />
         </button>
       </Link>
-      <div className='containerT'>
-        <button className='clockbutton'>
-          <img src='video/clock.gif' className='clockImg' alt='Clock' />
-          <div id='timer' className='timerT'>
+      <div className={styles.containerT}>
+        <button className={styles.clockButton}>
+          <img src='video/clock.gif' className={styles.clockImg} alt='Clock' />
+          <div id='timer' className={styles.timerT}>
             {remainingTime}
           </div>
         </button>
       </div>
-      <div className='containerTABLE'>
-        <img src='images/table.png' className='tableM' alt='Table' />
-        <div className='player_lobby'>
-          <div className='container_playerlb'>
-            <div className='player_card'>Player1</div>
-            <div className='player_card'>Player2</div>
+      <div className={styles.containerTABLE}>
+        <img src='images/table.png' className={styles.tableM} alt='Table' />
+        <div className={styles.player_lobby}>
+          <div className={styles.container_playerlb}>
+            <div className={styles.playerCard}>Player1</div>
+            <div className={styles.playerCard}>Player2</div>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import styles from './index.module.css';
 
 function MyComponent() {
   const [playerData, setPlayerData] = useState({
@@ -19,13 +20,13 @@ function MyComponent() {
   }, []);
 
   return (
-    <div className='my-component'>
-      <div className='player-avatar'>
+    <div className={styles.my_component}>
+      <div className={styles.player_avatar}>
         <img src='images/avatar.png' alt='Player Avatar' />
       </div>
-      <div className='player-info'>
-        <div className='player-name'>{playerData.player_name}</div>
-        <div className='player-stats'>
+      <div className={styles.player_info}>
+        <div className={styles.player_name}>{playerData.player_name}</div>
+        <div className={styles.player_stats}>
           Total wins: {playerData.total_wins} <br />
           Score: {playerData.score}
         </div>

@@ -1,10 +1,8 @@
-import '../App.css';
 import { Link } from 'react-router-dom';
-
 import { useState } from 'react';
-import { API_SELF, LOGIN } from './constants.js';
-
+import { API_SELF, LOGIN } from '../constants.js';
 import useSignIn from 'react-auth-kit/hooks/useSignIn';
+import styles from './index.module.css';
 
 const signInUser = async (username, password) => {
   const response = await fetch(`${API_SELF}${LOGIN}`, {
@@ -24,6 +22,7 @@ function Loginbox() {
   const signIn = useSignIn();
 
   // const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function logging() {
     const data = await signInUser(username, password);
@@ -36,7 +35,7 @@ function Loginbox() {
     });
     console.log(data.access_token);
     // navigate('/menu');
-    // if (1 === '2') {
+    // if ( 1 == '2') {
     //   navigate('/auth');
     // }
   }
@@ -44,44 +43,49 @@ function Loginbox() {
   return (
     <>
       <div>
-        <div className='loginbox'>
-          <div className='loginboxcontent'>
-            <div className='logincontenth2'>
+        <div className={styles.loginbox}>
+          <div className={styles.content}>
+            <div className={styles.logincontenth2}>
               <h2>Log In</h2>
             </div>
 
-            <div className='loginform'>
-              <div className='logininputbox'>
+            <div className={styles.loginform}>
+              <div className={styles.logininputBox}>
                 <input
                   type='text'
                   required
                   value={username}
-                  className='logininput'
+                  className={styles.logininput}
                   onChange={(event) => setUsername(event.target.value)}
                 />
-                <i className='logini'>username</i>
+                <i className={styles.logini}>username</i>
               </div>
 
-              <div className='logininputbox'>
+              <div className={styles.logininputBox}>
                 <input
                   type='password'
                   required
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  className='logininput'
+                  className={styles.logininput}
                 />
-                <i className='logini'>password</i>
+                <i className={styles.logini}>password</i>
               </div>
 
-              <div className='loginlinks'>
+              <div className={styles.loginlinks}>
                 <a>You dont have an account?</a>
-                <Link to='/register' className='loginlinks2'>
+                <Link to='/register' className={styles.loginlinks2}>
                   Signup
                 </Link>
               </div>
 
-              <div className='logininputbox'>
-                <input type='submit' value='Login' onClick={logging} className='buttonlogin' />
+              <div className={styles.logininputBox}>
+                <input
+                  type='submit'
+                  value='Login'
+                  onClick={logging}
+                  className={styles.buttonlogin}
+                />
               </div>
             </div>
           </div>
