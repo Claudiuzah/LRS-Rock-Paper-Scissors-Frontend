@@ -43,6 +43,12 @@ function MultiPlayer() {
       </div>
       <div className='containerTABLE'>
         <img src='images/table.png' className='tableM' alt='Table' />
+        <div className='player_lobby'>
+          <div className='container_playerlb'>
+            <div className='player_card'>Player1</div>
+            <div className='player_card'>Player2</div>
+          </div>
+        </div>
       </div>
     </div>
   );
