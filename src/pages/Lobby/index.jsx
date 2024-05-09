@@ -7,7 +7,7 @@ function LobbyRoom() {
       <div className={styles.background}>
         <div className={styles.centerMultiplayer}>
           <div className={styles.leftLobby}>
-            <Link to='/menu'>
+            <Link to='/lobby'>
               <button className={styles.exitButtonLobby}>
                 <img src='video/exist.gif' className={styles.exitGifLobby} />
               </button>
@@ -43,9 +43,10 @@ function LobbyRoom() {
                   <div className={styles.playerCard}>Player3</div>
                   <div className={styles.playerCard}>Player4</div>
                   <div className={styles.playerCard}>Player5</div>
-                  <div className={styles.playerCard}>Player6</div>
-                  <div className={styles.playerCard}>Player7</div>
                 </div>
+                <Link to='/multiplayer'>
+                  <button className={styles.playButton}>Play</button>
+                </Link>
               </div>
             </div>
           </div>

@@ -28,7 +28,7 @@ function MultiPlayer() {
 
   return (
     <div>
-      <Link to='/menu'>
+      <Link to='/lobby'>
         <button className={styles.exitButtonM}>
           <img src='video/exist.gif' className={styles.exitGifM} alt='Exit' />
         </button>
@@ -43,11 +43,11 @@ function MultiPlayer() {
       </div>
       <div className={styles.containerTable}>
         <img src='images/table.png' className={styles.tableM} alt='Table' />
-        <div className={styles.playerCard1}>Playero1</div>
-        <div className={styles.playerCard2}>Playero2</div>
-        <div className={styles.playerCard3}>Playero3</div>
-        <div className={styles.playerCard4}>Playero4</div>
-        <div className={styles.playerCard5}>Playero5</div>
+        <div className={styles.playerCard1}>Player1</div>
+        <div className={styles.playerCard2}>Player2</div>
+        <div className={styles.playerCard3}>Player3</div>
+        <div className={styles.playerCard4}>Player4</div>
+        <div className={styles.playerCard5}>Player5</div>
 
         <img scr='/images/avatar.png' className={styles.avatar} />
       </div>
