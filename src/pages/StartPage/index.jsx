@@ -3,7 +3,7 @@ import styles from './index.module.css';
 
 function Startpage() {
   return (
-    <div className={styles.groupcontainer}>
+    <main className={styles.groupcontainer}>
       <div className={styles.centeredstart}>
         <div>
           <img src='images\title.png' className={styles.titleimage} alt='' />
@@ -16,7 +16,7 @@ function Startpage() {
           </button>
         </Link>
       </div>
-    </div>
+    </main>
   );
 }
 

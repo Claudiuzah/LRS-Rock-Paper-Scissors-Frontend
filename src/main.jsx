@@ -16,10 +16,10 @@ const store = createStore({
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider store={store}>
-      <MantineProvider>
+    <MantineProvider>
+      <AuthProvider store={store}>
         <Router />
-      </MantineProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </MantineProvider>
   </React.StrictMode>,
 );

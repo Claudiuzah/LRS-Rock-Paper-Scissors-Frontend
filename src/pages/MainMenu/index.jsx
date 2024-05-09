@@ -1,15 +1,42 @@
-import { Link } from 'react-router-dom';
+import styles from './index.module.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@mantine/core';
 import { useState } from 'react';
-import styles from './index.module.css';
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import { useEffect } from 'react';
+import useSignOut from 'react-auth-kit/hooks/useSignOut';
 
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentVolume, setCurrentVolume] = useState();
   const [currentSoundType, setCurrentSoundType] = useState();
+  const navigate = useNavigate();
+  const auth = useAuthUser();
+  console.log(auth);
+
+  const signOut = useSignOut();
+
+  useEffect(() => {
+    if (!auth) {
+      navigate('/auth');
+      console.log('User is not logged in.');
+    } else {
+      console.log('User is logged in.');
+    }
+  }, [auth]);
+  if (!auth) return;
   return (
-    <>
+    <main>
+      <button
+        type='submit'
+        onClick={() => {
+          signOut();
+          navigate('/auth');
+        }}
+      >
+        Sign Out
+      </button>
       <div>
         <div className={styles.groupContainerMenu}>
           <img src='./images/title.png' className={styles.titleImageMenu} />
@@ -43,7 +70,7 @@ function MainMenu() {
                   />
                 </div>
                 <div className={styles.playerInfo}>
-                  <div className={styles.playerName}>Mr. Gabi </div>
+                  <div className={styles.playerName}>{auth.name}</div>
                   <div className={styles.playerStats}>
                     Total wins: 0<br />
                     Score: 0
@@ -81,7 +108,7 @@ function MainMenu() {
           </select>
         </div>
       </Modal>
-    </>
+    </main>
   );
 }
 

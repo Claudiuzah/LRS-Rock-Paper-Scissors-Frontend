@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button, Group, Text } from '@mantine/core';
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import { useEffect } from 'react';
 import styles from './index.module.css';
 
 const actions = {
@@ -13,7 +15,6 @@ const actions = {
 export function Bot() {
   const keys = Object.keys(actions);
   const index = Math.floor(Math.random() * keys.length);
-
   return keys[index];
 }
 
@@ -48,12 +49,12 @@ export function Actionicon({ action, ...props }) {
 }
 export function Player({ name = 'Player', score = 0, action = 'rock' }) {
   return (
-    <div className={styles.playerSingle}>
+    <main className={styles.playerSingle}>
       <div className={styles.scoreSingle}>{`${name}: ${score}`}</div>
       <div className={styles.actionSingle}>
         {action && <Actionicon action={action} size={300} />}
       </div>
-    </div>
+    </main>
   );
 }
 
@@ -73,6 +74,14 @@ export function Showwinner({ winner = 0 }) {
   };
   return <h2>{text[winner]}</h2>;
 }
+// export function Roundmessage() {
+//   const round = 1;
+//   return (
+//     <main className='roundMessage'>
+//       <h1>Round {round}</h1>
+//     </main>
+//   );
+// }
 
 function Singleplayer() {
   const [playerAction, setPlayerAction] = useState('');
@@ -100,17 +109,47 @@ function Singleplayer() {
 
   const [opened, { close, open }] = useDisclosure(false);
 
+  const navigate = useNavigate();
+  const auth = useAuthUser();
+  console.log(auth);
+
+  useEffect(() => {
+    if (!auth) {
+      navigate('/auth');
+      console.log('User is not logged in.');
+    } else {
+      console.log('User is logged in.');
+    }
+  }, [auth]);
+  if (!auth) return;
   return (
-    <html className={styles.backgroundSingle}>
+    <main className={styles.backgroundSingle}>
       <>
-        <Modal opened={opened} onClose={close} size='auto' centered>
-          <Text>Are you sure you want to exit?</Text>
+        <Modal
+          opened={opened}
+          onClose={close}
+          size='auto'
+          overlayProps={{
+            backgroundOpacity: 0.55,
+            blur: 3,
+          }}
+          styles={{
+            content: { backgroundColor: 'gray' },
+            header: { backgroundColor: 'gray' },
+          }}
+          centered
+        >
+          <Text color='white' size='xl'>
+            Are you sure you want to exit?
+          </Text>
 
           <Group mt='xl'>
             <Link to='/menu'>
-              <Button>Yes</Button>
+              <Button color='orange'>Yes</Button>
             </Link>
-            <Button onClick={close}>No</Button>
+            <Button color='orange' onClick={close}>
+              No
+            </Button>
           </Group>
         </Modal>
       </>
@@ -121,9 +160,10 @@ function Singleplayer() {
             <img src='video/exist.gif' className={styles.exitGif} />
           </button>
         </div>
+
         <div className={styles.containerSingle}>
-          <Player name='Player' score={playerScore} action={playerAction} />
-          <Player name='Computer' score={computerScore} action={computerAction} />
+          <Player name={auth.name} score={playerScore} action={playerAction} />
+          <Player name='Bot' score={computerScore} action={computerAction} />
         </div>
         <div>
           <Actionbutton action='rock' onActionSelected={onActionSelected} />
@@ -132,7 +172,8 @@ function Singleplayer() {
         </div>
         <Showwinner winner={winner} />
       </div>
-    </html>
+      {/* <Roundmessage /> */}
+    </main>
   );
 }
 

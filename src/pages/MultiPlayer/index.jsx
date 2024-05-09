@@ -1,9 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 
 function MultiPlayer() {
   const [remainingTime, setRemainingTime] = useState(15);
+  const navigate = useNavigate();
+  const auth = useAuthUser();
+  console.log(auth);
 
   useEffect(() => {
     let timer;
@@ -25,9 +29,18 @@ function MultiPlayer() {
       setRemainingTime(20);
     }
   }, [remainingTime]);
+  useEffect(() => {
+    if (!auth) {
+      navigate('/auth');
+      console.log('User is not logged in.');
+    } else {
+      console.log('User is logged in.');
+    }
+  }, [auth]);
+  if (!auth) return;
 
   return (
-    <div>
+    <main>
       <Link to='/lobby'>
         <button className={styles.exitButtonM}>
           <img src='video/exist.gif' className={styles.exitGifM} alt='Exit' />
@@ -51,7 +64,7 @@ function MultiPlayer() {
 
         <img scr='/images/avatar.png' className={styles.avatar} />
       </div>
-    </div>
+    </main>
   );
 }
 
