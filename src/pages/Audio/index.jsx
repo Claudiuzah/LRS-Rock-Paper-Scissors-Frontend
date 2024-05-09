@@ -17,19 +17,14 @@ function Audio() {
       audioElement.play();
     }
     setIsPlaying(!isPlaying);
-    toggleButtonImage();
-  };
-
-  const toggleButtonImage = () => {
-    const audioButton = document.querySelector('.audio-button');
-    audioButton.style.backgroundImage = isPlaying
-      ? 'url(/video/audio_off.gif)'
-      : 'url(/video/audio_on.gif)';
   };
 
   return (
     <>
-      <button className={styles.audioButton} onClick={playMusic}></button>
+      <button
+        className={`${styles.audioButton} ${isPlaying ? styles.playing : ''}`}
+        onClick={playMusic}
+      ></button>
       <audio id='audio-element' src='/audio/audio.mp3' />
     </>
   );

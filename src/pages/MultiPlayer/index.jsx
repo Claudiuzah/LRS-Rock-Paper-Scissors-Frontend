@@ -41,14 +41,15 @@ function MultiPlayer() {
           </div>
         </button>
       </div>
-      <div className={styles.containerTABLE}>
+      <div className={styles.containerTable}>
         <img src='images/table.png' className={styles.tableM} alt='Table' />
-        <div className={styles.player_lobby}>
-          <div className={styles.container_playerlb}>
-            <div className={styles.playerCard}>Player1</div>
-            <div className={styles.playerCard}>Player2</div>
-          </div>
-        </div>
+        <div className={styles.playerCard1}>Playero1</div>
+        <div className={styles.playerCard2}>Playero2</div>
+        <div className={styles.playerCard3}>Playero3</div>
+        <div className={styles.playerCard4}>Playero4</div>
+        <div className={styles.playerCard5}>Playero5</div>
+
+        <img scr='/images/avatar.png' className={styles.avatar} />
       </div>
     </div>
   );
