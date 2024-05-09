@@ -1,12 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Quicksand', sans-serif;
-}
-.buttonstart:hover {
-  background-color: #e26a26;
 }
 
 .crown {
@@ -25,14 +22,13 @@
   max-height: 100%;
   margin-bottom: 0px;
 }
-body {
-  background-image: url('images/bg.png');
-}
-
 .groupcontainer {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
   text-align: center;
-} */
+}
+body {
+  background-image: url('images/bg.png');
+}

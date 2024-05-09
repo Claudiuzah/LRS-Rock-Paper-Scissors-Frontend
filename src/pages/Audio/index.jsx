@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './index.module.css';
 
 function Audio() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -21,7 +22,7 @@ function Audio() {
   };
   return (
     <>
-      <button className='audio-button' onClick={playMusic}></button>
+      <button className={styles.audioButton} onClick={playMusic}></button>
       <audio id='audio-element' src='/audio/audio.mp3' />
     </>
   );

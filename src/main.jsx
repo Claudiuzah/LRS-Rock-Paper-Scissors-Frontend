@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Router from './router.jsx';
-import './index.css';
+import './App.css';
 import { MantineProvider } from '@mantine/core';
 import '@mantine/core/styles.css';
 import AuthProvider from 'react-auth-kit/AuthProvider';

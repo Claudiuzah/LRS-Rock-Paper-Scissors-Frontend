@@ -1,10 +1,8 @@
-import '../App.css';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { useState } from 'react';
-import { API_SELF, LOGIN } from './constants.js';
-
+import { API_SELF, LOGIN } from '../constants.js';
 import useSignIn from 'react-auth-kit/hooks/useSignIn';
+import styles from './index.module.css';
 
 const signInUser = async (username, password) => {
   const response = await fetch(`${API_SELF}${LOGIN}`, {
@@ -51,44 +49,49 @@ function Loginbox() {
   return (
     <>
       <div>
-        <div className='loginbox'>
-          <div className='loginboxcontent'>
-            <div className='logincontenth2'>
+        <div className={styles.logInBox}>
+          <div className={styles.logInBoxContent}>
+            <div className={styles.logInContenth2}>
               <h2>Log In</h2>
             </div>
 
-            <div className='loginform'>
-              <div className='logininputbox'>
+            <div className={styles.logInForm}>
+              <div className={styles.logInInputBox}>
                 <input
                   type='text'
                   required
                   value={username}
-                  className='logininput'
+                  className={styles.logInInput}
                   onChange={(event) => setUsername(event.target.value)}
                 />
-                <i className='logini'>username</i>
+                <i className={styles.logIni}>username</i>
               </div>
 
-              <div className='logininputbox'>
+              <div className={styles.logInInputBox}>
                 <input
                   type='password'
                   required
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  className='logininput'
+                  className={styles.logInInput}
                 />
-                <i className='logini'>password</i>
+                <i className={styles.logIni}>password</i>
               </div>
 
-              <div className='loginlinks'>
+              <div className={styles.logInLinks}>
                 <a>You dont have an account?</a>
-                <Link to='/register' className='loginlinks2'>
+                <Link to='/register' className={styles.logInLinks2}>
                   Signup
                 </Link>
               </div>
 
-              <div className='logininputbox'>
-                <input type='submit' value='Login' onClick={logging} className='buttonlogin' />
+              <div className={styles.logInInputBox}>
+                <input
+                  type='submit'
+                  value='Login'
+                  onClick={logging}
+                  className={styles.buttonLogIn}
+                />
               </div>
             </div>
           </div>
