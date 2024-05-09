@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './index.module.css';
 
 function Audio() {
   const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const audioElement = document.getElementById('audio-element');
+    audioElement.loop = true;
+  }, []);
+
   const playMusic = () => {
     const audioElement = document.getElementById('audio-element');
     if (isPlaying) {
@@ -11,20 +17,15 @@ function Audio() {
       audioElement.play();
     }
     setIsPlaying(!isPlaying);
-    toggleButtonImage();
-  };
-
-  const toggleButtonImage = () => {
-    const audioButton = document.querySelector('.audio-button');
-    audioButton.style.backgroundImage = isPlaying
-      ? 'url(/video/audio_off.gif)'
-      : 'url(/video/audio_on.gif)';
   };
   return (
-    <main>
-      <button className={styles.audioButton} onClick={playMusic}></button>
+    <>
+      <button
+        className={`${styles.audioButton} ${isPlaying ? styles.playing : ''}`}
+        onClick={playMusic}
+      ></button>
       <audio id='audio-element' src='/audio/audio.mp3' />
-    </main>
+    </>
   );
 }
 
