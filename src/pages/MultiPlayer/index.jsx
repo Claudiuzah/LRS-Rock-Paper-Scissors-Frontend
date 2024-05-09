@@ -1,14 +1,18 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import { Modal, Button, Group, Text } from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
+import { useDisclosure } from '@mantine/hooks';
 
 function MultiPlayer() {
   const [remainingTime, setRemainingTime] = useState(15);
+  const [modalOpened] = useState(false);
   const navigate = useNavigate();
   const auth = useAuthUser();
   console.log(auth);
-
+  const { open, close } = useDisclosure();
   useEffect(() => {
     let timer;
 
@@ -29,6 +33,19 @@ function MultiPlayer() {
       setRemainingTime(20);
     }
   }, [remainingTime]);
+
+  const handleExitButtonClick = () => {
+    open();
+  };
+
+  const handleYesClick = () => {
+    navigate('/lobby');
+    close();
+  };
+
+  const handleNoClick = () => {
+    close();
+  };
   useEffect(() => {
     if (!auth) {
       navigate('/auth');
@@ -41,8 +58,16 @@ function MultiPlayer() {
 
   return (
     <main>
+      <Modal opened={modalOpened} onClose={close} size='auto' centered>
+        <Text>Are you sure you want to exit?</Text>
+
+        <Group mt='xl'>
+          <Button onClick={handleYesClick}>Yes</Button>
+          <Button onClick={handleNoClick}>No</Button>
+        </Group>
+      </Modal>
       <Link to='/lobby'>
-        <button className={styles.exitButtonM}>
+        <button onClick={handleExitButtonClick} className={styles.exitButtonM}>
           <img src='video/exist.gif' className={styles.exitGifM} alt='Exit' />
         </button>
       </Link>
@@ -62,7 +87,7 @@ function MultiPlayer() {
         <div className={styles.playerCard4}>Player4</div>
         <div className={styles.playerCard5}>Player5</div>
 
-        <img scr='/images/avatar.png' className={styles.avatar} />
+        <img src='/images/avatar.png' className={styles.avatar} />
       </div>
     </main>
   );
