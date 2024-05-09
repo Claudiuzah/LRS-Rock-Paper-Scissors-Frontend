@@ -5,12 +5,12 @@ function Audio() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    const audioElement = document.getElementById('audio_element');
+    const audioElement = document.getElementById('audio-element');
     audioElement.loop = true;
   }, []);
 
   const playMusic = () => {
-    const audioElement = document.getElementById('audio_element');
+    const audioElement = document.getElementById('audio-element');
     if (isPlaying) {
       audioElement.pause();
     } else {
@@ -21,7 +21,7 @@ function Audio() {
   };
 
   const toggleButtonImage = () => {
-    const audioButton = document.querySelector('.audio_button');
+    const audioButton = document.querySelector('.audio-button');
     audioButton.style.backgroundImage = isPlaying
       ? 'url(/video/audio_off.gif)'
       : 'url(/video/audio_on.gif)';
@@ -30,7 +30,7 @@ function Audio() {
   return (
     <>
       <button className={styles.audioButton} onClick={playMusic}></button>
-      <audio id='audio_element' src='audio/audio.mp3' />
+      <audio id='audio-element' src='/audio/audio.mp3' />
     </>
   );
 }
