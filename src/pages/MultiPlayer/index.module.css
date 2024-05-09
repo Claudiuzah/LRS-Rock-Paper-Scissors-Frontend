@@ -1,0 +1,149 @@
+.containerT {
+    position: absolute;
+  }
+  .containerTable{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  
+  }
+  .timerT {
+    background: none;
+    font-size: 20px;
+    color: black;
+    position: absolute;
+    top: 23px;
+    left: 25px;
+  }
+  
+  .clockImg {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+  }
+  
+  .tableM {
+    position: relative;
+    width: 100%; 
+    max-width: 900px;
+    height: auto;
+    max-height: 900px;
+    display: flex;
+    top: 150px;
+  }
+  .clockButton {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background: none;
+    border: none  ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .playerCard1 {
+    position: absolute;
+    border-radius: 20px;
+    margin: 20px;
+    width: 160px;
+    height: 200px;
+    box-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.05),
+      0px 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    color: black;
+    text-align: center;
+    top: 350px;
+    left:15%;
+  }
+  .playerCard2 {
+    position: absolute;
+    border-radius: 20px;
+    margin: 20px;
+    width: 160px;
+    height: 200px;
+    box-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.05),
+      0px 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    color: black;
+    text-align: center;
+    top: 100px;
+    left:25%;
+  }
+  .playerCard3 {
+    position: absolute;
+    border-radius: 20px;
+    margin: 20px;
+    width: 160px;
+    height: 200px;
+    box-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.05),
+      0px 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    color: black;
+    text-align: center;
+    top: 0px;
+    left:45%;
+  }
+  .playerCard4 {
+    position: absolute;
+    border-radius: 20px;
+    margin: 20px;
+    width: 160px;
+    height: 200px;
+    box-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.05),
+      0px 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    color: black;
+    text-align: center;
+    top: 100px;
+    left:65%;
+  }
+  .playerCard5 {
+    position: absolute;
+    border-radius: 20px;
+    margin: 20px;
+    width: 160px;
+    height: 200px;
+    box-shadow:
+      0px 1px 2px rgba(0, 0, 0, 0.05),
+      0px 1px 3px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    color: black;
+    text-align: center;    
+    top: 350px;
+    left:75%;
+  }
+  
+  .exitButtonM {
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff00;
+    border: 2px solid transparent;
+  }
+  .exitGifM {
+    width: 50px;
+    height: 50px;
+  }
+
+  .avatar {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 10; 
+  }
+  

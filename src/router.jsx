@@ -5,7 +5,8 @@ import MainMenu from 'src/pages/MainMenu';
 import Register from 'src/pages/SignUp';
 import SinglePlayer from 'src/pages/SinglePlayer';
 import LobbyRoom from 'src/pages/Lobby';
-// import Audio from 'src/pages/Audio';
+import Audio from 'src/pages/Audio';
+import MultiPlayer from 'src/pages/MultiPlayer';
 
 const router = createBrowserRouter([
   {
@@ -32,17 +33,17 @@ const router = createBrowserRouter([
     path: '/single',
     element: <SinglePlayer />,
   },
-  // {
-  //   path: '/multiplayer',
-  //   element: <MultiPlayer />,
-  // },
+  {
+    path: '/multiplayer',
+    element: <MultiPlayer />,
+  },
 ]);
 
 function Router() {
   return (
     <main>
       <RouterProvider router={router} />
-      {/* <Audio /> */}
+      <Audio />
     </main>
   );
 }
