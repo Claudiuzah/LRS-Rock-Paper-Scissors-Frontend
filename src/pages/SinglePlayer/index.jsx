@@ -49,12 +49,12 @@ export function Actionicon({ action, ...props }) {
 }
 export function Player({ name = 'Player', score = 0, action = 'rock' }) {
   return (
-    <div className={styles.playerSingle}>
+    <main className={styles.playerSingle}>
       <div className={styles.scoreSingle}>{`${name}: ${score}`}</div>
       <div className={styles.actionSingle}>
         {action && <Actionicon action={action} size={300} />}
       </div>
-    </div>
+    </main>
   );
 }
 

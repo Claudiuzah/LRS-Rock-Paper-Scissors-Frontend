@@ -21,10 +21,10 @@ function Audio() {
       : 'url(/video/audio_on.gif)';
   };
   return (
-    <>
+    <main>
       <button className={styles.audioButton} onClick={playMusic}></button>
       <audio id='audio-element' src='/audio/audio.mp3' />
-    </>
+    </main>
   );
 }
 
