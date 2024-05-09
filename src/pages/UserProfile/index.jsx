@@ -20,7 +20,7 @@ function MyComponent() {
   }, []);
 
   return (
-    <div className={styles.my_component}>
+    <main className={styles.my_component}>
       <div className={styles.player_avatar}>
         <img src='images/avatar.png' alt='Player Avatar' />
       </div>
@@ -31,7 +31,7 @@ function MyComponent() {
           Score: {playerData.score}
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 

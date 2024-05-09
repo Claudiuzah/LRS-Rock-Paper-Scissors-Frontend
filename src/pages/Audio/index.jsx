@@ -19,13 +19,13 @@ function Audio() {
     setIsPlaying(!isPlaying);
   };
   return (
-    <>
+    <main>
       <button
         className={`${styles.audioButton} ${isPlaying ? styles.playing : ''}`}
         onClick={playMusic}
       ></button>
       <audio id='audio-element' src='/audio/audio.mp3' />
-    </>
+    </main>
   );
 }
 
