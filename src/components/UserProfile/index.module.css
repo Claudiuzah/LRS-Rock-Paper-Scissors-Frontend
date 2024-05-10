@@ -1,7 +1,7 @@
-.my_component {
+.myComponent {
   position: relative;
   top: -45rem;
-  left: -40rem;
+  left: -40vw;
   padding-right: 10rem;
   padding-left: 2rem;
   border-radius: 1.875rem;
@@ -15,27 +15,27 @@
   gap: 0.625rem;
 }
 @media (max-width: 47.25rem) {
-  .my_component {
+  .myComponent {
     gap: 0;
   }
 }
-.player_avatar {
+.playerAvatar {
   flex: 0 0 auto;
   width: 5rem;
 }
-.player_avatar.img {
+.playerAvatarImg {
   position: relative;
-  top: 0.5rem;
-  left: 1rem;
-  width: 4.125rem;
-  height: 4.125rem;
-  border-radius: 2.5rem;
+  top: 0.2rem;
+  left: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
   background-color: rgba(0, 0, 0, 0.1);
 }
-.player_info {
+.playerInfo {
   flex: 1 1 0%;
 }
-.player_name {
+.playerInfo .playerName {
   font-size: 1.875rem;
   font-weight: 500;
   line-height: 1.5;
@@ -44,7 +44,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.player_stats {
+.playerInfo .playerStats {
   font-size: 1rem;
   line-height: 1.25;
   color: rgba(0, 0, 0, 0.5);

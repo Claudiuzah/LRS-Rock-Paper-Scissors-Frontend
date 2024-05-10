@@ -6,11 +6,11 @@ import { useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import useSignOut from 'react-auth-kit/hooks/useSignOut';
+import Profile from '../../components/UserProfile';
 
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentVolume, setCurrentVolume] = useState();
-  const [currentSoundType, setCurrentSoundType] = useState();
   const navigate = useNavigate();
   const auth = useAuthUser();
   console.log(auth);
@@ -28,15 +28,6 @@ function MainMenu() {
   if (!auth) return;
   return (
     <main>
-      <button
-        type='submit'
-        onClick={() => {
-          signOut();
-          navigate('/auth');
-        }}
-      >
-        Sign Out
-      </button>
       <div>
         <div className={styles.groupContainerMenu}>
           <img src='./images/title.png' className={styles.titleImageMenu} />
@@ -61,22 +52,7 @@ function MainMenu() {
                 <span>Settings</span>
                 <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
-              <div className={styles.myComponent}>
-                <div className={styles.playerAvatar}>
-                  <img
-                    src='images/avatar.png'
-                    alt='Player Avatar'
-                    className={styles.playerAvatarImg}
-                  />
-                </div>
-                <div className={styles.playerInfo}>
-                  <div className={styles.playerName}>{auth.name}</div>
-                  <div className={styles.playerStats}>
-                    Total wins: 0<br />
-                    Score: 0
-                  </div>
-                </div>
-              </div>
+              <Profile />
             </div>
           </div>
         </div>
@@ -87,7 +63,7 @@ function MainMenu() {
         withCloseButton={false}
         centered={true}
         lockScroll={false}
-        title='Setări sunet'
+        title='Settings'
       >
         <div>
           <h3>Volum</h3>
@@ -99,14 +75,15 @@ function MainMenu() {
             onChange={(e) => setCurrentVolume(e.target.value)}
           />
         </div>
-        <div>
-          <h3>Tip de sunet</h3>
-          <select value={currentSoundType} onChange={(e) => setCurrentSoundType(e.target.value)}>
-            <option value='default'>Implicit</option>
-            <option value='loud'>Tare</option>
-            <option value='soft'>Slab</option>
-          </select>
-        </div>
+        <button
+          type='submit'
+          onClick={() => {
+            signOut();
+            navigate('/auth');
+          }}
+        >
+          Sign Out
+        </button>
       </Modal>
     </main>
   );
