@@ -53,7 +53,7 @@ function MultiPlayer() {
     } else {
       console.log('User is logged in.');
     }
-  }, [auth]);
+  }, [auth, navigate]);
   if (!auth) return;
 
   return (
@@ -86,8 +86,16 @@ function MultiPlayer() {
         <div className={styles.playerCard3}>Player3</div>
         <div className={styles.playerCard4}>Player4</div>
         <div className={styles.playerCard5}>Player5</div>
-
-        <img src='/images/avatar.png' className={styles.avatar} />
+        <div className={styles.myComponent}>
+          <img src='images/avatar.png' alt='Player Avatar' className={styles.avatar} />
+          <div className={styles.avatar}>
+            <div className={styles.playerName}>{auth.name}</div>
+            <div className={styles.playerStats}>
+              Total wins: 0<br />
+              Score: 0
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   );

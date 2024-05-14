@@ -120,7 +120,7 @@ function Singleplayer() {
     } else {
       console.log('User is logged in.');
     }
-  }, [auth]);
+  }, [auth, navigate]);
   if (!auth) return;
   return (
     <main className={styles.backgroundSingle}>
