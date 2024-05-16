@@ -21,7 +21,7 @@ function LobbyRoom() {
     <main className={styles.background}>
       <div className={styles.centerMultiplayer}>
         <div className={styles.leftLobby}>
-          <Link to='/lobby'>
+          <Link to='/menu'>
             <button className={styles.exitButtonLobby}>
               <img src='video/exist.gif' className={styles.exitGifLobby} />
             </button>

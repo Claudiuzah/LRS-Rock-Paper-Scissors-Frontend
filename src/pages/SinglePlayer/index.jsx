@@ -74,14 +74,64 @@ export function Showwinner({ winner = 0 }) {
   };
   return <h2>{text[winner]}</h2>;
 }
-// export function Roundmessage() {
-//   const round = 1;
-//   return (
-//     <main className='roundMessage'>
-//       <h1>Round {round}</h1>
-//     </main>
-//   );
-// }
+export function Winnermessage({ finalScoreP, finalScoreC }) {
+  return (
+    <>
+      {finalScoreP > finalScoreC ? (
+        <main className={styles.backgroundRoundM}>
+          <div className={styles.winBox}>
+            <h2 className={styles.h2}>You win!</h2>
+            <img src='video/confetti.gif' className={styles.confettiGif} />
+            <h3 className={styles.h3}>Player: {finalScoreP} points</h3>
+            <h3 className={styles.h3}>Bot: {finalScoreC} points</h3>
+            <Link to='/menu'>
+              <button className={styles.winButton}>exit</button>
+            </Link>
+          </div>
+        </main>
+      ) : (
+        <main className={styles.backgroundRoundM}>
+          <div className={styles.winBox}>
+            <h2 className={styles.h2}>You win!</h2>
+            <h3 className={styles.h3}>Player: {finalScoreP} points</h3>
+            <h3 className={styles.h3}>Bot: {finalScoreC} points</h3>
+            {/* <Link to='/lobby'> */}
+            <button className={styles.winButton}>exit</button>
+            {/* </Link> */}
+          </div>
+          <img src='video/rain.gif' className={styles.rainGif} />
+        </main>
+      )}
+    </>
+  );
+}
+export function Roundmessage({ round }) {
+  const [showMessage, setShowMessage] = useState(true);
+  useEffect(() => {
+    setShowMessage(true);
+    function wait(milliseconds) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, milliseconds);
+      });
+    }
+
+    async function Dissapear() {
+      await wait(1000); // Wait for 2000 milliseconds (2 seconds)
+      setShowMessage(false);
+    }
+
+    Dissapear();
+  }, [round]);
+  return (
+    <>
+      {showMessage ? (
+        <main className={styles.backgroundRoundM}>
+          <h2 className={styles.roundText}>Round {round}</h2>
+        </main>
+      ) : null}
+    </>
+  );
+}
 
 function Singleplayer() {
   const [playerAction, setPlayerAction] = useState('');
@@ -89,39 +139,57 @@ function Singleplayer() {
 
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
+  const [finalScoreP, setFinalScoreP] = useState(0);
+  const [finalScoreC, setFinalScoreC] = useState(0);
+
   const [winner, setWinner] = useState(0);
+
+  const [moves, setMoves] = useState(1);
+  const [round, setRounds] = useState(1);
 
   const onActionSelected = (selectedAction) => {
     const newComputerAction = Bot();
-
+    setMoves(moves + 1);
+    if (moves == 3) {
+      setMoves(1);
+      setRounds(round + 1);
+      setComputerScore(0);
+      setPlayerScore(0);
+      Roundmessage();
+    }
     setPlayerAction(selectedAction);
     setComputerAction(newComputerAction);
     const newWinner = Calculatewinner(selectedAction, newComputerAction);
     setWinner(newWinner);
-    if (newWinner === -1) {
+    if (round == 5) {
+      Winnermessage();
+    } else if (newWinner === -1) {
       setPlayerScore(playerScore + 2);
       setComputerScore(computerScore - 1);
     } else if (newWinner === 1) {
       setComputerScore(computerScore + 2);
       setPlayerScore(playerScore - 1);
     }
+    setFinalScoreP(finalScoreP + playerScore);
+    setFinalScoreC(finalScoreC + computerScore);
   };
 
   const [opened, { close, open }] = useDisclosure(false);
 
-  const navigate = useNavigate();
-  const auth = useAuthUser();
-  console.log(auth);
+  // const navigate = useNavigate();
+  // const auth = useAuthUser();
+  // console.log(auth);
 
-  useEffect(() => {
-    if (!auth) {
-      navigate('/auth');
-      console.log('User is not logged in.');
-    } else {
-      console.log('User is logged in.');
-    }
-  }, [auth]);
-  if (!auth) return;
+  // useEffect(() => {
+  //   if (!auth) {
+  //     navigate('/auth');
+  //     console.log('User is not logged in.');
+  //   } else {
+  //     console.log('User is logged in.');
+  //   }
+  // }, [auth]);
+  // if (!auth) return;
+
   return (
     <main className={styles.backgroundSingle}>
       <>
@@ -154,15 +222,15 @@ function Singleplayer() {
         </Modal>
       </>
       <div className={styles.centerSingle}>
-        <h1>Rock Paper Scissors</h1>
+        <h1>Rock Paper Scissors ________________________ Round {round}</h1>
         <div className={styles.left}>
           <button onClick={open} className={styles.exitButton}>
             <img src='video/exist.gif' className={styles.exitGif} />
           </button>
         </div>
-
+        {/* name={auth.name} */}
         <div className={styles.containerSingle}>
-          <Player name={auth.name} score={playerScore} action={playerAction} />
+          <Player score={playerScore} action={playerAction} />
           <Player name='Bot' score={computerScore} action={computerAction} />
         </div>
         <div>
@@ -170,9 +238,10 @@ function Singleplayer() {
           <Actionbutton action='paper' onActionSelected={onActionSelected} />
           <Actionbutton action='scissors' onActionSelected={onActionSelected} />
         </div>
-        <Showwinner winner={winner} />
+        {/* <Showwinner winner={winner} /> */}
       </div>
-      {/* <Roundmessage /> */}
+      <Roundmessage round={round} moves={moves} />
+      {round === 5 && <Winnermessage finalScoreP={finalScoreP} />}
     </main>
   );
 }
