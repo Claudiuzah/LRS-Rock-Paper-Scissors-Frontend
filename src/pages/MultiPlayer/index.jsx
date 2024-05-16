@@ -46,15 +46,15 @@ function MultiPlayer() {
   const handleNoClick = () => {
     close();
   };
-  useEffect(() => {
-    if (!auth) {
-      navigate('/auth');
-      console.log('User is not logged in.');
-    } else {
-      console.log('User is logged in.');
-    }
-  }, [auth, navigate]);
-  if (!auth) return;
+  // useEffect(() => {
+  //   if (!auth) {
+  //     navigate('/auth');
+  //     console.log('User is not logged in.');
+  //   } else {
+  //     console.log('User is logged in.');
+  //   }
+  // }, [auth, navigate]);
+  // if (!auth) return;
 
   return (
     <main>
@@ -89,7 +89,8 @@ function MultiPlayer() {
         <div className={styles.myComponent}>
           <img src='images/avatar.png' alt='Player Avatar' className={styles.avatar} />
           <div className={styles.avatar}>
-            <div className={styles.playerName}>{auth.name}</div>
+            {/* {auth.name} */}
+            <div className={styles.playerName}></div>
             <div className={styles.playerStats}>
               Total wins: 0<br />
               Score: 0
