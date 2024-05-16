@@ -88,3 +88,60 @@ h1 {
   color: #e26a26;
   padding: 8px;
 }
+.backgroundRoundM {
+  background-color: rgba(0, 0, 0, 0.834);
+  backdrop-filter: blur(2.5px);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.roundText {
+  color: #ffffff;
+  padding: 1px;
+  font-size: 700%;
+  font-weight: bold;
+}
+.winBox {
+  z-index: -1;
+  width: 23%;
+  height: 60%;
+  background-color: #e26a26;
+  border-radius: 10px;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+}
+.confettiGif {
+  width: 100%;
+  height: 100%;
+}
+.h2 {
+  font-size: 400%;
+  color: #ffffff;
+  margin-bottom: 10%;
+}
+.h3 {
+  color: #ffffff;
+  /* margin-bottom: 50%; */
+}
+.rainGif {
+  width: 100%;
+  height: 100%;
+}
+.winButton {
+  width: 20%;
+  height: 7%;
+  border-radius: 10px;
+  font-size: 120%;
+  background-color: aqua;
+  border: 2px transparent;
+  cursor: pointer;
+  position: left;
+}
