@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { API_SELF, LOGIN } from '../constants.js';
 import useSignIn from 'react-auth-kit/hooks/useSignIn';
 import styles from './index.module.css';
+import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+// const authHeader = useAuthHeader();
+// Authorization: authHeader,
 
 const signInUser = async (username, password) => {
   const response = await fetch(`${API_SELF}${LOGIN}`, {

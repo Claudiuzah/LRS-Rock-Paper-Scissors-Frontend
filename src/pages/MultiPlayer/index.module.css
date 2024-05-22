@@ -1,11 +1,7 @@
 .containerT {
   position: absolute;
 }
-.containerTable {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-}
+
 .timerT {
   background: none;
   font-size: 20px;
@@ -39,6 +35,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.containerTable {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
 }
 
 .playerCard1 {
@@ -145,5 +147,59 @@
   transform: translateX(-50%);
   z-index: 10;
   width: 200px;
-
+}
+/* ######################################################### */
+.myComponent {
+  position: absolute;
+  top: 130%;
+  /* left: -40rem; */
+  padding-right: 10rem;
+  padding-left: 2rem;
+  border-radius: 1.875rem;
+  box-shadow:
+    0px 1px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.5px);
+  background-color: rgba(255, 255, 255, 0.771);
+  max-width: 40rem;
+  display: flex;
+  gap: 0.625rem;
+}
+@media (max-width: 47.25rem) {
+  .myComponent {
+    gap: 0;
+  }
+}
+.playerAvatar {
+  flex: 0 0 auto;
+  width: 5rem;
+}
+.playerAvatarImg {
+  position: relative;
+  top: 0.2rem;
+  left: 0;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.playerInfo {
+  flex: 1 1 0%;
+}
+.playerInfo .playerName {
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playerInfo .playerStats {
+  font-size: 1rem;
+  line-height: 1.25;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
