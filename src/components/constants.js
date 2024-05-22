@@ -1,5 +1,5 @@
 // export const API_SELF = 'http://172.16.1.62';
-export const API_SELF = 'lrsback-lrs-bd4d9a06.koyeb.app';
+export const API_SELF = 'http://lrsback-lrs-bd4d9a06.koyeb.app';
 export const AUTHENTICATE = '/auth/register';
 export const LOGIN = '/auth/token';
 export const LOGOUT = '/auth/logout';
