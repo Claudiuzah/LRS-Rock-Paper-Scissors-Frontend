@@ -6,7 +6,6 @@ import { useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import useSignOut from 'react-auth-kit/hooks/useSignOut';
-import Profile from '../../components/UserProfile';
 
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
@@ -52,7 +51,18 @@ function MainMenu() {
                 <span>Settings</span>
                 <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
-              <Profile />
+              <div className={styles.myComponent}>
+      <div className={styles.playerAvatar}>
+        <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
+      </div>
+      <div className={styles.playerInfo}>
+        <div className={styles.playerName}>{auth.name}</div>
+        <div className={styles.playerStats}>
+          Total wins: 0<br />
+          Score: 0xx`x`
+        </div>
+      </div>
+    </div>
             </div>
           </div>
         </div>

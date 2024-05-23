@@ -2,7 +2,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
-import Profile from '../../components/UserProfile';
+
+
 function LobbyRoom() {
   const navigate = useNavigate();
   const auth = useAuthUser();
@@ -27,9 +28,21 @@ function LobbyRoom() {
             </button>
           </Link>
         </div>
-        <Profile />
+       
         <div className={styles.containerMultiplayer}>
           <div className={styles.containerList}>
+          <div className={styles.myComponent}>
+      <div className={styles.playerAvatar}>
+        <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
+      </div>
+      <div className={styles.playerInfo}>
+        <div className={styles.playerName}>{auth.name}</div>
+        <div className={styles.playerStats}>
+          Total wins: 0<br />
+          Score: 0xx`x`
+        </div>
+      </div>
+    </div>
             {/* <div className={styles.containerProfile}></div> */}
             <div className={styles.playerList}>players </div>
           </div>

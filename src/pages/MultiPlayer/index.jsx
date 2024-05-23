@@ -61,9 +61,9 @@ function MultiPlayer() {
         <div className={styles.playerCard3}>Player3</div>
         <div className={styles.playerCard4}>Player4</div>
         <div className={styles.playerCard5}>Player5</div>
-
-        <img scr='/images/avatar.png' className={styles.avatar} />
+        <img scr='/images/avatar.png' className={styles.avatar} /> 
       </div>
+      
     </main>
   );
 }
