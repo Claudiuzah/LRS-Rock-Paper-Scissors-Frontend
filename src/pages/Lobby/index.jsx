@@ -6,7 +6,8 @@ import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 
 function Home({ authHeader }) {
-  const WS_URL = 'ws://172.16.1.71:8000';
+  // const WS_URL = 'ws://172.16.1.71:8000';
+  const WS_URL = 'ws://lrsback-lrs-bd4d9a06.koyeb.app';
   const token = authHeader.slice(7);
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
     share: false,

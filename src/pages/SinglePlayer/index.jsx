@@ -92,28 +92,27 @@ export function Showwinner({ winner = 0 }) {
 }
 export function Winnermessage({ finalScoreP, finalScoreC }) {
   const navigate = useNavigate();
+  const [totalWins, setTotalWins] = useState(0);
+  console.log(`You have won ${totalWins} times`);
 
   return (
     <>
       {finalScoreP > finalScoreC ? (
         <main className={styles.backgroundRoundM}>
           <img src='video/confetti.gif' className={styles.confettiGif} />
-
           <div className={styles.winBox}>
             <h2 className={styles.h2}>You win!</h2>
             <h3 className={styles.h3}>Player: {finalScoreP} points</h3>
             <h3 className={styles.h3}>Bot: {finalScoreC} points</h3>
-            {/* <Link to='/menu'> */}
             <button
               className={styles.winButton}
               onClick={() => {
-                console.log('yeds');
+                setTotalWins(totalWins + 1);
                 navigate('/menu');
               }}
             >
               exit
             </button>
-            {/* </Link> */}
           </div>
         </main>
       ) : (
@@ -122,7 +121,6 @@ export function Winnermessage({ finalScoreP, finalScoreC }) {
             <h2 className={styles.h2}>You lose!</h2>
             <h3 className={styles.h3}>Player: {finalScoreP} points</h3>
             <h3 className={styles.h3}>Bot: {finalScoreC} points</h3>
-            {/* <Link to='/lobby' className={styles.winButton}> */}
             <button
               className={styles.winButton}
               onClick={() => {
@@ -131,7 +129,6 @@ export function Winnermessage({ finalScoreP, finalScoreC }) {
             >
               exit
             </button>
-            {/* </Link> */}
           </div>
           <img src='video/rain.gif' className={styles.rainGif} />
         </main>
