@@ -1,10 +1,26 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, json, useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button, Group, Text } from '@mantine/core';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import styles from './index.module.css';
+// import { API_SELF, LOGIN } from './constants.js';
+// import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+
+// const sendData = async (authHeader, finalScoreP) => {
+//   const response = await fetch(`${API_SELF}${LOGIN}`, {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       Authorization: authHeader,
+//     },
+//     body: JSON.stringify(finalScoreP),
+//   });
+//   if (!response.ok) console.log('error');
+
+//   return await response.json();
+// };
 
 const actions = {
   rock: 'scissors',
@@ -152,6 +168,7 @@ export function Roundmessage({ round }) {
 }
 
 function Singleplayer() {
+  // const authHeader = useAuthHeader();
   const [playerAction, setPlayerAction] = useState('');
   const [computerAction, setComputerAction] = useState('');
 
@@ -181,6 +198,7 @@ function Singleplayer() {
     setWinner(newWinner);
     if (round == 5) {
       Winnermessage(finalScoreC, finalScoreP);
+      // sendData(authHeader, finalScoreC);
     } else if (newWinner === -1) {
       setPlayerScore(playerScore + 2);
       setComputerScore(computerScore - 1);

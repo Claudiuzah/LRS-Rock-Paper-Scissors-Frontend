@@ -2,11 +2,41 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
+import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
+
+function Home({ authHeader }) {
+  const WS_URL = 'ws://172.16.1.71:8000';
+  const token = authHeader.slice(7);
+  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
+    share: false,
+    shouldReconnect: () => true,
+  });
+
+  useEffect(() => {
+    if (readyState === ReadyState.OPEN) {
+      sendJsonMessage({
+        event: 'subscribe',
+        data: {
+          channel: 'general-chatroom',
+        },
+      });
+    }
+  }, [readyState, sendJsonMessage]);
+
+  useEffect(() => {
+    if (lastJsonMessage) {
+      console.log(`Got a new message: ${lastJsonMessage}`);
+    }
+  }, [lastJsonMessage]);
+
+  return <div>{lastJsonMessage ? JSON.stringify(lastJsonMessage) : 'No messages yet'}</div>;
+}
 
 function LobbyRoom() {
   const navigate = useNavigate();
   const auth = useAuthUser();
-  console.log(auth);
+  const authHeader = useAuthHeader();
 
   useEffect(() => {
     if (!auth) {
@@ -15,15 +45,17 @@ function LobbyRoom() {
     } else {
       console.log('User is logged in.');
     }
-  }, [auth]);
-  if (!auth) return;
+  }, [auth, navigate]);
+
+  if (!auth) return null;
+
   return (
     <main className={styles.background}>
       <div className={styles.centerMultiplayer}>
         <div className={styles.leftLobby}>
           <Link to='/menu'>
             <button className={styles.exitButtonLobby}>
-              <img src='video/exist.gif' className={styles.exitGifLobby} />
+              <img src='video/exist.gif' className={styles.exitGifLobby} alt='Exit' />
             </button>
           </Link>
         </div>
@@ -65,6 +97,7 @@ function LobbyRoom() {
           </div>
         </div>
       </div>
+      <Home authHeader={authHeader} />
     </main>
   );
 }

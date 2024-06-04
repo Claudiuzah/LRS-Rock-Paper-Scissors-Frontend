@@ -55,7 +55,7 @@ export function Player({ name = 'Player', score = 0, action = 'rock' }) {
 export function Actionbutton({ action = 'rock', onActionSelected }) {
   return (
     <button className={styles.roundBtn} onClick={() => onActionSelected(action)}>
-      <Actionicon action={action} size={50} />
+      <Actionicon action={action} />
     </button>
   );
 }
@@ -155,32 +155,68 @@ function MultiPlayer() {
       setRemainingTime(20);
     }
   }, [remainingTime]);
+  const [playerAction, setPlayerAction] = useState('');
+  const [computerAction, setComputerAction] = useState('');
 
-  // useEffect(() => {
-  //   if (!auth) {
-  //     navigate('/auth');
-  //     console.log('User is not logged in.');
-  //   } else {
-  //     console.log('User is logged in.');
-  //   }
-  // }, [auth, navigate]);
-  // if (!auth) return;
+  const [playerScore, setPlayerScore] = useState(0);
+  const [computerScore, setComputerScore] = useState(0);
+  const [finalScoreP, setFinalScoreP] = useState(0);
+  const [finalScoreC, setFinalScoreC] = useState(0);
+
+  const [winner, setWinner] = useState(0);
+
+  const [moves, setMoves] = useState(1);
+  const [round, setRounds] = useState(1);
+
+  const onActionSelected = (selectedAction) => {
+    const newComputerAction = Bot();
+    setMoves(moves + 1);
+    // if (moves == 3) {
+    //   setMoves(1);
+    //   setRounds(round + 1);
+    //   setComputerScore(0);
+    //   setPlayerScore(0);
+    //   Roundmessage(round);
+    // }
+    setPlayerAction(selectedAction);
+    setComputerAction(newComputerAction);
+    const newWinner = Calculatewinner(selectedAction, newComputerAction);
+    setWinner(newWinner);
+    if (round == 5) {
+      Winnermessage(finalScoreC, finalScoreP);
+    } else if (newWinner === -1) {
+      setPlayerScore(playerScore + 2);
+      setComputerScore(computerScore - 1);
+    } else if (newWinner === 1) {
+      setComputerScore(computerScore + 2);
+      setPlayerScore(playerScore - 1);
+    }
+
+    setFinalScoreP(finalScoreP + playerScore);
+    setFinalScoreC(finalScoreC + computerScore);
+    console.log(finalScoreC);
+    console.log(finalScoreP);
+    if (moves == 3) {
+      setMoves(1);
+      setRounds(round + 1);
+      setComputerScore(0);
+      setPlayerScore(0);
+      Roundmessage(round);
+    }
+  };
+
+  useEffect(() => {
+    if (!auth) {
+      navigate('/auth');
+      console.log('User is not logged in.');
+    } else {
+      console.log('User is logged in.');
+    }
+  }, [auth, navigate]);
+  if (!auth) return;
 
   return (
     <main>
-      <Modal opened={modalOpened} onClose={close} size='auto' centered>
-        <Text>Are you sure you want to exit?</Text>
-
-        <Group mt='xl'>
-          <Button onClick={handleYesClick}>Yes</Button>
-          <Button onClick={handleNoClick}>No</Button>
-        </Group>
-      </Modal>
-      <Link to='/lobby'>
-        <button onClick={handleExitButtonClick} className={styles.exitButtonM}>
-          <img src='video/exist.gif' className={styles.exitGifM} alt='Exit' />
-        </button>
-      </Link>
       <div className={styles.containerT}>
         <button className={styles.clockButton}>
           <img src='video/clock.gif' className={styles.clockImg} alt='Clock' />
@@ -191,18 +227,88 @@ function MultiPlayer() {
       </div>
       <div className={styles.containerTable}>
         <img src='images/table.png' className={styles.tableM} alt='Table' />
-        <div className={styles.playerCard1}>Player1</div>
-        <div className={styles.playerCard2}>Player2</div>
-        <div className={styles.playerCard3}>Player3</div>
-        <div className={styles.playerCard4}>Player4</div>
-        <div className={styles.playerCard5}>Player5</div>
+        <div className={styles.playerCard1}>
+          <div className={styles.buttonsContainer}>
+            <Actionbutton action='rock' onActionSelected={onActionSelected} />
+            <Actionbutton action='paper' onActionSelected={onActionSelected} />
+            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+          </div>
+          <div className={styles.statisticsContainer}>
+            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <div className={styles.playerStats}>
+              name: Player1
+              <br />
+              points: 0
+            </div>
+          </div>
+        </div>
+        <div className={styles.playerCard2}>
+          <div className={styles.buttonsContainer}>
+            <Actionbutton action='rock' onActionSelected={onActionSelected} />
+            <Actionbutton action='paper' onActionSelected={onActionSelected} />
+            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+          </div>
+          <div className={styles.statisticsContainer}>
+            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <div className={styles.playerStats}>
+              name: Player2
+              <br />
+              points: 0
+            </div>
+          </div>
+        </div>
+        <div className={styles.playerCard3}>
+          <div className={styles.buttonsContainer}>
+            <Actionbutton action='rock' onActionSelected={onActionSelected} />
+            <Actionbutton action='paper' onActionSelected={onActionSelected} />
+            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+          </div>
+          <div className={styles.statisticsContainer}>
+            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <div className={styles.playerStats}>
+              name: Player3
+              <br />
+              points: 0
+            </div>
+          </div>
+        </div>
+        <div className={styles.playerCard4}>
+          <div className={styles.buttonsContainer}>
+            <Actionbutton action='rock' onActionSelected={onActionSelected} />
+            <Actionbutton action='paper' onActionSelected={onActionSelected} />
+            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+          </div>
+          <div className={styles.statisticsContainer}>
+            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <div className={styles.playerStats}>
+              name: Player4
+              <br />
+              points: 0
+            </div>
+          </div>
+        </div>
+        <div className={styles.playerCard5}>
+          <div className={styles.buttonsContainer}>
+            <Actionbutton action='rock' onActionSelected={onActionSelected} />
+            <Actionbutton action='paper' onActionSelected={onActionSelected} />
+            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+          </div>
+          <div className={styles.statisticsContainer}>
+            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <div className={styles.playerStats}>
+              name: Player5
+              <br />
+              points: 0
+            </div>
+          </div>
+        </div>
         <div className={styles.myComponent}>
           <div className={styles.playerAvatar}>
             <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
           </div>
 
           <div className={styles.playerInfo}>
-            <div className={styles.playerName}></div>
+            <div className={styles.playerName}>{auth.name}</div>
             <div className={styles.playerStats}>
               Total wins: 0<br />
               Score: 0
