@@ -18,14 +18,8 @@
   margin-top: -60px;
 }
 
-.titleImageMenu {
-  width: 650px;
-  height: auto;
-  display: block;
-  max-width: 1000px;
-  max-height: 100%;
-  margin-bottom: -40px;
-  margin-top: 45%;
+.titleImage {
+  /* backgroundColor: 'blue', */
 }
 
 body {
@@ -81,7 +75,7 @@ body {
 
 .buttonMenu:hover {
   background-color: rgb(226, 107, 38);
-}
+} 
 
 .multiplayerGif1Menu,
 .multiplayerGif2Menu {

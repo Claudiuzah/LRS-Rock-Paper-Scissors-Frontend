@@ -23,12 +23,11 @@ function LeaderBoard() {
       </button>
       <div>
         <div className={styles.groupContainerMenu}>
-          GOOD WORK
-          {/* <img src='./images/title.png' className={styles.titleImageMenu} /> */}
+          <div className={styles.titleImage}>GOOD WORK</div>
           <div className={styles.buttonsBoxMenu}>
             <div className={styles.formMenu}>
               <div className={styles.buttonContainer}>
-                <Link to='/single' className={styles.buttonMenu}>
+                <Link to='/menu' className={styles.buttonMenu}>
                   Main Menu
                   <div>
                     <svg
