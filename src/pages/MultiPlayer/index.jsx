@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
-import { Modal, Button, Group, Text } from '@mantine/core';
+// import { Modal, Button, Group, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@mantine/hooks';
 
@@ -129,11 +129,10 @@ export function Roundmessage({ round }) {
 
 function MultiPlayer() {
   const [remainingTime, setRemainingTime] = useState(15);
-  const [modalOpened] = useState(false);
+  // const [modalOpened] = useState(false);
   const navigate = useNavigate();
   const auth = useAuthUser();
-  console.log(auth);
-  const { open, close } = useDisclosure();
+  // const { open, close } = useDisclosure();
 
   useEffect(() => {
     let timer;

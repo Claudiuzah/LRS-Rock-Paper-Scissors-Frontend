@@ -9,13 +9,13 @@ import styles from './index.module.css';
 // import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 
 // const sendData = async (authHeader, finalScoreP) => {
-//   const response = await fetch(`${API_SELF}${LOGIN}`, {
+//   const response = await fetch(`${API_SELF}${}`, {
 //     method: 'POST',
 //     headers: {
 //       'Content-Type': 'application/json',
 //       Authorization: authHeader,
 //     },
-//     body: JSON.stringify(finalScoreP),
+//     body: JSON.stringify(finalScoreP), 
 //   });
 //   if (!response.ok) console.log('error');
 

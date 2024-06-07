@@ -6,14 +6,44 @@ import { useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import useSignOut from 'react-auth-kit/hooks/useSignOut';
+import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+import useWebSocket, { ReadyState } from 'react-use-websocket';
 
+function Home({ authHeader }) {
+  // const WS_URL = 'ws://172.16.1.71:8000';
+  const WS_URL = 'ws://lrsback-lrs-bd4d9a06.koyeb.app';
+  const token = authHeader.slice(7);
+  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
+    share: false,
+    shouldReconnect: () => true,
+  });
+
+  useEffect(() => {
+    if (readyState === ReadyState.OPEN) {
+      sendJsonMessage({
+        event: 'enter lobby',
+        data: {
+          channel: 'lobby ',
+        },
+      });
+    }
+  }, [readyState, sendJsonMessage]);
+
+  useEffect(() => {
+    if (lastJsonMessage) {
+      console.log(`Got a new message: ${lastJsonMessage}`);
+    }
+  }, [lastJsonMessage]);
+
+  return;
+}
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentVolume, setCurrentVolume] = useState();
   const [currentSoundType, setCurrentSoundType] = useState();
   const navigate = useNavigate();
   const auth = useAuthUser();
-  console.log(auth);
+  const authHeader = useAuthHeader();
 
   const signOut = useSignOut();
 
@@ -108,6 +138,7 @@ function MainMenu() {
           </select>
         </div>
       </Modal>
+      <Home authHeader={authHeader} />
     </main>
   );
 }
