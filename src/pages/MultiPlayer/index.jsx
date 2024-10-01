@@ -4,7 +4,7 @@ import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 // import { Modal, Button, Group, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
-import { useDisclosure } from '@mantine/hooks';
+// import { useDisclosure } from '@mantine/hooks';
 
 const actions = {
   rock: 'scissors',
@@ -162,8 +162,6 @@ function MultiPlayer() {
   const [finalScoreP, setFinalScoreP] = useState(0);
   const [finalScoreC, setFinalScoreC] = useState(0);
 
-  const [winner, setWinner] = useState(0);
-
   const [moves, setMoves] = useState(1);
   const [round, setRounds] = useState(1);
 
@@ -180,7 +178,6 @@ function MultiPlayer() {
     setPlayerAction(selectedAction);
     setComputerAction(newComputerAction);
     const newWinner = Calculatewinner(selectedAction, newComputerAction);
-    setWinner(newWinner);
     if (round == 5) {
       Winnermessage(finalScoreC, finalScoreP);
     } else if (newWinner === -1) {

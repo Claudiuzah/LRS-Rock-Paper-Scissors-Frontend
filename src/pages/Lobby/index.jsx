@@ -3,9 +3,42 @@ import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 
+import useWebSocket, { ReadyState } from 'react-use-websocket';
+import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+
+function Home({ authHeader }) {
+  // const WS_URL = 'ws://172.16.1.71:8000';
+  const WS_URL = 'ws://lrsback-lrs-bd4d9a06.koyeb.app';
+  const token = authHeader.slice(7);
+  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
+    share: false,
+    shouldReconnect: () => true,
+  });
+
+  useEffect(() => {
+    if (readyState === ReadyState.OPEN) {
+      sendJsonMessage({
+        event: 'enter lobby',
+        data: {
+          channel: 'lobby ',
+        },
+      });
+    }
+  }, [readyState, sendJsonMessage]);
+
+  useEffect(() => {
+    if (lastJsonMessage) {
+      console.log(`Got a new message: ${lastJsonMessage}`);
+    }
+  }, [lastJsonMessage]);
+
+  return;
+}
+
 function LobbyRoom() {
   const navigate = useNavigate();
   const auth = useAuthUser();
+  const authHeader = useAuthHeader();
 
   useEffect(() => {
     if (!auth) {
@@ -40,7 +73,7 @@ function LobbyRoom() {
                 />
               </div>
               <div className={styles.playerInfo}>
-                <div className={styles.playerName}>Mr. Gabi </div>
+                <div className={styles.playerName}>{auth.name}</div>
                 <div className={styles.playerStats}>
                   Total wins: 0<br />
                   Score: 0
@@ -66,6 +99,7 @@ function LobbyRoom() {
           </div>
         </div>
       </div>
+      <Home authHeader={authHeader} />
     </main>
   );
 }
