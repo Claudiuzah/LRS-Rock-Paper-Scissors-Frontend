@@ -1,12 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 
 function Home({ authHeader }) {
+  const auth = useAuthUser();
   // const WS_URL = 'ws://172.16.1.71:8000';
   const WS_URL = 'ws://lrsback-lrs-bd4d9a06.koyeb.app';
   const token = authHeader.slice(7);
@@ -21,6 +22,7 @@ function Home({ authHeader }) {
         event: 'enter lobby',
         data: {
           channel: 'lobby ',
+          name: auth.name,
         },
       });
     }
@@ -28,7 +30,7 @@ function Home({ authHeader }) {
 
   useEffect(() => {
     if (lastJsonMessage) {
-      console.log(`Got a new message: ${lastJsonMessage}`);
+      console.log(`Got a new message: `, lastJsonMessage);
     }
   }, [lastJsonMessage]);
 
@@ -39,6 +41,7 @@ function LobbyRoom() {
   const navigate = useNavigate();
   const auth = useAuthUser();
   const authHeader = useAuthHeader();
+  const [players, setPlayers] = useState([auth.name]);
 
   useEffect(() => {
     if (!auth) {
@@ -86,11 +89,12 @@ function LobbyRoom() {
             <div className={styles.multiplayerTitle}>Create room</div>
             <div className={styles.playerLobby}>
               <div className={styles.containerPlayerLb}>
-                <div className={styles.playerCard}>Player1</div>
-                <div className={styles.playerCard}>Player2</div>
-                <div className={styles.playerCard}>Player3</div>
-                <div className={styles.playerCard}>Player4</div>
-                <div className={styles.playerCard}>Player5</div>
+                {players.map((player, index) => (
+                  <div key={index} className={styles.playerCard}>
+                    {player}
+                    {setPlayers}
+                  </div>
+                ))}
               </div>
               <Link to='/multiplayer'>
                 <button className={styles.playButton}>Play</button>
