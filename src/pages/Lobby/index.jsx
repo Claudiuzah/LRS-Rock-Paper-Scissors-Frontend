@@ -131,8 +131,9 @@ function LobbyRoom() {
                       </div>
                     </div>
                   ))
-                ) : (
-                  <div className={styles.playerCard}>No players connected</div>
+                ) : ( players.length > 2  ():
+                (
+                  <div className={styles.playerCard}>No players connected</div>)
                 )}
               </div>
               <Link to='/multiplayer'>
