@@ -19,15 +19,38 @@ function LeaderBoard() {
           signOut();
           navigate('/auth');
         }}
+        className={styles.signOutButton} // adaugă o clasă pentru stilizare
       >
         Sign Out
       </button>
+
       <div className={styles.groupContainerMenu}>
         <div className={styles.titleImage}>GOOD WORK</div>
+
         <div className={styles.greyBox}>
-          <p>Aici poti adauga continutul dorit</p>
+          <div className={styles.top3}>
+            <div className={styles.playerContainer}>
+              <img src='/images/locul3.png' className={styles.playerImage1} />
+              <p className={styles.playerText}> Player3</p>
+              <p className={styles.locText}> Position 3</p>
+              <p className={styles.pText}> 0 Points</p>
+            </div>
+            <div className={styles.playerContainer}>
+              <img src='/images/locul1.png' className={styles.playerImage} />
+              <p className={styles.playerText}> Player1</p>
+              <p className={styles.locText}> FIRST</p>
+              <p className={styles.pText}> 1 Points</p>
+            </div>
+            <div className={styles.playerContainer}>
+              <img src='/images/locul2.png' className={styles.playerImage1} />
+              <p className={styles.playerText}> Player2</p>
+              <p className={styles.locText}> Position 2</p>
+              <p className={styles.pText}> 0 Points</p>
+            </div>
+          </div>
         </div>
       </div>
+
       <div className={styles.buttonsBoxMenu}>
         <div className={styles.formMenu}>
           <div className={styles.buttonContainer}>
@@ -49,7 +72,6 @@ function LeaderBoard() {
             </Link>
             <Link to='/lobby' className={styles.buttonMenu}>
               Back to lobby
-              <img src='video/player.gif' className={styles.multiplayerGif1Menu} />
               <img src='video/player.gif' className={styles.multiplayerGif2Menu} />
             </Link>
           </div>
