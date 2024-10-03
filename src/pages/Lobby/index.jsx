@@ -2,13 +2,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './index.module.css';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect, useState } from 'react';
-
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+import { jwtDecode } from 'jwt-decode';
 
-function Home({ authHeader }) {
+function Home({ authHeader, setPlayers }) {
   const auth = useAuthUser();
-  // const WS_URL = 'ws://172.16.1.71:8000';
   const WS_URL = 'wss://lrsback-lrs-bd4d9a06.koyeb.app';
   const token = authHeader.slice(7);
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
@@ -26,22 +25,53 @@ function Home({ authHeader }) {
         },
       });
     }
-  }, [readyState, sendJsonMessage]);
+  }, [readyState, sendJsonMessage, auth.name]);
 
   useEffect(() => {
     if (lastJsonMessage) {
       console.log(`Got a new message: `, lastJsonMessage);
-    }
-  }, [lastJsonMessage]);
 
-  return;
+      // Handle player updates
+      if (lastJsonMessage.type === 'playerUpdate') {
+        // Extract the JWT tokens from players array
+        const newPlayers = lastJsonMessage.players;
+
+        // Extract usernames from the JWTs
+        const playerNamesPromises = newPlayers.map((token) => {
+          // Check if the token is valid
+          if (typeof token !== 'string') {
+            console.error('Invalid token:', token);
+            return Promise.resolve(null); // Return null if token is invalid
+          }
+          try {
+            const decoded = jwtDecode(token); // Decode the JWT
+            return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
+          } catch (error) {
+            console.error('Error decoding JWT: ', error);
+            return null; // Handle decoding errors
+          }
+        });
+
+        Promise.all(playerNamesPromises)
+          .then((playerNames) => {
+            // Filter out any null values
+            const filteredNames = playerNames.filter((name) => name !== null);
+            // Update players in the parent component
+            setPlayers(filteredNames);
+          })
+          .catch((err) => console.error('Error processing player names: ', err));
+      }
+    }
+  }, [lastJsonMessage, setPlayers]);
+
+  return null; // This component doesn't render anything
 }
 
 function LobbyRoom() {
   const navigate = useNavigate();
   const auth = useAuthUser();
   const authHeader = useAuthHeader();
-  const [players, setPlayers] = useState([auth.name]);
+  const [players, setPlayers] = useState([]);
 
   useEffect(() => {
     if (!auth) {
@@ -83,18 +113,27 @@ function LobbyRoom() {
                 </div>
               </div>
             </div>
-            <div className={styles.playerList}>Player 1</div>
+            {/* This was hardcoded; it should use players state */}
+            <div className={styles.playerList}>Connected Players:</div>
           </div>
           <div className={styles.titleBox}>
             <div className={styles.multiplayerTitle}>Create room</div>
             <div className={styles.playerLobby}>
               <div className={styles.containerPlayerLb}>
-                {players.map((player, index) => (
-                  <div key={index} className={styles.playerCard}>
-                    {player}
-                    {setPlayers}
-                  </div>
-                ))}
+                {players.length > 0 ? (
+                  players.map((player, index) => (
+                    <div key={index} className={styles.playerStats}>
+                      <div className={styles.playerCard}>
+                        <strong className={styles.statisticsContainer}>
+                          <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+                          {player}
+                        </strong>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className={styles.playerCard}>No players connected</div>
+                )}
               </div>
               <Link to='/multiplayer'>
                 <button className={styles.playButton}>Play</button>
@@ -103,7 +142,7 @@ function LobbyRoom() {
           </div>
         </div>
       </div>
-      <Home authHeader={authHeader} />
+      <Home authHeader={authHeader} setPlayers={setPlayers} />
     </main>
   );
 }
