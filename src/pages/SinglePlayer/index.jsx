@@ -15,7 +15,7 @@ import styles from './index.module.css';
 //       'Content-Type': 'application/json',
 //       Authorization: authHeader,
 //     },
-//     body: JSON.stringify(finalScoreP), 
+//     body: JSON.stringify(finalScoreP),
 //   });
 //   if (!response.ok) console.log('error');
 
@@ -198,10 +198,10 @@ function Singleplayer() {
       // sendData(authHeader, finalScoreC);
     } else if (newWinner === -1) {
       setPlayerScore(playerScore + 2);
-      setComputerScore(computerScore - 1);
+      setComputerScore(computerScore + 0);
     } else if (newWinner === 1) {
       setComputerScore(computerScore + 2);
-      setPlayerScore(playerScore - 1);
+      setPlayerScore(playerScore + 0);
     }
 
     setFinalScoreP(finalScoreP + playerScore);
