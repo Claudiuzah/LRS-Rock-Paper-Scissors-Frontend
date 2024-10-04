@@ -23,6 +23,7 @@
 }
 .containerMultiplayer {
   display: flex;
+  flex-grow: 200px;
   flex-direction: row;
   justify-content: center;
   vertical-align: center;
@@ -166,7 +167,7 @@
   border-radius: 5px;
   color: white;
   font-size: 16px;
-  /* cursor: pointer */
+  cursor: pointer;
   position: absolute;
   top: 39rem;
   left: 83%;

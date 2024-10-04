@@ -6,6 +6,10 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 import { jwtDecode } from 'jwt-decode';
 
+import { useDisclosure } from '@mantine/hooks';
+import { Modal, Button } from '@mantine/core';
+import MultiPly from '../../components/MultiPlayer2v2';
+
 function Home({ authHeader, setPlayers }) {
   const auth = useAuthUser();
   const WS_URL = 'wss://lrsback-lrs-bd4d9a06.koyeb.app';
@@ -73,6 +77,8 @@ function LobbyRoom() {
   const authHeader = useAuthHeader();
   const [players, setPlayers] = useState([]);
 
+  const [opened, { open, close }] = useDisclosure(false);
+
   useEffect(() => {
     if (!auth) {
       navigate('/auth');
@@ -135,9 +141,22 @@ function LobbyRoom() {
                   <div className={styles.playerCard}>No players connected</div>
                 )}
               </div>
-              <Link to='/multiplayer'>
-                <button className={styles.playButton}>Play</button>
-              </Link>
+              <div>
+                <Modal
+                  opened={opened}
+                  onClose={close}
+                  title='Multiplayer game'
+                  fullScreen
+                  radius={0}
+                  transitionProps={{ transition: 'fade', duration: 200 }}
+                >
+                  <MultiPly />
+                </Modal>
+
+                <button onClick={open} className={styles.playButton}>
+                  Play
+                </button>
+              </div>
             </div>
           </div>
         </div>
