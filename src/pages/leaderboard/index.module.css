@@ -1,0 +1,175 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh; /* Înălțimea completă a ferestrei */
+  padding: 20px;
+}
+
+.signOutButton {
+  position: absolute;  
+  top: 20px;  
+  left: 20px;    
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.signOutButton:hover {
+  background-color: rgb(226, 107, 38); 
+}
+
+
+
+.groupContainerMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.titleImage {
+  padding: 10px;
+  font-size: 100px;
+  color: rgb(12, 12, 12);
+  text-align: center;
+  border-radius: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.greyBox {
+  background-color: rgba(253, 251, 249, 0.537);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  text-align: center;
+  width: 80%;
+  max-width: 700px;
+  height: 450px;
+  color: rgb(14, 13, 13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsBoxMenu {
+  width: 400px;
+  padding: 40px;
+  border-radius: 4px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.formMenu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center; 
+  gap: 50%; 
+}
+
+.buttonMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: #fff;
+  font-size: 35px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.7s ease;
+  padding: 0 40px;
+  text-align: left;
+  max-width: 100%;
+  white-space: nowrap; 
+}
+
+.buttonMenu:hover {
+  background-color: rgb(226, 107, 38);
+} 
+
+
+.multiplayerGif2Menu {
+  height: 60px;
+  width: auto;
+  margin-left: 0px;
+}
+
+.inputboxmenu {
+  position: absolute;
+  width: 100%;
+}
+
+.top3 {
+  display: flex;
+  flex-direction: row;
+  align-items:flex-start;
+  justify-content: space-around;
+  padding: 20px;
+  
+  width: 100%;
+  max-width: 600px;
+  background-color: #fcf9f9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(3, 3, 3, 0.1);
+  margin-top: 20px;
+}
+
+.playerImage1 {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  
+}
+.playerImage {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  
+}
+
+.playerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+.playerText {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.locText {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  color: rgb(108, 104, 104);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.pText {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  color: rgb(13, 13, 13);
+  text-align: center;
+  margin-top: 10px;
+}

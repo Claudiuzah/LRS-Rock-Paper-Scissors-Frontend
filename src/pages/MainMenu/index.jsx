@@ -39,7 +39,7 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 // }
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
-  const [currentVolume, setCurrentVolume] = useState();
+  const [currentVolume, setCurrentVolume] = useState(0);
   const [currentSoundType, setCurrentSoundType] = useState();
   const navigate = useNavigate();
   const auth = useAuthUser();
@@ -100,7 +100,7 @@ function MainMenu() {
                   />
                 </div>
                 <div className={styles.playerInfo}>
-                  <div className={styles.playerName}>{auth.name}</div>
+                  <div className={styles.playerName}>{auth.name}</div> */
                   <div className={styles.playerStats}>
                     Total wins: 0<br />
                     Score: 0
@@ -121,13 +121,16 @@ function MainMenu() {
       >
         <div>
           <h3>Volum</h3>
-          <input
-            type='range'
-            min='0'
-            max='100'
-            value={currentVolume}
-            onChange={(e) => setCurrentVolume(e.target.value)}
-          />
+          <div className={styles.volumeControl}>
+            <input
+              type='range'
+              min='0'
+              max='100'
+              value={currentVolume}
+              onChange={(e) => setCurrentVolume(e.target.value)}
+            />
+            <span className={styles.volumePercent}>{currentVolume}%</span>
+          </div>
         </div>
         <div>
           <h3>Tip de sunet</h3>
