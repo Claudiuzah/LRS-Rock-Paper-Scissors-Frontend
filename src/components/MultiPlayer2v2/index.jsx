@@ -127,7 +127,7 @@ export function Roundmessage({ round }) {
   );
 }
 
-function MultiPlayer() {
+function MultiPly() {
   const [remainingTime, setRemainingTime] = useState(15);
   // const [modalOpened] = useState(false);
   const navigate = useNavigate();
@@ -316,4 +316,4 @@ function MultiPlayer() {
   );
 }
 
-export default MultiPlayer;
+export default MultiPly;
