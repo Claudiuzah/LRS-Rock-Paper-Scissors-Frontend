@@ -6,13 +6,47 @@ import { useState } from 'react';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect } from 'react';
 import useSignOut from 'react-auth-kit/hooks/useSignOut';
+// import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+// import useWebSocket, { ReadyState } from 'react-use-websocket';
 
+// function Home({ authHeader }) {
+//   // const WS_URL = 'ws://172.16.1.71:8000';
+//   const WS_URL = 'ws://lrsback-lrs-bd4d9a06.koyeb.app';
+//   const token = authHeader.slice(7);
+//   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
+//     share: false,
+//     shouldReconnect: () => true,
+//   });
+
+//   useEffect(() => {
+//     if (readyState === ReadyState.OPEN) {
+//       sendJsonMessage({
+//         event: 'enter lobby',
+//         data: {
+//           channel: 'lobby ',
+//         },
+//       });
+//     }
+//   }, [readyState, sendJsonMessage]);
+
+//   useEffect(() => {
+//     if (lastJsonMessage) {
+//       console.log(`Got a new message: ${lastJsonMessage}`);
+//     }
+//   }, [lastJsonMessage]);
+
+//   return;
+// }
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
+
   const [currentVolume, setCurrentVolume] = useState();
+
+
+
   const navigate = useNavigate();
   const auth = useAuthUser();
-  console.log(auth);
+  // const authHeader = useAuthHeader();
 
   const signOut = useSignOut();
 
@@ -52,6 +86,7 @@ function MainMenu() {
                 <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
               <div className={styles.myComponent}>
+
       <div className={styles.playerAvatar}>
         <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
       </div>
@@ -63,6 +98,7 @@ function MainMenu() {
         </div>
       </div>
     </div>
+
             </div>
           </div>
         </div>
@@ -77,13 +113,16 @@ function MainMenu() {
       >
         <div>
           <h3>Volum</h3>
-          <input
-            type='range'
-            min='0'
-            max='100'
-            value={currentVolume}
-            onChange={(e) => setCurrentVolume(e.target.value)}
-          />
+          <div className={styles.volumeControl}>
+            <input
+              type='range'
+              min='0'
+              max='100'
+              value={currentVolume}
+              onChange={(e) => setCurrentVolume(e.target.value)}
+            />
+            <span className={styles.volumePercent}>{currentVolume}%</span>
+          </div>
         </div>
         <button
           type='submit'
@@ -95,6 +134,7 @@ function MainMenu() {
           Sign Out
         </button>
       </Modal>
+      {/* <Home authHeader={authHeader} /> */}
     </main>
   );
 }

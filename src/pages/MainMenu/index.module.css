@@ -175,3 +175,13 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+}
+
+.volumePercent {
+  margin-left: 10px;
+  font-weight: bold;
+}
