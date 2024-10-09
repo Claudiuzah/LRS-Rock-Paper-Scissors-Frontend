@@ -23,19 +23,12 @@
 }
 .containerMultiplayer {
   display: flex;
+  flex-grow: 200px;
   flex-direction: row;
   justify-content: center;
   vertical-align: center;
 }
 .containerList {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  vertical-align: center;
-  gap: 2%;
-}
-.boxX {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,111 +40,18 @@
   justify-content: center;
   width: 325px;
 }
-
-.playerList {
+.boxProfile {
+  border-radius: 20px;
+  position: relative;
   margin: 10px;
   width: 300px;
-  height: 700px;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  backdrop-filter: blur(2.5px);
-}
-.titleBox {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  vertical-align: center;
-}
-.multiplayerTitle {
-  font-size: 90px;
-  color: black;
-}
-.playerLobby {
-  margin: 10px;
-  border-radius: 20px;
-  backdrop-filter: blur(2.5px);
-  width: 800px;
-  height: 700px;
-  background-color: rgba(255, 255, 255, 0.6);
-  display: flex;
-}
-.containerPlayerLb {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  vertical-align: center;
-  align-content: start;
-  flex-flow: space-evenly;
-}
-
-.playerCard {
-  border-radius: 20px;
-  margin: 20px;
-  width: 160px;
-  height: 200px;
-  box-shadow:
-    0px 1px 2px rgba(0, 0, 0, 0.05),
-    0px 1px 3px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2px);
-  background-color: rgb(160, 160, 160);
-  display: flex;
-  color: black;
-  text-align: center;
-}
-.cardLobby {
-  position: absolute;
-  width: 189px;
-  height: 293px;
-  left: 527px;
-  top: 199px;
-}
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.playButton {
-  width: 110px;
-  height: 50px;
-  background-color: #4caf50;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  position: absolute;
-  top: 39rem;
-  left: 83%;
-}
-.myComponent {
-  position: relative;
-  padding-right: 10rem;
-  padding-left: 2rem;
-  border-radius: 1.875rem;
+  height: 90px;
   box-shadow:
     0px 1px 2px rgba(0, 0, 0, 0.05),
     0px 1px 3px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(2.5px);
-  background-color: rgba(255, 255, 255, 0.6);
-  /* max-width: 30rem; */
-  width: 330px;
+  background-color: rgba(255, 255, 255, 0.4);
   display: flex;
-  gap: 0.625rem;
-}
-
-@media (max-width: 47.25rem) {
-  .myComponent {
-    gap: 0;
-  }
 }
 .playerAvatar {
   flex: 0 0 auto;
@@ -185,4 +85,156 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.playerList {
+  margin: 10px;
+  width: 300px;
+  height: 700px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(2.5px);
+}
+.titleBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: center;
+}
+.multiplayerTitle {
+  font-size: 90px;
+  color: black;
+}
+.playerLobby {
+  margin: 10px;
+  border-radius: 20px;
+  backdrop-filter: blur(2.5px);
+  width: 800px;
+  height: 700px;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+}
+.containerPlayerLb {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  vertical-align: center;
+  flex-flow: space-evenly;
+}
+
+.playerCard {
+  border-radius: 20px;
+  margin: 20px;
+  width: 160px;
+  height: 200px;
+  box-shadow:
+    0px 1px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  background-color: rgb(160, 160, 160);
+  display: flex;
+  color: black;
+  /* text-align: center; */
+  align-items: center;
+  padding: 5%;
+}
+.cardLobby {
+  position: absolute;
+  width: 189px;
+  height: 293px;
+  left: 527px;
+  top: 199px;
+}
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.playButton {
+  width: 110px;
+  height: 50px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 39rem;
+  left: 83%;
+}
+.playerProfileImg {
+  width: 95%;
+  height: 60%;
+  /* margin-top: 10%;
+  margin-bottom: 10%; */
+  border-radius: 50%;
+}
+.statisticsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: x-large;
+}
+.playerInfo {
+  flex: 1 1 0%;
+}
+.playerInfo .playerName {
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playerInfo .playerStats {
+  font-size: 50;
+  line-height: 1.25;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.playerCardOnline {
+  border-radius: 20px;
+  margin: 20px;
+  width: 200x;
+  height: 80px;
+  box-shadow:
+    0px 1px 2px rgba(0, 0, 0, 0.05),
+    0px 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  background-color: rgb(160, 160, 160);
+  display: flex;
+  color: black;
+  text-align: center; 
+  align-items: center;
+  padding: 5%;
+}
+.playerProfileImgOnline {
+  width: 30%;
+  height: 60%;
+  margin-top: 10%;
+  margin-bottom: 10%; 
+  border-radius: 50%;
+  margin-right: 1rem;
+  ;
+}
+.statisticsContainerOnline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  font-size: x-large;
 }
