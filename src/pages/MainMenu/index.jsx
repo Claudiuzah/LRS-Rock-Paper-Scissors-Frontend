@@ -39,8 +39,11 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 // }
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
-  const [currentVolume, setCurrentVolume] = useState(0);
-  const [currentSoundType, setCurrentSoundType] = useState();
+
+  const [currentVolume, setCurrentVolume] = useState();
+
+
+
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const authHeader = useAuthHeader();
@@ -58,15 +61,6 @@ function MainMenu() {
   if (!auth) return;
   return (
     <main>
-      <button
-        type='submit'
-        onClick={() => {
-          signOut();
-          navigate('/auth');
-        }}
-      >
-        Sign Out
-      </button>
       <div>
         <div className={styles.groupContainerMenu}>
           <img src='./images/title.png' className={styles.titleImageMenu} />
@@ -92,21 +86,19 @@ function MainMenu() {
                 <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
               <div className={styles.myComponent}>
-                <div className={styles.playerAvatar}>
-                  <img
-                    src='images/avatar.png'
-                    alt='Player Avatar'
-                    className={styles.playerAvatarImg}
-                  />
-                </div>
-                <div className={styles.playerInfo}>
-                  <div className={styles.playerName}>{auth.name}</div> */
-                  <div className={styles.playerStats}>
-                    Total wins: 0<br />
-                    Score: 0
-                  </div>
-                </div>
-              </div>
+
+      <div className={styles.playerAvatar}>
+        <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
+      </div>
+      <div className={styles.playerInfo}>
+        <div className={styles.playerName}>{auth.name}</div>
+        <div className={styles.playerStats}>
+          Total wins: 0<br />
+          Score: 0xx`x`
+        </div>
+      </div>
+    </div>
+
             </div>
           </div>
         </div>
@@ -117,7 +109,7 @@ function MainMenu() {
         withCloseButton={false}
         centered={true}
         lockScroll={false}
-        title='Setări sunet'
+        title='Settings'
       >
         <div>
           <h3>Volum</h3>
@@ -132,14 +124,15 @@ function MainMenu() {
             <span className={styles.volumePercent}>{currentVolume}%</span>
           </div>
         </div>
-        <div>
-          <h3>Tip de sunet</h3>
-          <select value={currentSoundType} onChange={(e) => setCurrentSoundType(e.target.value)}>
-            <option value='default'>Implicit</option>
-            <option value='loud'>Tare</option>
-            <option value='soft'>Slab</option>
-          </select>
-        </div>
+        <button
+          type='submit'
+          onClick={() => {
+            signOut();
+            navigate('/auth');
+          }}
+        >
+          Sign Out
+        </button>
       </Modal>
       {/* <Home authHeader={authHeader} /> */}
     </main>

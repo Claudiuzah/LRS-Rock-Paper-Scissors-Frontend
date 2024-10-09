@@ -8,7 +8,9 @@ import { jwtDecode } from 'jwt-decode';
 
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
+
 import MultiPly from '../../components/MultiPlayer2v2';
+
 
 function Home({ authHeader, setPlayers }) {
   const auth = useAuthUser();
@@ -120,7 +122,26 @@ function LobbyRoom() {
               </div>
             </div>
             {/* This was hardcoded; it should use players state */}
+
+            <div className={styles.playerList}>Connected Players:
+            {players.length > 0 ? (
+                  players.map((player, index) => (
+                    <div key={index} className={styles.playerStats}>
+                      <div className={styles.playerCardOnline}>
+                        <strong className={styles.statisticsContainerOnline}>
+                          <img src='images/playerprofile.png' className={styles.playerProfileImgOnline} />
+                          {player}
+                        </strong>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className={styles.playerCard}>No players connected</div>
+                )}
+            </div>
+
             <div className={styles.playerList}>Connected Players:</div>
+
           </div>
           <div className={styles.titleBox}>
             <div className={styles.multiplayerTitle}>Create room</div>

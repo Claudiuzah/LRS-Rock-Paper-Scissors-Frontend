@@ -6,7 +6,6 @@ import styles from './index.module.css';
 function Settings() {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentVolume, setCurrentVolume] = useState();
-  const [currentSoundType, setCurrentSoundType] = useState();
   return (
     <main>
       <Modal
@@ -26,14 +25,6 @@ function Settings() {
             value={currentVolume}
             onChange={(e) => setCurrentVolume(e.target.value)}
           />
-        </div>
-        <div>
-          <h3>Tip de sunet</h3>
-          <select value={currentSoundType} onChange={(e) => setCurrentSoundType(e.target.value)}>
-            <option value='default'>Implicit</option>
-            <option value='loud'>Tare</option>
-            <option value='soft'>Slab</option>
-          </select>
         </div>
       </Modal>
       <button type='button' onClick={open} className={styles.buttonmenu}>
