@@ -7,10 +7,8 @@ import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 import { jwtDecode } from 'jwt-decode';
 
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
-
+import { Modal } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
-
 
 function Home({ authHeader, setPlayers }) {
   const auth = useAuthUser();
@@ -123,25 +121,26 @@ function LobbyRoom() {
             </div>
             {/* This was hardcoded; it should use players state */}
 
-            <div className={styles.playerList}>Connected Players:
-            {players.length > 0 ? (
-                  players.map((player, index) => (
-                    <div key={index} className={styles.playerStats}>
-                      <div className={styles.playerCardOnline}>
-                        <strong className={styles.statisticsContainerOnline}>
-                          <img src='images/playerprofile.png' className={styles.playerProfileImgOnline} />
-                          {player}
-                        </strong>
-                      </div>
+            <div className={styles.playerList}>
+              Connected Players:
+              {players.length > 0 ? (
+                players.map((player, index) => (
+                  <div key={index} className={styles.playerStats}>
+                    <div className={styles.playerCardOnline}>
+                      <strong className={styles.statisticsContainerOnline}>
+                        <img
+                          src='images/playerprofile.png'
+                          className={styles.playerProfileImgOnline}
+                        />
+                        {player}
+                      </strong>
                     </div>
-                  ))
-                ) : (
-                  <div className={styles.playerCard}>No players connected</div>
-                )}
+                  </div>
+                ))
+              ) : (
+                <div className={styles.playerCard}>No players connected</div>
+              )}
             </div>
-
-            <div className={styles.playerList}>Connected Players:</div>
-
           </div>
           <div className={styles.titleBox}>
             <div className={styles.multiplayerTitle}>Create room</div>
@@ -170,6 +169,18 @@ function LobbyRoom() {
                   fullScreen
                   radius={0}
                   transitionProps={{ transition: 'fade', duration: 200 }}
+                  styles={{
+                    modal: {
+                      backgroundImage: 'url(public/images/bg.png)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      color: 'white', // Change text color for better readability
+                      padding: '20px', // Add some padding Change this to your desired background color
+                    },
+                    header: {
+                      backgroundColor: '#ccc', // Optional: Change header background color
+                    },
+                  }}
                 >
                   <MultiPly />
                 </Modal>

@@ -1,5 +1,3 @@
-
-
 // export const API_SELF = 'http://172.16.1.71:8000';
 
 export const API_SELF = 'https://lrsback-lrs-bd4d9a06.koyeb.app';

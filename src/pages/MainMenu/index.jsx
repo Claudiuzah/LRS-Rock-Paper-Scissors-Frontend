@@ -39,11 +39,8 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 // }
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
-
-  const [currentVolume, setCurrentVolume] = useState();
-
-
-
+  const [currentVolume, setCurrentVolume] = useState(0);
+  const [currentSoundType, setCurrentSoundType] = useState();
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const authHeader = useAuthHeader();
@@ -86,19 +83,21 @@ function MainMenu() {
                 <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
               <div className={styles.myComponent}>
-
-      <div className={styles.playerAvatar}>
-        <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
-      </div>
-      <div className={styles.playerInfo}>
-        <div className={styles.playerName}>{auth.name}</div>
-        <div className={styles.playerStats}>
-          Total wins: 0<br />
-          Score: 0xx`x`
-        </div>
-      </div>
-    </div>
-
+                <div className={styles.playerAvatar}>
+                  <img
+                    src='images/avatar.png'
+                    alt='Player Avatar'
+                    className={styles.playerAvatarImg}
+                  />
+                </div>
+                <div className={styles.playerInfo}>
+                  <div className={styles.playerName}>{auth.name}</div>
+                  <div className={styles.playerStats}>
+                    Total wins: 0<br />
+                    Score: 0
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
