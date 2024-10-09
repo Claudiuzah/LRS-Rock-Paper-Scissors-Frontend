@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
@@ -127,7 +128,7 @@ export function Roundmessage({ round }) {
   );
 }
 
-function MultiPlayer() {
+function MultiPly() {
   const [remainingTime, setRemainingTime] = useState(15);
   // const [modalOpened] = useState(false);
   const navigate = useNavigate();
@@ -223,7 +224,6 @@ function MultiPlayer() {
       </div>
       <div className={styles.containerTable}>
         <img src='images/table.png' className={styles.tableM} alt='Table' />
-
         <div className={styles.playerCard1}>
           <div className={styles.buttonsContainer}>
             <Actionbutton action='rock' onActionSelected={onActionSelected} />
@@ -312,11 +312,9 @@ function MultiPlayer() {
             </div>
           </div>
         </div>
-
       </div>
-      
     </main>
   );
 }
 
-export default MultiPlayer;
+export default MultiPly;

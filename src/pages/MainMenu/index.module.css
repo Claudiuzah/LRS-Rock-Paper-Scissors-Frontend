@@ -120,11 +120,10 @@ body {
   height: auto;
   width: 60px;
 }
-
 .myComponent {
   position: relative;
   top: -45rem;
-  left: -40rem;
+  left: -35vw;
   padding-right: 10rem;
   padding-left: 2rem;
   border-radius: 1.875rem;
@@ -137,6 +136,7 @@ body {
   display: flex;
   gap: 0.625rem;
 }
+
 @media (max-width: 47.25rem) {
   .myComponent {
     gap: 0;

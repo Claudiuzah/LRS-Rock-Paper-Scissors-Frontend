@@ -58,15 +58,6 @@ function MainMenu() {
   if (!auth) return;
   return (
     <main>
-      <button
-        type='submit'
-        onClick={() => {
-          signOut();
-          navigate('/auth');
-        }}
-      >
-        Sign Out
-      </button>
       <div>
         <div className={styles.groupContainerMenu}>
           <img src='./images/title.png' className={styles.titleImageMenu} />
@@ -117,7 +108,7 @@ function MainMenu() {
         withCloseButton={false}
         centered={true}
         lockScroll={false}
-        title='Setări sunet'
+        title='Settings'
       >
         <div>
           <h3>Volum</h3>
@@ -132,14 +123,15 @@ function MainMenu() {
             <span className={styles.volumePercent}>{currentVolume}%</span>
           </div>
         </div>
-        <div>
-          <h3>Tip de sunet</h3>
-          <select value={currentSoundType} onChange={(e) => setCurrentSoundType(e.target.value)}>
-            <option value='default'>Implicit</option>
-            <option value='loud'>Tare</option>
-            <option value='soft'>Slab</option>
-          </select>
-        </div>
+        <button
+          type='submit'
+          onClick={() => {
+            signOut();
+            navigate('/auth');
+          }}
+        >
+          Sign Out
+        </button>
       </Modal>
       {/* <Home authHeader={authHeader} /> */}
     </main>
