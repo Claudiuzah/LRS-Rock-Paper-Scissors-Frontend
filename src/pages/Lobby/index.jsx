@@ -7,7 +7,7 @@ import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 import { jwtDecode } from 'jwt-decode';
 
 import { useDisclosure } from '@mantine/hooks';
-import { Modal, Button } from '@mantine/core';
+import { Modal } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
 
 function Home({ authHeader, setPlayers }) {
@@ -149,6 +149,18 @@ function LobbyRoom() {
                   fullScreen
                   radius={0}
                   transitionProps={{ transition: 'fade', duration: 200 }}
+                  styles={{
+                    modal: {
+                      backgroundImage: 'url(public/images/bg.png)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      color: 'white', // Change text color for better readability
+                      padding: '20px', // Add some padding Change this to your desired background color
+                    },
+                    header: {
+                      backgroundColor: '#ccc', // Optional: Change header background color
+                    },
+                  }}
                 >
                   <MultiPly />
                 </Modal>

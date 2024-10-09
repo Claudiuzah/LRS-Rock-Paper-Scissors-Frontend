@@ -26,7 +26,7 @@
 }
 
 body {
-  background-image: url('images/bg.png');
+  background-image: url('.iamages/bg.png');
 }
 .centeredenu {
   position: absolute;
