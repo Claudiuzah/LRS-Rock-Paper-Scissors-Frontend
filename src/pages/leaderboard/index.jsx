@@ -1,29 +1,15 @@
 // import React from 'react';
 import styles from './index.module.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
-import useSignOut from 'react-auth-kit/hooks/useSignOut';
 
 function LeaderBoard() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const auth = useAuthUser();
   console.log(auth);
 
-  const signOut = useSignOut();
-
   return (
     <main className={styles.mainContainer}>
-      <button
-        type='submit'
-        onClick={() => {
-          signOut();
-          navigate('/auth');
-        }}
-        className={styles.signOutButton} // adaugă o clasă pentru stilizare
-      >
-        Sign Out
-      </button>
-
       <div className={styles.groupContainerMenu}>
         <div className={styles.titleImage}>GOOD WORK</div>
 
