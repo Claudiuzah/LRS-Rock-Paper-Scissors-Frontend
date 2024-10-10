@@ -40,7 +40,6 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentVolume, setCurrentVolume] = useState(0);
-  const [currentSoundType, setCurrentSoundType] = useState();
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const authHeader = useAuthHeader();
@@ -58,6 +57,16 @@ function MainMenu() {
   if (!auth) return;
   return (
     <main>
+      <button
+        type='submit'
+        onClick={() => {
+          signOut();
+          navigate('/auth');
+        }}
+        className={styles.signOutButton}
+      >
+        Sign Out
+      </button>
       <div>
         <div className={styles.groupContainerMenu}>
           <img src='./images/title.png' className={styles.titleImageMenu} />
@@ -123,15 +132,6 @@ function MainMenu() {
             <span className={styles.volumePercent}>{currentVolume}%</span>
           </div>
         </div>
-        <button
-          type='submit'
-          onClick={() => {
-            signOut();
-            navigate('/auth');
-          }}
-        >
-          Sign Out
-        </button>
       </Modal>
       {/* <Home authHeader={authHeader} /> */}
     </main>

@@ -185,3 +185,16 @@ body {
   margin-left: 10px;
   font-weight: bold;
 }
+
+.signOutButton {
+  position: absolute;  
+  top: 13px;  
+  right: 71px;    
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
