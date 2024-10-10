@@ -7,7 +7,7 @@ import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 import { jwtDecode } from 'jwt-decode';
 
 import { useDisclosure } from '@mantine/hooks';
-import { Modal } from '@mantine/core';
+import { Modal, ScrollArea } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
 
 function Home({ authHeader, setPlayers }) {
@@ -123,23 +123,25 @@ function LobbyRoom() {
 
             <div className={styles.playerList}>
               Connected Players:
-              {newPlayers.length > 0 ? (
-                newPlayers.map((player, index) => (
-                  <div key={index} className={styles.playerStats}>
-                    <div className={styles.playerCardOnline}>
-                      <strong className={styles.statisticsContainerOnline}>
-                        <img
-                          src='images/playerprofile.png'
-                          className={styles.playerProfileImgOnline}
-                        />
-                        {player}
-                      </strong>
+              <ScrollArea.Autosize mah={650} maw={400} mx='auto'>
+                {players.length > 0 ? (
+                  players.map((player, index) => (
+                    <div key={index} className={styles.playerStats}>
+                      <div className={styles.playerCardOnline}>
+                        <strong className={styles.statisticsContainerOnline}>
+                          <img
+                            src='images/playerprofile.png'
+                            className={styles.playerProfileImgOnline}
+                          />
+                          {player}
+                        </strong>
+                      </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                <div className={styles.playerCard}>No players connected</div>
-              )}
+                  ))
+                ) : (
+                  <div className={styles.playerCard}>No players connected</div>
+                )}
+              </ScrollArea.Autosize>
             </div>
           </div>
           <div className={styles.titleBox}>
