@@ -120,13 +120,18 @@ function LobbyRoom() {
               </div>
             </div>
             {/* This was hardcoded; it should use players state */}
-            <div className={styles.playerList}>Connected Players:
+
+            <div className={styles.playerList}>
+              Connected Players:
               {players.length > 0 ? (
                 players.map((player, index) => (
                   <div key={index} className={styles.playerStats}>
-                    <div className={styles.playerCard}>
-                      <strong className={styles.statisticsContainer}>
-                        <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+                    <div className={styles.playerCardOnline}>
+                      <strong className={styles.statisticsContainerOnline}>
+                        <img
+                          src='images/playerprofile.png'
+                          className={styles.playerProfileImgOnline}
+                        />
                         {player}
                       </strong>
                     </div>
@@ -164,6 +169,18 @@ function LobbyRoom() {
                   fullScreen
                   radius={0}
                   transitionProps={{ transition: 'fade', duration: 200 }}
+                  styles={{
+                    modal: {
+                      backgroundImage: 'url(public/images/bg.png)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      color: 'white', // Change text color for better readability
+                      padding: '20px', // Add some padding Change this to your desired background color
+                    },
+                    header: {
+                      backgroundColor: '#ccc', // Optional: Change header background color
+                    },
+                  }}
                 >
                   <MultiPly />
                 </Modal>

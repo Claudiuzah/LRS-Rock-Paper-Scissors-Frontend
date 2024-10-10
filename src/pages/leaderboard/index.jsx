@@ -2,20 +2,14 @@
 import styles from './index.module.css';
 import { Link } from 'react-router-dom';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
-import useSignOut from 'react-auth-kit/hooks/useSignOut';
-import SignOutButton from '/Users/PC/Desktop/Proiect/FloceaCosmin/src/components/LogoutButton';
 
 function LeaderBoard() {
   // const navigate = useNavigate();
   const auth = useAuthUser();
   console.log(auth);
 
-  const signOut = useSignOut();
-
   return (
     <main className={styles.mainContainer}>
-      <SignOutButton signOut={signOut} />
-
       <div className={styles.groupContainerMenu}>
         <div className={styles.titleImage}>GOOD WORK</div>
 

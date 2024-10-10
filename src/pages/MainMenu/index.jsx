@@ -117,7 +117,7 @@ function MainMenu() {
         withCloseButton={false}
         centered={true}
         lockScroll={false}
-        title='Setări sunet'
+        title='Settings'
       >
         <div>
           <h3>Volum</h3>
