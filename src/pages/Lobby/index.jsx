@@ -123,8 +123,8 @@ function LobbyRoom() {
 
             <div className={styles.playerList}>
               Connected Players:
-              {players.length > 0 ? (
-                players.map((player, index) => (
+              {newPlayers.length > 0 ? (
+                newPlayers.map((player, index) => (
                   <div key={index} className={styles.playerStats}>
                     <div className={styles.playerCardOnline}>
                       <strong className={styles.statisticsContainerOnline}>
