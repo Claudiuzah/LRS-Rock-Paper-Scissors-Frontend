@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react'; // Adaugă 'useRef'
 import { AUTHENTICATE, API_SELF } from '../constants';
 import styles from './index.module.css';
 
@@ -20,6 +20,9 @@ async function postUser(username, password) {
 function Signupbox() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const passwordRef = useRef(null); // Referință pentru câmpul de password
+  const signupButtonRef = useRef(null); // Referință pentru butonul de Signup
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setUsername(e.target.value);
@@ -30,9 +33,6 @@ function Signupbox() {
     console.log(username);
     console.log(password);
     const data = await postUser(username, password);
-    setUsername(data.id);
-    setUsername(data.name);
-    setTimeout(() => {}, 200);
     if (data) {
       navigate('/auth');
     } else {
@@ -40,17 +40,22 @@ function Signupbox() {
     }
   };
 
-  const navigate = useNavigate();
-  useEffect(() => {}, []);
+  // Mută focus-ul de la username la password când se apasă Enter
+  const handleKeyDownUsername = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      passwordRef.current.focus(); // Mută focus-ul pe câmpul de password
+    }
+  };
 
-  // const form = useForm({
-  //   initialValues: { name: '', password: '' },
+  // Execută funcția de signup când se apasă Enter în câmpul de password
+  const handleKeyDownPassword = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      signupButtonRef.current.click(); // Declanșează butonul de signup
+    }
+  };
 
-  //   validate: {
-  //     name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-  //     password: (value) => (value.length < 8 ? 'Password must have at least 8 characters' : null),
-  //   },
-  // });
   return (
     <main>
       <div className={styles.logInBox}>
@@ -66,6 +71,7 @@ function Signupbox() {
                 required
                 value={username}
                 onChange={handleInputChange}
+                onKeyDown={handleKeyDownUsername} // Mută focus-ul la Enter
                 className={styles.logInInput}
               />
               <i className={styles.logIni}>username</i>
@@ -77,7 +83,9 @@ function Signupbox() {
                 required
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                onKeyDown={handleKeyDownPassword} // Execută signup la Enter
                 className={styles.logInInput}
+                ref={passwordRef} // Referință la câmpul de password
               />
               <i className={styles.logIni}>password</i>
             </div>
@@ -95,6 +103,7 @@ function Signupbox() {
                 value='Signup'
                 onClick={handleSignUp}
                 className={styles.buttonLogIn}
+                ref={signupButtonRef} // Referință la butonul de Signup
               />
             </div>
           </div>

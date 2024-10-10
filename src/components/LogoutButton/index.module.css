@@ -1,0 +1,20 @@
+/* SignOutButton.module.css */
+.signOutButton {
+    position: absolute;  
+    top: 20px;  
+    left: 20px;    
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.7s ease;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .signOutButton:hover {
+    background-color: rgb(226, 107, 38);
+  }
+  

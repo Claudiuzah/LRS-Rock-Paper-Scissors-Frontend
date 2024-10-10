@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { API_SELF, LOGIN } from '../constants.js';
 import useSignIn from 'react-auth-kit/hooks/useSignIn';
 import styles from './index.module.css';
@@ -20,6 +20,7 @@ const signInUser = async (username, password) => {
 function Loginbox() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const passwordRef = useRef(null);
   const signIn = useSignIn();
 
   const navigate = useNavigate();
@@ -46,6 +47,20 @@ function Loginbox() {
     }
   }
 
+  const handleKeyDownUsername = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      passwordRef.current.focus(); // Mută focus-ul pe câmpul de password
+    }
+  };
+
+  const handleKeyDownPassword = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      logging(); // Declanșează login-ul
+    }
+  };
+
   return (
     <>
       <div>
@@ -63,6 +78,7 @@ function Loginbox() {
                   value={username}
                   className={styles.logInInput}
                   onChange={(event) => setUsername(event.target.value)}
+                  onKeyDown={handleKeyDownUsername}
                 />
                 <i className={styles.logIni}>username</i>
               </div>
@@ -74,6 +90,8 @@ function Loginbox() {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                   className={styles.logInInput}
+                  ref={passwordRef}
+                  onKeyDown={handleKeyDownPassword}
                 />
                 <i className={styles.logIni}>password</i>
               </div>
