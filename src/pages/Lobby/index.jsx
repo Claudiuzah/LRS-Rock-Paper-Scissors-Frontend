@@ -4,27 +4,137 @@ import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect, useState } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
-import { jwtDecode } from 'jwt-decode';
+// import { jwtDecode } from 'jwt-decode';
 
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, ScrollArea } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
+import { WS_URL } from '../../components/constants';
 
-function Home({ authHeader, setPlayers }) {
+// function Home({ authHeader, setPlayersLb, setPlayersList }) {
+//   const auth = useAuthUser();
+//   const token = authHeader.slice(7);
+//   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
+//     share: false,
+//     shouldReconnect: () => true,
+//   });
+
+//   useEffect(() => {
+//     if (readyState === ReadyState.OPEN) {
+//       sendJsonMessage({
+//         event: 'enter lobby',
+//         data: {
+//           channel: 'lobby ',
+//           name: auth.name,
+//         },
+//       });
+//     }
+//   }, [readyState, sendJsonMessage, auth.name]);
+
+//   useEffect(() => {
+//     if (lastJsonMessage) {
+//       console.log(`Got a new message: `, lastJsonMessage);
+
+//       // if(lastJsonMessage.type == 'allPlayersUpdate') {
+//       //   const
+//       // }
+
+//       // Handle player updates
+//       if (lastJsonMessage.type === 'playerUpdate') {
+//         // Extract the JWT tokens from players array
+//         const newPlayersLb = lastJsonMessage.playersLb;
+
+//         // Extract usernames from the JWTs
+//         const playerNamesPromises = newPlayersLb.map((token) => {
+//           // Check if the token is valid
+//           if (typeof token !== 'string') {
+//             console.error('Invalid token:', token);
+//             return Promise.resolve(null); // Return null if token is invalid
+//           }
+//           try {
+//             const decoded = jwtDecode(token); // Decode the JWT
+//             return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
+//           } catch (error) {
+//             console.error('Error decoding JWT: ', error);
+//             return null; // Handle decoding errors
+//           }
+//         });
+
+//         Promise.all(playerNamesPromises)
+//           .then((playerNames) => {
+//             // Filter out any null values
+//             const filteredNames = playerNames.filter((name) => name !== null);
+//             // Update players in the parent component
+//             setPlayersLb(filteredNames);
+//           })
+//           .catch((err) => console.error('Error processing player names: ', err));
+//       } else {
+//         if (lastJsonMessage.type == 'allPlayersUpdate') {
+//           const newPlayersList = lastJsonMessage.playersList;
+
+//           // Extract usernames from the JWTs
+//           const playerNamesPromises = newPlayersList.map((token) => {
+//             // Check if the token is valid
+//             if (typeof token !== 'string') {
+//               console.error('Invalid token:', token);
+//               return Promise.resolve(null); // Return null if token is invalid
+//             }
+//             try {
+//               const decoded = jwtDecode(token); // Decode the JWT
+//               return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
+//             } catch (error) {
+//               console.error('Error decoding JWT: ', error);
+//               return null; // Handle decoding errors
+//             }
+//           });
+
+//           Promise.all(playerNamesPromises)
+//             .then((playerNames) => {
+//               // Filter out any null values
+//               const filteredNames = playerNames.filter((name) => name !== null);
+//               // Update players in the parent component
+//               setPlayersList(filteredNames);
+//             })
+//             .catch((err) => console.error('Error processing player names: ', err));
+//         }
+//       }
+//     }
+//   }, [lastJsonMessage, setPlayersList, setPlayersLb]);
+
+//   return null; // This component doesn't render anything
+// }
+
+function LobbyRoom() {
+  // const navigate = useNavigate();
+  // const auth = useAuthUser();
+  // const authHeader = useAuthHeader();
+  // const [playersList, setPlayersList] = useState([]);
+  // const [playersLb, setPlayersLb] = useState([]);
+
+  // const [opened, { open, close }] = useDisclosure(false);
+  const [allPlayers, setAllPlayers] = useState([]); // List of all players
+  const [lobbyPlayers, setLobbyPlayers] = useState([]); // List of players in the lobby
+  // const [maxPlayers, setMaxPlayers] = useState(4);
   const auth = useAuthUser();
-  const WS_URL = 'wss://lrsback-lrs-bd4d9a06.koyeb.app';
-  const token = authHeader.slice(7);
-  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
-    share: false,
-    shouldReconnect: () => true,
-  });
+  const authHeader = useAuthHeader();
+  const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
+
+  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
+    `${WS_URL}/ws/${authHeader.slice(7)}`,
+    {
+      share: false,
+      shouldReconnect: () => true,
+    },
+  );
 
   useEffect(() => {
     if (readyState === ReadyState.OPEN) {
+      console.log('WebSocket connection established.');
       sendJsonMessage({
         event: 'enter lobby',
         data: {
-          channel: 'lobby ',
+          channel: 'lobby',
           name: auth.name,
         },
       });
@@ -33,51 +143,28 @@ function Home({ authHeader, setPlayers }) {
 
   useEffect(() => {
     if (lastJsonMessage) {
-      console.log(`Got a new message: `, lastJsonMessage);
+      console.log('New message received: ', lastJsonMessage);
 
-      // Handle player updates
+      if (lastJsonMessage.type === 'allPlayersUpdate') {
+        // Update the list of all players
+        const allPlayersList = lastJsonMessage.players || [];
+        setAllPlayers(allPlayersList);
+      }
+
       if (lastJsonMessage.type === 'playerUpdate') {
-        // Extract the JWT tokens from players array
-        const newPlayers = lastJsonMessage.players;
-
-        // Extract usernames from the JWTs
-        const playerNamesPromises = newPlayers.map((token) => {
-          // Check if the token is valid
-          if (typeof token !== 'string') {
-            console.error('Invalid token:', token);
-            return Promise.resolve(null); // Return null if token is invalid
-          }
-          try {
-            const decoded = jwtDecode(token); // Decode the JWT
-            return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
-          } catch (error) {
-            console.error('Error decoding JWT: ', error);
-            return null; // Handle decoding errors
-          }
-        });
-
-        Promise.all(playerNamesPromises)
-          .then((playerNames) => {
-            // Filter out any null values
-            const filteredNames = playerNames.filter((name) => name !== null);
-            // Update players in the parent component
-            setPlayers(filteredNames);
-          })
-          .catch((err) => console.error('Error processing player names: ', err));
+        // Update the list of players in the lobby based on tokens
+        const playersInLobby = lastJsonMessage.players || [];
+        setLobbyPlayers(playersInLobby);
       }
     }
-  }, [lastJsonMessage, setPlayers]);
+  }, [lastJsonMessage]);
 
-  return null; // This component doesn't render anything
-}
-
-function LobbyRoom() {
-  const navigate = useNavigate();
-  const auth = useAuthUser();
-  const authHeader = useAuthHeader();
-  const [players, setPlayers] = useState([]);
-
-  const [opened, { open, close }] = useDisclosure(false);
+  // const updateMaxPlayers = () => {
+  //   sendJsonMessage({
+  //     event: 'updateMaxPlayers',
+  //     data: { maxPlayers },
+  //   });
+  // };
 
   useEffect(() => {
     if (!auth) {
@@ -124,8 +211,8 @@ function LobbyRoom() {
             <div className={styles.playerList}>
               Connected Players:
               <ScrollArea.Autosize mah={650} maw={400} mx='auto'>
-                {players.length > 0 ? (
-                  players.map((player, index) => (
+                {allPlayers.length > 0 ? (
+                  allPlayers.map((player, index) => (
                     <div key={index} className={styles.playerStats}>
                       <div className={styles.playerCardOnline}>
                         <strong className={styles.statisticsContainerOnline}>
@@ -133,7 +220,7 @@ function LobbyRoom() {
                             src='images/playerprofile.png'
                             className={styles.playerProfileImgOnline}
                           />
-                          {player}
+                          {player.username}
                         </strong>
                       </div>
                     </div>
@@ -148,13 +235,13 @@ function LobbyRoom() {
             <div className={styles.multiplayerTitle}>Create room</div>
             <div className={styles.playerLobby}>
               <div className={styles.containerPlayerLb}>
-                {players.length > 0 ? (
-                  players.map((player, index) => (
+                {lobbyPlayers.length > 0 ? (
+                  lobbyPlayers.map((player, index) => (
                     <div key={index} className={styles.playerStats}>
                       <div className={styles.playerCard}>
                         <strong className={styles.statisticsContainer}>
                           <img src='images/playerprofile.png' className={styles.playerProfileImg} />
-                          {player}
+                          {player.username}
                         </strong>
                       </div>
                     </div>
@@ -195,7 +282,6 @@ function LobbyRoom() {
           </div>
         </div>
       </div>
-      <Home authHeader={authHeader} setPlayers={setPlayers} />
     </main>
   );
 }
