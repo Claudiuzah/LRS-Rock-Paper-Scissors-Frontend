@@ -4,7 +4,7 @@ import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useEffect, useState } from 'react';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
-// import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, ScrollArea } from '@mantine/core';
@@ -73,32 +73,32 @@ import { WS_URL } from '../../components/constants';
 //           const newPlayersList = lastJsonMessage.playersList;
 
 //           // Extract usernames from the JWTs
-//           const playerNamesPromises = newPlayersList.map((token) => {
-//             // Check if the token is valid
-//             if (typeof token !== 'string') {
-//               console.error('Invalid token:', token);
-//               return Promise.resolve(null); // Return null if token is invalid
-//             }
-//             try {
-//               const decoded = jwtDecode(token); // Decode the JWT
-//               return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
-//             } catch (error) {
-//               console.error('Error decoding JWT: ', error);
-//               return null; // Handle decoding errors
-//             }
-//           });
+// const playerNamesPromises = newPlayersList.map((token) => {
+//   // Check if the token is valid
+//   if (typeof token !== 'string') {
+//     console.error('Invalid token:', token);
+//     return Promise.resolve(null); // Return null if token is invalid
+//   }
+//   try {
+//     const decoded = jwtDecode(token); // Decode the JWT
+//     return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
+//   } catch (error) {
+//     console.error('Error decoding JWT: ', error);
+//     return null; // Handle decoding errors
+//   }
+// });
 
-//           Promise.all(playerNamesPromises)
-//             .then((playerNames) => {
-//               // Filter out any null values
-//               const filteredNames = playerNames.filter((name) => name !== null);
-//               // Update players in the parent component
-//               setPlayersList(filteredNames);
-//             })
-//             .catch((err) => console.error('Error processing player names: ', err));
-//         }
-//       }
-//     }
+// Promise.all(playerNamesPromises)
+//   .then((playerNames) => {
+//     // Filter out any null values
+//     const filteredNames = playerNames.filter((name) => name !== null);
+//     // Update players in the parent component
+//     setPlayersList(filteredNames);
+//   })
+//   .catch((err) => console.error('Error processing player names: ', err));
+// }
+//   }
+// }
 //   }, [lastJsonMessage, setPlayersList, setPlayersLb]);
 
 //   return null; // This component doesn't render anything
@@ -155,6 +155,30 @@ function LobbyRoom() {
         // Update the list of players in the lobby based on tokens
         const playersInLobby = lastJsonMessage.players || [];
         setLobbyPlayers(playersInLobby);
+
+        const playerNamesPromises = playersInLobby.map((token) => {
+          // Check if the token is valid
+          if (typeof token !== 'string') {
+            console.error('Invalid token:', token);
+            return Promise.resolve(null); // Return null if token is invalid
+          }
+          try {
+            const decoded = jwtDecode(token); // Decode the JWT
+            return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
+          } catch (error) {
+            console.error('Error decoding JWT: ', error);
+            return null; // Handle decoding errors
+          }
+        });
+
+        Promise.all(playerNamesPromises)
+          .then((playerNames) => {
+            // Filter out any null values
+            const filteredNames = playerNames.filter((name) => name !== null);
+            // Update players in the parent component
+            setLobbyPlayers(filteredNames);
+          })
+          .catch((err) => console.error('Error processing player names: ', err));
       }
     }
   }, [lastJsonMessage]);
@@ -209,7 +233,7 @@ function LobbyRoom() {
             {/* This was hardcoded; it should use players state */}
 
             <div className={styles.playerList}>
-              Connected Players:
+              All Players:
               <ScrollArea.Autosize mah={650} maw={400} mx='auto'>
                 {allPlayers.length > 0 ? (
                   allPlayers.map((player, index) => (
@@ -241,7 +265,7 @@ function LobbyRoom() {
                       <div className={styles.playerCard}>
                         <strong className={styles.statisticsContainer}>
                           <img src='images/playerprofile.png' className={styles.playerProfileImg} />
-                          {player.username}
+                          {player}
                         </strong>
                       </div>
                     </div>
