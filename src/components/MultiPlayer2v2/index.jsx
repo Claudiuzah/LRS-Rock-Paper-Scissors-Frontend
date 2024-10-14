@@ -145,7 +145,7 @@ function MultiPly() {
 
     return () => {
       clearInterval(timer);
-      setRemainingTime(20);
+      // setRemainingTime(20);
     };
   }, []);
 
@@ -213,6 +213,7 @@ function MultiPly() {
 
   return (
     <main>
+      {/* <div className={styles.background}> */}
       <div className={styles.containerT}>
         <button className={styles.clockButton}>
           <img src='video/clock.gif' className={styles.clockImg} alt='Clock' />
@@ -312,6 +313,7 @@ function MultiPly() {
           </div>
         </div>
       </div>
+      {/* </div> */}
     </main>
   );
 }

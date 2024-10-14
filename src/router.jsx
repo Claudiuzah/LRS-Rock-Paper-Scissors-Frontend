@@ -6,7 +6,7 @@ import Register from 'src/pages/SignUp';
 import SinglePlayer from 'src/pages/SinglePlayer';
 import LobbyRoom from 'src/pages/Lobby';
 import Audio from 'src/pages/Audio';
-import MultiPlayer from 'src/pages/MultiPlayer';
+// import MultiPlayer from 'src/pages/MultiPlayer';
 import LeaderBoard from 'src/pages/leaderboard';
 
 const router = createBrowserRouter([
@@ -34,10 +34,10 @@ const router = createBrowserRouter([
     path: '/single',
     element: <SinglePlayer />,
   },
-  {
-    path: '/multiplayer',
-    element: <MultiPlayer />,
-  },
+  // {
+  //   path: '/multiplayer',
+  //   element: <MultiPlayer />,
+  // },
   {
     path: '/lboard',
     element: <LeaderBoard />,
