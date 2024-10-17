@@ -146,13 +146,19 @@ function LobbyRoom() {
                   allPlayers.map((player, index) => (
                     <div key={index} className={styles.playerStats}>
                       <div className={styles.playerCardOnline}>
-                        <strong className={styles.statisticsContainerOnline}>
+                        <div className={styles.iconContainer}>
                           <img
                             src='images/playerprofile.png'
-                            className={styles.playerProfileImgOnline}
+                            className={styles.playerProfileImg}
+                            alt='Player Profile'
                           />
-                          {player.username}
-                        </strong>
+                          <div
+                            className={
+                              player.online ? styles.statusCircleOnline : styles.statusCircleOffline
+                            }
+                          ></div>
+                        </div>
+                        {player.username}
                       </div>
                     </div>
                   ))
