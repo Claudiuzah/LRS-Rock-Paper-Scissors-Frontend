@@ -133,7 +133,6 @@ function MultiPly({ players }) {
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const { open, close } = useDisclosure();
-  console.log(players);
 
   useEffect(() => {
     let timer;
