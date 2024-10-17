@@ -11,99 +11,6 @@ import { Modal, ScrollArea } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
 import { WS_URL } from '../../components/constants';
 
-// function Home({ authHeader, setPlayersLb, setPlayersList }) {
-//   const auth = useAuthUser();
-//   const token = authHeader.slice(7);
-//   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(`${WS_URL}/ws/${token}`, {
-//     share: false,
-//     shouldReconnect: () => true,
-//   });
-
-//   useEffect(() => {
-//     if (readyState === ReadyState.OPEN) {
-//       sendJsonMessage({
-//         event: 'enter lobby',
-//         data: {
-//           channel: 'lobby ',
-//           name: auth.name,
-//         },
-//       });
-//     }
-//   }, [readyState, sendJsonMessage, auth.name]);
-
-//   useEffect(() => {
-//     if (lastJsonMessage) {
-//       console.log(`Got a new message: `, lastJsonMessage);
-
-//       // if(lastJsonMessage.type == 'allPlayersUpdate') {
-//       //   const
-//       // }
-
-//       // Handle player updates
-//       if (lastJsonMessage.type === 'playerUpdate') {
-//         // Extract the JWT tokens from players array
-//         const newPlayersLb = lastJsonMessage.playersLb;
-
-//         // Extract usernames from the JWTs
-//         const playerNamesPromises = newPlayersLb.map((token) => {
-//           // Check if the token is valid
-//           if (typeof token !== 'string') {
-//             console.error('Invalid token:', token);
-//             return Promise.resolve(null); // Return null if token is invalid
-//           }
-//           try {
-//             const decoded = jwtDecode(token); // Decode the JWT
-//             return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
-//           } catch (error) {
-//             console.error('Error decoding JWT: ', error);
-//             return null; // Handle decoding errors
-//           }
-//         });
-
-//         Promise.all(playerNamesPromises)
-//           .then((playerNames) => {
-//             // Filter out any null values
-//             const filteredNames = playerNames.filter((name) => name !== null);
-//             // Update players in the parent component
-//             setPlayersLb(filteredNames);
-//           })
-//           .catch((err) => console.error('Error processing player names: ', err));
-//       } else {
-//         if (lastJsonMessage.type == 'allPlayersUpdate') {
-//           const newPlayersList = lastJsonMessage.playersList;
-
-//           // Extract usernames from the JWTs
-// const playerNamesPromises = newPlayersList.map((token) => {
-//   // Check if the token is valid
-//   if (typeof token !== 'string') {
-//     console.error('Invalid token:', token);
-//     return Promise.resolve(null); // Return null if token is invalid
-//   }
-//   try {
-//     const decoded = jwtDecode(token); // Decode the JWT
-//     return decoded.sub; // Adjust based on the actual key in the decoded JWT payload
-//   } catch (error) {
-//     console.error('Error decoding JWT: ', error);
-//     return null; // Handle decoding errors
-//   }
-// });
-
-// Promise.all(playerNamesPromises)
-//   .then((playerNames) => {
-//     // Filter out any null values
-//     const filteredNames = playerNames.filter((name) => name !== null);
-//     // Update players in the parent component
-//     setPlayersList(filteredNames);
-//   })
-//   .catch((err) => console.error('Error processing player names: ', err));
-// }
-//   }
-// }
-//   }, [lastJsonMessage, setPlayersList, setPlayersLb]);
-
-//   return null; // This component doesn't render anything
-// }
-
 function LobbyRoom() {
   // const navigate = useNavigate();
   // const auth = useAuthUser();
@@ -295,7 +202,7 @@ function LobbyRoom() {
                     },
                   }}
                 >
-                  <MultiPly />
+                  <MultiPly players={lobbyPlayers} />
                 </Modal>
 
                 <button onClick={open} className={styles.playButton}>
