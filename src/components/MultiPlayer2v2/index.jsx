@@ -128,7 +128,7 @@ export function Roundmessage({ round }) {
   );
 }
 
-function MultiPly() {
+function MultiPly({ players }) {
   const [remainingTime, setRemainingTime] = useState(15);
   // const [modalOpened] = useState(false);
   const navigate = useNavigate();
@@ -214,6 +214,44 @@ function MultiPly() {
 
   return (
     <main>
+      {players.length > 0 ? (
+        players.map((player, index) => (
+          <div key={index}>
+            <div className={styles.playerCard1}>
+              <div className={styles.buttonsContainer}>
+                <Actionbutton action='rock' onActionSelected={onActionSelected} />
+                <Actionbutton action='paper' onActionSelected={onActionSelected} />
+                <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+              </div>
+              <div className={styles.statisticsContainer}>
+                <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+                <div className={styles.playerStats}>
+                  name: {player}
+                  <br />
+                  points: 0
+                </div>
+              </div>
+            </div>
+            <div className={styles.playerCard2}>
+              <div className={styles.buttonsContainer}>
+                <Actionbutton action='rock' onActionSelected={onActionSelected} />
+                <Actionbutton action='paper' onActionSelected={onActionSelected} />
+                <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+              </div>
+              <div className={styles.statisticsContainer}>
+                <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+                <div className={styles.playerStats}>
+                  name: {player}
+                  <br />
+                  points: 0
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No players in the lobby.</p>
+      )}
       <div className={styles.containerT}>
         <button className={styles.clockButton}>
           <img src='video/clock.gif' className={styles.clockImg} alt='Clock' />
@@ -224,7 +262,7 @@ function MultiPly() {
       </div>
       <div className={styles.containerTable}>
         <img src='images/table.png' className={styles.tableM} alt='Table' />
-        <div className={styles.playerCard1}>
+        {/* <div className={styles.playerCard1}>
           <div className={styles.buttonsContainer}>
             <Actionbutton action='rock' onActionSelected={onActionSelected} />
             <Actionbutton action='paper' onActionSelected={onActionSelected} />
@@ -238,8 +276,8 @@ function MultiPly() {
               points: 0
             </div>
           </div>
-        </div>
-        <div className={styles.playerCard2}>
+        </div> */}
+        {/* <div className={styles.playerCard2}>
           <div className={styles.buttonsContainer}>
             <Actionbutton action='rock' onActionSelected={onActionSelected} />
             <Actionbutton action='paper' onActionSelected={onActionSelected} />
@@ -253,7 +291,7 @@ function MultiPly() {
               points: 0
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={styles.playerCard3}>
           <div className={styles.buttonsContainer}>
             <Actionbutton action='rock' onActionSelected={onActionSelected} />
