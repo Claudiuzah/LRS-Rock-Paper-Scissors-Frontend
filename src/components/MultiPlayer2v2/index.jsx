@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
@@ -6,6 +5,7 @@ import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 // import { Modal, Button, Group, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 // import { useDisclosure } from '@mantine/hooks';
+import { getRandomAvatar } from 'src/components/randomAvatar.jsx';
 
 const actions = {
   rock: 'scissors',
@@ -134,6 +134,12 @@ function MultiPly({ players }) {
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const { open, close } = useDisclosure();
+  const [avatars, setAvatars] = useState([]);
+
+  useEffect(() => {
+    const generatedAvatars = players.map(() => getRandomAvatar()); // Generăm un avatar pentru fiecare jucător
+    setAvatars(generatedAvatars); // Salvăm avatarurile în state
+  }, [players]);
 
   useEffect(() => {
     let timer;
@@ -299,7 +305,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <img src={getRandomAvatar()} className={styles.playerProfileImg} />
             <div className={styles.playerStats}>
               name: Player3
               <br />
@@ -314,7 +320,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <img src={getRandomAvatar()} className={styles.playerProfileImg} />
             <div className={styles.playerStats}>
               name: Player4
               <br />
@@ -329,7 +335,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+            <img src={getRandomAvatar()} className={styles.playerProfileImg} />
             <div className={styles.playerStats}>
               name: Player5
               <br />

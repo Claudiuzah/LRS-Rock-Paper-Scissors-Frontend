@@ -39,7 +39,7 @@
   text-align: center;
   width: 100%;
   max-width: 800px;
-  height: 550px;
+  height: 600px;
   color: rgb(14, 13, 13);
   display: flex;
   flex-direction: column;
@@ -122,8 +122,8 @@
   background-color: #fcf9f9;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(3, 3, 3, 0.1);
-  margin-top: -150px;
-  height: 350px;
+  margin-top: 10px;
+  height: 325px;
 }
 
 .playerImage1 {
@@ -171,4 +171,88 @@
   color: rgb(13, 13, 13);
   text-align: center;
   margin-top: 10px;
+}
+
+/* Stiluri pentru lista de leaderboard */
+.leaderboardList {
+  width: 100%;
+  margin-top: 100px;
+}
+
+.leaderboardRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 3px solid #ccc; /* Linia care separă rândurile */
+}
+
+.leaderboardRow:first-child {
+  font-weight: bold;
+  border-bottom: 4px solid #444; /* Linia mai groasă pentru antet */
+}
+
+.leaderboardRow:not(:last-child) {
+  margin-bottom: -5px; /* Spațiere între rânduri */
+}
+
+.leaderboardRow:last-child {
+  border-bottom: none; /* Elimină linia de sub ultimul rând */
+}
+
+.rank {
+  text-align: left;
+  flex: 1; /* Aliniere stânga */
+}
+
+.nickname {
+  text-align: center;
+  flex: 2; /* Aliniere centru */
+}
+
+.points {
+  text-align: right;
+  flex: 1; /* Aliniere dreapta */
+}
+
+.leaderboardRow:first-child .rank, 
+.leaderboardRow:first-child .nickname, 
+.leaderboardRow:first-child .points {
+  font-size: 1.2rem; /* Dimensiune mai mare pentru antet */
+}
+
+/* Stiluri pentru lista de leaderboard */
+.leaderboardList {
+  width: 100%;
+  margin-top: 10px; /* Mută lista puțin mai jos față de secțiunea de top3 */
+}
+
+.leaderboardRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 2px solid #ccc; /* Linia care separă rândurile */
+}
+
+.leaderboardRow:not(:last-child) {
+  margin-bottom: 10px; /* Spațiere între rânduri */
+}
+
+.leaderboardRow:last-child {
+  border-bottom: none; /* Elimină linia de sub ultimul rând */
+}
+
+/* Stiluri pentru fontul din leaderboard */
+.rank,
+.nickname,
+.points {
+  font-family: 'Roboto', sans-serif; /* Fontul dorit */
+  font-size: 18px; /* Dimensiune font */
+  color: #0a0909; /* Culoare text */
+  font-weight: bold;
+}
+
+.leaderboardRow:first-child {
+  font-weight: bold; /* Îngroșează textul antetului */
+  font-size: 0px; /* Dimensiune mai mare pentru antet */
+  color: #0c0c0c; /* Culoare antet */
 }

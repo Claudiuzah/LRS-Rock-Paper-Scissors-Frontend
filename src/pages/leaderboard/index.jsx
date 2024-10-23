@@ -19,19 +19,41 @@ function LeaderBoard() {
               <img src='/images/locul3.png' className={styles.playerImage1} />
               <p className={styles.playerText}> Player3</p>
               <p className={styles.locText}> Position 3</p>
-              <p className={styles.pText}> 0 Points</p>
+              <p className={styles.pText}> 7 Points</p>
             </div>
             <div className={styles.playerContainer}>
               <img src='/images/locul1.png' className={styles.playerImage} />
               <p className={styles.playerText}> Player1</p>
               <p className={styles.locText}> FIRST</p>
-              <p className={styles.pText}> 1 Points</p>
+              <p className={styles.pText}> 9 Points</p>
             </div>
             <div className={styles.playerContainer}>
               <img src='/images/locul2.png' className={styles.playerImage1} />
               <p className={styles.playerText}> Player2</p>
               <p className={styles.locText}> Position 2</p>
-              <p className={styles.pText}> 0 Points</p>
+              <p className={styles.pText}> 8 Points</p>
+            </div>
+          </div>
+          <div className={styles.leaderboardList}>
+            <div className={styles.leaderboardRow}>
+              <div className={styles.rank}>Rank</div>
+              <div className={styles.nickname}>Nickname</div>
+              <div className={styles.points}>Total Points</div>
+            </div>
+            <div className={styles.leaderboardRow}>
+              <div className={styles.rank}>1</div>
+              <div className={styles.nickname}>Player4</div>
+              <div className={styles.points}>6</div>
+            </div>
+            <div className={styles.leaderboardRow}>
+              <div className={styles.rank}>2</div>
+              <div className={styles.nickname}>Player5</div>
+              <div className={styles.points}>5</div>
+            </div>
+            <div className={styles.leaderboardRow}>
+              <div className={styles.rank}>3</div>
+              <div className={styles.nickname}>Player6</div>
+              <div className={styles.points}>4</div>
             </div>
           </div>
         </div>
