@@ -26,6 +26,7 @@ function LobbyRoom() {
   const authHeader = useAuthHeader();
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
+  const [readyPlayers, setReadyPlayers] = useState(new Set());
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
     `${WS_URL}/ws/${authHeader.slice(7)}`,
@@ -108,6 +109,20 @@ function LobbyRoom() {
 
   if (!auth) return null;
 
+  const handleReadyClick = () => {
+    setReadyPlayers((prev) => {
+      const newReadyPlayers = new Set(prev);
+      if (newReadyPlayers.has(auth.name)) {
+        newReadyPlayers.delete(auth.name); // Toggle off if already ready
+      } else {
+        newReadyPlayers.add(auth.name); // Mark as ready
+      }
+      return newReadyPlayers;
+    });
+  };
+
+  const allPlayersReady = readyPlayers.size === lobbyPlayers.length;
+
   return (
     <main className={styles.background}>
       <div className={styles.centerMultiplayer}>
@@ -179,6 +194,7 @@ function LobbyRoom() {
                         <strong className={styles.statisticsContainer}>
                           <img src='images/playerprofile.png' className={styles.playerProfileImg} />
                           {player}
+                          {readyPlayers.has(player) && <span> (Ready)</span>}
                         </strong>
                       </div>
                     </div>
@@ -211,9 +227,14 @@ function LobbyRoom() {
                   <MultiPly players={lobbyPlayers} />
                 </Modal>
 
-                <button onClick={open} className={styles.playButton}>
-                  Play
+                <button onClick={handleReadyClick} className={styles.playButton}>
+                  {readyPlayers.has(auth.name) ? 'Unready' : 'Ready'}
                 </button>
+                {allPlayersReady && (
+                  <button onClick={open} className={styles.playButton}>
+                    Start Game
+                  </button>
+                )}
               </div>
             </div>
           </div>
