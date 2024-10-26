@@ -194,7 +194,9 @@ function LobbyRoom() {
                         <strong className={styles.statisticsContainer}>
                           <img src='images/playerprofile.png' className={styles.playerProfileImg} />
                           {player}
-                          {readyPlayers.has(player) && <span> (Ready)</span>}
+                          {readyPlayers.has(player) && (
+                            <span className={styles.readyText}> (Ready)</span>
+                          )}
                         </strong>
                       </div>
                     </div>
