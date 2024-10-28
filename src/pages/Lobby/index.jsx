@@ -203,7 +203,9 @@ function LobbyRoom() {
                             alt='Player Profile'
                           />
                           {player}
-                          {readyPlayers.has(player) && <span> (Ready)</span>}
+                          {readyPlayers.has(player) && (
+                            <span className={styles.readyText}> (Ready)</span>
+                          )}
                         </strong>
                       </div>
                     </div>
