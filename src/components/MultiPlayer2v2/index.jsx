@@ -223,48 +223,31 @@ function MultiPly({ players }) {
       console.log('User is logged in.');
     }
   }, [auth, navigate]);
-  if (!auth) return null;
+  if (!auth) return;
+
+  const filteredPlayers = players.filter((player) => player !== auth.name);
+  console.log(filteredPlayers);
 
   return (
     <main>
-      {players.length > 0 ? (
-        players.map((player, index) => (
-          <div key={index}>
-            <div className={styles.playerCard1}>
-              <div className={styles.buttonsContainer}>
-                <Actionbutton action='rock' onActionSelected={onActionSelected} />
-                <Actionbutton action='paper' onActionSelected={onActionSelected} />
-                <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-              </div>
-              <div className={styles.statisticsContainer}>
-                <img src={avatar} className={styles.playerProfileImg} />
-                <div className={styles.playerStats}>
-                  name: {player}
-                  <br />
-                  points: 0
-                </div>
-              </div>
-            </div>
-            <div className={styles.playerCard2}>
-              <div className={styles.buttonsContainer}>
-                <Actionbutton action='rock' onActionSelected={onActionSelected} />
-                <Actionbutton action='paper' onActionSelected={onActionSelected} />
-                <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-              </div>
-              <div className={styles.statisticsContainer}>
-                <img src={avatar} className={styles.playerProfileImg} />
-                <div className={styles.playerStats}>
-                  name: {player}
-                  <br />
-                  points: 0
-                </div>
-              </div>
+      {filteredPlayers.map((player, index) => (
+        <div key={index} className={styles[`playerCard${index + 1}`]}>
+          <div className={styles.buttonsContainer}>
+            <Actionbutton action='rock' onActionSelected={onActionSelected} />
+            <Actionbutton action='paper' onActionSelected={onActionSelected} />
+            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
+          </div>
+          <div className={styles.statisticsContainer}>
+            <img src={avatar} className={styles.playerProfileImg} alt={`${player} profile`} />
+            <div className={styles.playerStats}>
+              name: {player}
+              <br />
+              points: 0
             </div>
           </div>
-        ))
-      ) : (
-        <p>No players in the lobby.</p>
-      )}
+        </div>
+      ))}
+
       <div className={styles.containerT}>
         <button className={styles.clockButton}>
           <img src='video/clock.gif' className={styles.clockImg} alt='Clock' />
@@ -275,81 +258,7 @@ function MultiPly({ players }) {
       </div>
       <div className={styles.containerTable}>
         <img src='images/table.png' className={styles.tableM} alt='Table' />
-        {/* <div className={styles.playerCard1}>
-          <div className={styles.buttonsContainer}>
-            <Actionbutton action='rock' onActionSelected={onActionSelected} />
-            <Actionbutton action='paper' onActionSelected={onActionSelected} />
-            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-          </div>
-          <div className={styles.statisticsContainer}>
-            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
-            <div className={styles.playerStats}>
-              name: Player1
-              <br />
-              points: 0
-            </div>
-          </div>
-        </div> */}
-        {/* <div className={styles.playerCard2}>
-          <div className={styles.buttonsContainer}>
-            <Actionbutton action='rock' onActionSelected={onActionSelected} />
-            <Actionbutton action='paper' onActionSelected={onActionSelected} />
-            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-          </div>
-          <div className={styles.statisticsContainer}>
-            <img src='images/playerprofile.png' className={styles.playerProfileImg} />
-            <div className={styles.playerStats}>
-              name: Player2
-              <br />
-              points: 0
-            </div>
-          </div>
-        </div> */}
-        <div className={styles.playerCard3}>
-          <div className={styles.buttonsContainer}>
-            <Actionbutton action='rock' onActionSelected={onActionSelected} />
-            <Actionbutton action='paper' onActionSelected={onActionSelected} />
-            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-          </div>
-          <div className={styles.statisticsContainer}>
-            <img src={avatar} className={styles.playerProfileImg} />
-            <div className={styles.playerStats}>
-              name: Player3
-              <br />
-              points: 0
-            </div>
-          </div>
-        </div>
-        <div className={styles.playerCard4}>
-          <div className={styles.buttonsContainer}>
-            <Actionbutton action='rock' onActionSelected={onActionSelected} />
-            <Actionbutton action='paper' onActionSelected={onActionSelected} />
-            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-          </div>
-          <div className={styles.statisticsContainer}>
-            <img src={avatar} className={styles.playerProfileImg} />
-            <div className={styles.playerStats}>
-              name: Player4
-              <br />
-              points: 0
-            </div>
-          </div>
-        </div>
-        <div className={styles.playerCard5}>
-          <div className={styles.buttonsContainer}>
-            <Actionbutton action='rock' onActionSelected={onActionSelected} />
-            <Actionbutton action='paper' onActionSelected={onActionSelected} />
-            <Actionbutton action='scissors' onActionSelected={onActionSelected} />
-          </div>
-          <div className={styles.statisticsContainer}>
-            <img src={avatar} className={styles.playerProfileImg} />
-            <div className={styles.playerStats}>
-              name: Player5
-              <br />
-              points: 0
-            </div>
-          </div>
-        </div>
+
         <div className={styles.myComponent}>
           <div className={styles.playerAvatar}>
             <img src={avatar} alt='Player Avatar' className={styles.playerAvatarImg} />

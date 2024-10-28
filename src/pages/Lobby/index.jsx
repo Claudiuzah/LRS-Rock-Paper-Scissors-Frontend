@@ -27,6 +27,7 @@ function LobbyRoom() {
   const authHeader = useAuthHeader();
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
+  const [readyPlayers, setReadyPlayers] = useState(new Set());
   const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
@@ -117,6 +118,20 @@ function LobbyRoom() {
 
   if (!auth) return null;
 
+  const handleReadyClick = () => {
+    setReadyPlayers((prev) => {
+      const newReadyPlayers = new Set(prev);
+      if (newReadyPlayers.has(auth.name)) {
+        newReadyPlayers.delete(auth.name); // Toggle off if already ready
+      } else {
+        newReadyPlayers.add(auth.name); // Mark as ready
+      }
+      return newReadyPlayers;
+    });
+  };
+
+  const allPlayersReady = readyPlayers.size === lobbyPlayers.length;
+
   return (
     <main className={styles.background}>
       <div className={styles.centerMultiplayer}>
@@ -188,6 +203,7 @@ function LobbyRoom() {
                             alt='Player Profile'
                           />
                           {player}
+                          {readyPlayers.has(player) && <span> (Ready)</span>}
                         </strong>
                       </div>
                     </div>
@@ -220,9 +236,14 @@ function LobbyRoom() {
                   <MultiPly players={lobbyPlayers} />
                 </Modal>
 
-                <button onClick={open} className={styles.playButton}>
-                  Play
+                <button onClick={handleReadyClick} className={styles.playButton}>
+                  {readyPlayers.has(auth.name) ? 'Unready' : 'Ready'}
                 </button>
+                {allPlayersReady && (
+                  <button onClick={open} className={styles.playButton}>
+                    Start Game
+                  </button>
+                )}
               </div>
             </div>
           </div>
