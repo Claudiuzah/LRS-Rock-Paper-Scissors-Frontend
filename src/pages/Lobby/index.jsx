@@ -179,8 +179,9 @@ function LobbyRoom() {
                       <div className={styles.playerCard}>
                         <strong className={styles.statisticsContainer}>
                           <img
-                            src='public/images/avatari/A20.png'
+                            src={getRandomAvatar()}
                             className={styles.playerProfileImg}
+                            alt='Player Profile'
                           />
                           {player}
                         </strong>

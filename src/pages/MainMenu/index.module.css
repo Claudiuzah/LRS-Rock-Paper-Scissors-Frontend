@@ -198,3 +198,47 @@ body {
   cursor: pointer;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.avatarSelection {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.avatarButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.avatarButton img {
+  width: 50px; /* Dimensiunea imaginii */
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.avatarButton img:hover {
+  transform: scale(1.1); /* Efect de mărire pe hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.chooseAvatarButton {
+  display: block; /* Pentru a permite centrare */
+  margin: 20px auto; /* Centrat pe orizontală și cu spațiu sus-jos */
+  background-color: black; /* Fundal de culoare similară */
+  color: white; /* Text alb */
+  font-size: 18px; /* Ajustează dimensiunea textului după preferință */
+  padding: 10px 20px; /* Spațiu interior */
+  border: none; /* Elimină bordura implicită */
+  border-radius: 20px; /* Rotunjire similară */
+  cursor: pointer;
+  transition: background-color 0.7s ease; /* Tranziție pentru hover */
+}
+
+.chooseAvatarButton:hover {
+  background-color: rgb(226, 107, 38); /* Culoare de hover similară */
+}

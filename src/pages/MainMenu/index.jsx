@@ -42,6 +42,8 @@ function MainMenu() {
   const [currentVolume, setCurrentVolume] = useState(0);
   const navigate = useNavigate();
   const auth = useAuthUser();
+  const [showAvatars, setShowAvatars] = useState(false);
+
   // const authHeader = useAuthHeader();
 
   const signOut = useSignOut();
@@ -131,6 +133,91 @@ function MainMenu() {
             />
             <span className={styles.volumePercent}>{currentVolume}%</span>
           </div>
+          <button
+            className={styles.chooseAvatarButton}
+            onClick={() => setShowAvatars(!showAvatars)}
+          >
+            Alegeți Avatarul
+          </button>
+          {showAvatars && (
+            <div className={styles.avatarSelection}>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A1 selectat")}>
+                <img src='images/avatari/A1.png' alt='Avatar A4' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A2 selectat")}>
+                <img src='images/avatari/A2.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A3 selectat")}>
+                <img src='images/avatari/A3.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A4 selectat")}>
+                <img src='images/avatari/A4.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A5 selectat")}>
+                <img src='images/avatari/A5.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A6 selectat")}>
+                <img src='images/avatari/A6.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A7 selectat")}>
+                <img src='images/avatari/A7.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A8 selectat")}>
+                <img src='images/avatari/A8.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A9 selectat")}>
+                <img src='images/avatari/A9.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A10 selectat")}>
+                <img src='images/avatari/A10.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A11 selectat")}>
+                <img src='images/avatari/A11.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A12 selectat")}>
+                <img src='images/avatari/A12.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A13 selectat")}>
+                <img src='images/avatari/A13.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A14 selectat")}>
+                <img src='images/avatari/A14.png' alt='Avatar A3' />
+              </button>
+              <button
+                className={styles.avatarButton}
+                onClick={() => console.log("Avatar A15 selectat")}>
+                <img src='images/avatari/A15.png' alt='Avatar A3' />
+              </button>
+            </div>
+          )}
         </div>
       </Modal>
       {/* <Home authHeader={authHeader} /> */}
