@@ -10,7 +10,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal, ScrollArea } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
 import { WS_URL } from '../../components/constants';
-import { getRandomAvatar } from 'src/components/randomAvatar.jsx';
+// import { getRandomAvatar } from 'src/components/randomAvatar.jsx';
 
 function LobbyRoom() {
   // const navigate = useNavigate();

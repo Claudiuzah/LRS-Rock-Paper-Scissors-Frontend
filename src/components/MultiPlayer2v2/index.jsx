@@ -134,7 +134,7 @@ function MultiPly({ players }) {
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const { open, close } = useDisclosure();
-  const [avatars, setAvatars] = useState([]);
+  const [setAvatars] = useState([]);
 
   useEffect(() => {
     const generatedAvatars = players.map(() => getRandomAvatar()); // Generăm un avatar pentru fiecare jucător
