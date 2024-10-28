@@ -43,10 +43,22 @@ function MainMenu() {
   const navigate = useNavigate();
   const auth = useAuthUser();
   const [showAvatars, setShowAvatars] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState('images/avatar.png'); // Avatarul selectat
+  const handleAvatarSelection = (avatarPath) => {
+    setSelectedAvatar(avatarPath); // Setează avatarul în state
+    localStorage.setItem('selectedAvatar', avatarPath); // Salvează avatarul în Local Storage
+  };
 
   // const authHeader = useAuthHeader();
 
   const signOut = useSignOut();
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem('selectedAvatar');
+    if (savedAvatar) {
+      setSelectedAvatar(savedAvatar); // Setează avatarul în state dacă există în Local Storage
+    }
+  }, []);
 
   useEffect(() => {
     if (!auth) {
@@ -96,7 +108,7 @@ function MainMenu() {
               <div className={styles.myComponent}>
                 <div className={styles.playerAvatar}>
                   <img
-                    src='images/avatar.png'
+                    src={selectedAvatar}
                     alt='Player Avatar'
                     className={styles.playerAvatarImg}
                   />
@@ -141,81 +153,15 @@ function MainMenu() {
           </button>
           {showAvatars && (
             <div className={styles.avatarSelection}>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A1 selectat")}>
-                <img src='images/avatari/A1.png' alt='Avatar A4' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A2 selectat")}>
-                <img src='images/avatari/A2.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A3 selectat")}>
-                <img src='images/avatari/A3.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A4 selectat")}>
-                <img src='images/avatari/A4.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A5 selectat")}>
-                <img src='images/avatari/A5.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A6 selectat")}>
-                <img src='images/avatari/A6.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A7 selectat")}>
-                <img src='images/avatari/A7.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A8 selectat")}>
-                <img src='images/avatari/A8.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A9 selectat")}>
-                <img src='images/avatari/A9.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A10 selectat")}>
-                <img src='images/avatari/A10.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A11 selectat")}>
-                <img src='images/avatari/A11.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A12 selectat")}>
-                <img src='images/avatari/A12.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A13 selectat")}>
-                <img src='images/avatari/A13.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A14 selectat")}>
-                <img src='images/avatari/A14.png' alt='Avatar A3' />
-              </button>
-              <button
-                className={styles.avatarButton}
-                onClick={() => console.log("Avatar A15 selectat")}>
-                <img src='images/avatari/A15.png' alt='Avatar A3' />
-              </button>
+              {Array.from({ length: 15 }, (_, i) => (
+                <button
+                  key={i}
+                  className={styles.avatarButton}
+                  onClick={() => handleAvatarSelection(`images/avatari/A${i + 1}.png`)}
+                >
+                  <img src={`images/avatari/A${i + 1}.png`} alt={`Avatar A${i + 1}`} />
+                </button>
+              ))}
             </div>
           )}
         </div>

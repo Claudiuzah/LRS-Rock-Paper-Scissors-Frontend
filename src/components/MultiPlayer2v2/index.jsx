@@ -171,7 +171,7 @@ function MultiPly({ players }) {
 
   const [moves, setMoves] = useState(1);
   const [round, setRounds] = useState(1);
-
+  const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
   const onActionSelected = (selectedAction) => {
     const newComputerAction = Bot();
     setMoves(moves + 1);
@@ -209,6 +209,13 @@ function MultiPly({ players }) {
   };
 
   useEffect(() => {
+    const savedAvatar = localStorage.getItem('selectedAvatar');
+    if (savedAvatar) {
+      setAvatar(savedAvatar); // Setează avatarul din Local Storage dacă există
+    }
+  }, []);
+
+  useEffect(() => {
     if (!auth) {
       navigate('/auth');
       console.log('User is not logged in.');
@@ -230,7 +237,7 @@ function MultiPly({ players }) {
                 <Actionbutton action='scissors' onActionSelected={onActionSelected} />
               </div>
               <div className={styles.statisticsContainer}>
-                <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+                <img src={avatar} className={styles.playerProfileImg} />
                 <div className={styles.playerStats}>
                   name: {player}
                   <br />
@@ -245,7 +252,7 @@ function MultiPly({ players }) {
                 <Actionbutton action='scissors' onActionSelected={onActionSelected} />
               </div>
               <div className={styles.statisticsContainer}>
-                <img src='images/playerprofile.png' className={styles.playerProfileImg} />
+                <img src={avatar} className={styles.playerProfileImg} />
                 <div className={styles.playerStats}>
                   name: {player}
                   <br />
@@ -305,7 +312,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src={getRandomAvatar()} className={styles.playerProfileImg} />
+            <img src={avatar} className={styles.playerProfileImg} />
             <div className={styles.playerStats}>
               name: Player3
               <br />
@@ -320,7 +327,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src={getRandomAvatar()} className={styles.playerProfileImg} />
+            <img src={avatar} className={styles.playerProfileImg} />
             <div className={styles.playerStats}>
               name: Player4
               <br />
@@ -335,7 +342,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src={getRandomAvatar()} className={styles.playerProfileImg} />
+            <img src={avatar} className={styles.playerProfileImg} />
             <div className={styles.playerStats}>
               name: Player5
               <br />
@@ -345,7 +352,7 @@ function MultiPly({ players }) {
         </div>
         <div className={styles.myComponent}>
           <div className={styles.playerAvatar}>
-            <img src='images/avatar.png' alt='Player Avatar' className={styles.playerAvatarImg} />
+            <img src={avatar} alt='Player Avatar' className={styles.playerAvatarImg} />
           </div>
 
           <div className={styles.playerInfo}>

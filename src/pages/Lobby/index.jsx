@@ -27,6 +27,7 @@ function LobbyRoom() {
   const authHeader = useAuthHeader();
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
+  const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
     `${WS_URL}/ws/${authHeader.slice(7)}`,
@@ -35,6 +36,13 @@ function LobbyRoom() {
       shouldReconnect: () => true,
     },
   );
+
+  useEffect(() => {
+    const savedAvatar = localStorage.getItem('selectedAvatar');
+    if (savedAvatar) {
+      setAvatar(savedAvatar); // Setează avatarul din Local Storage dacă există
+    }
+  }, []);
 
   useEffect(() => {
     if (readyState === ReadyState.OPEN) {
@@ -124,11 +132,7 @@ function LobbyRoom() {
             <div className={styles.containerProfile}></div>
             <div className={styles.boxProfile}>
               <div className={styles.playerAvatar}>
-                <img
-                  src='images/avatar.png'
-                  alt='Player Avatar'
-                  className={styles.playerAvatarImg}
-                />
+                <img src={avatar} alt='Player Avatar' className={styles.playerAvatarImg} />
               </div>
               <div className={styles.playerInfo}>
                 <div className={styles.playerName}>{auth.name}</div>
@@ -149,7 +153,7 @@ function LobbyRoom() {
                       <div className={styles.playerCardOnline}>
                         <div className={styles.iconContainer}>
                           <img
-                            src={getRandomAvatar()}
+                            src={avatar}
                             className={styles.playerProfileImg}
                             alt='Player Profile'
                           />
@@ -179,7 +183,7 @@ function LobbyRoom() {
                       <div className={styles.playerCard}>
                         <strong className={styles.statisticsContainer}>
                           <img
-                            src={getRandomAvatar()}
+                            src={avatar}
                             className={styles.playerProfileImg}
                             alt='Player Profile'
                           />
