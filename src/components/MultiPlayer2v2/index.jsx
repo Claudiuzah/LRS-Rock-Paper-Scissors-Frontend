@@ -134,8 +134,7 @@ function MultiPly({ players }) {
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const { open, close } = useDisclosure();
-  // const [setAvatars] = useState([]);
-  const [avatar, setAvatars] = useState('images/avatar.png'); // Avatar implicit
+  const [setAvatars] = useState([]);
 
   useEffect(() => {
     const generatedAvatars = players.map(() => getRandomAvatar()); // Generăm un avatar pentru fiecare jucător
@@ -172,7 +171,7 @@ function MultiPly({ players }) {
 
   const [moves, setMoves] = useState(1);
   const [round, setRounds] = useState(1);
-  // const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
+  const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
   const onActionSelected = (selectedAction) => {
     const newComputerAction = Bot();
     setMoves(moves + 1);
@@ -212,7 +211,7 @@ function MultiPly({ players }) {
   useEffect(() => {
     const savedAvatar = localStorage.getItem('selectedAvatar');
     if (savedAvatar) {
-      setAvatars(savedAvatar); // Setează avatarul din Local Storage dacă există
+      setAvatar(savedAvatar); // Setează avatarul din Local Storage dacă există
     }
   }, []);
 
@@ -239,7 +238,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src={avatar} className={styles.playerProfileImg} alt={`${player} profile`} />
+            <img src={avatar} className={styles.playerProfileImg} alt={`${player} profile`}/>
             <div className={styles.playerStats}>
               name: {player}
               <br />
