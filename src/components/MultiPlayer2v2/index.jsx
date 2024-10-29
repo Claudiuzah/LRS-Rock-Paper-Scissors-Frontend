@@ -134,12 +134,12 @@ function MultiPly({ players }) {
   const navigate = useNavigate();
   const auth = useAuthUser();
   // const { open, close } = useDisclosure();
-  const [setAvatars] = useState([]);
+  // const [setAvatars] = useState([]);
 
-  useEffect(() => {
-    const generatedAvatars = players.map(() => getRandomAvatar()); // Generăm un avatar pentru fiecare jucător
-    setAvatars(generatedAvatars); // Salvăm avatarurile în state
-  }, [players]);
+  // useEffect(() => {
+  //   const generatedAvatars = players.map(() => getRandomAvatar()); // Generăm un avatar pentru fiecare jucător
+  //   setAvatars(generatedAvatars); // Salvăm avatarurile în state
+  // }, [players]);
 
   useEffect(() => {
     let timer;
@@ -161,8 +161,9 @@ function MultiPly({ players }) {
       setRemainingTime(20);
     }
   }, [remainingTime]);
-  const [playerAction, setPlayerAction] = useState('');
-  const [computerAction, setComputerAction] = useState('');
+  const [setPlayerAction] = useState('');
+  // playerAction,
+  // const [computerAction, setComputerAction] = useState('');
 
   const [playerScore, setPlayerScore] = useState(0);
   const [computerScore, setComputerScore] = useState(0);
@@ -173,7 +174,7 @@ function MultiPly({ players }) {
   const [round, setRounds] = useState(1);
   const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
   const onActionSelected = (selectedAction) => {
-    const newComputerAction = Bot();
+    // const newComputerAction = Bot();
     setMoves(moves + 1);
     // if (moves == 3) {
     //   setMoves(1);
@@ -183,17 +184,17 @@ function MultiPly({ players }) {
     //   Roundmessage(round);
     // }
     setPlayerAction(selectedAction);
-    setComputerAction(newComputerAction);
-    const newWinner = Calculatewinner(selectedAction, newComputerAction);
-    if (round == 5) {
-      Winnermessage(finalScoreC, finalScoreP);
-    } else if (newWinner === -1) {
-      setPlayerScore(playerScore + 2);
-      setComputerScore(computerScore - 1);
-    } else if (newWinner === 1) {
-      setComputerScore(computerScore + 2);
-      setPlayerScore(playerScore - 1);
-    }
+    // setComputerAction(newComputerAction);
+    // const newWinner = Calculatewinner(selectedAction, newComputerAction);
+    // if (round == 5) {
+    //   Winnermessage(finalScoreC, finalScoreP);
+    // } else if (newWinner === -1) {
+    //   setPlayerScore(playerScore + 2);
+    //   setComputerScore(computerScore - 1);
+    // } else if (newWinner === 1) {
+    //   setComputerScore(computerScore + 2);
+    //   setPlayerScore(playerScore - 1);
+    // }
 
     setFinalScoreP(finalScoreP + playerScore);
     setFinalScoreC(finalScoreC + computerScore);
