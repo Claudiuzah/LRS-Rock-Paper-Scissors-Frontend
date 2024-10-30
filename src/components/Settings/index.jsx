@@ -3,9 +3,17 @@ import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react';
 import styles from './index.module.css';
 
-function Settings() {
+function Settings({ onVolumeChange }) {
+  // Adaugă prop onVolumeChange
   const [opened, { open, close }] = useDisclosure(false);
-  const [currentVolume, setCurrentVolume] = useState();
+  const [currentVolume, setCurrentVolume] = useState(50); // Valoare inițială a volumului
+
+  const handleVolumeChange = (e) => {
+    const volume = e.target.value;
+    setCurrentVolume(volume);
+    onVolumeChange(volume); // Apelează funcția pentru a actualiza volumul în Audio
+  };
+
   return (
     <main>
       <Modal
@@ -23,7 +31,7 @@ function Settings() {
             min='0'
             max='100'
             value={currentVolume}
-            onChange={(e) => setCurrentVolume(e.target.value)}
+            onChange={handleVolumeChange} // Actualizează volumul
           />
         </div>
       </Modal>
