@@ -153,7 +153,7 @@ function MainMenu() {
           </button>
           {showAvatars && (
             <div className={styles.avatarSelection}>
-              {Array.from({ length: 15 }, (_, i) => (
+              {Array.from({ length: 20 }, (_, i) => (
                 <button
                   key={i}
                   className={styles.avatarButton}

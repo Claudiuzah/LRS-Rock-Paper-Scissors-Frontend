@@ -5,7 +5,7 @@ import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 // import { Modal, Button, Group, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 // import { useDisclosure } from '@mantine/hooks';
-import { getRandomAvatar } from 'src/components/randomAvatar.jsx';
+// import { getRandomAvatar } from 'src/components/randomAvatar.jsx';//
 
 const actions = {
   rock: 'scissors',
@@ -239,7 +239,7 @@ function MultiPly({ players }) {
             <Actionbutton action='scissors' onActionSelected={onActionSelected} />
           </div>
           <div className={styles.statisticsContainer}>
-            <img src={avatar} className={styles.playerProfileImg} alt={`${player} profile`}/>
+            <img src={avatar} className={styles.playerProfileImg} alt={`${player} profile`} />
             <div className={styles.playerStats}>
               name: {player}
               <br />
