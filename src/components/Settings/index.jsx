@@ -4,14 +4,13 @@ import { useState } from 'react';
 import styles from './index.module.css';
 
 function Settings({ onVolumeChange }) {
-  // Adaugă prop onVolumeChange
   const [opened, { open, close }] = useDisclosure(false);
-  const [currentVolume, setCurrentVolume] = useState(50); // Valoare inițială a volumului
+  const [currentVolume, setCurrentVolume] = useState(50); // Initial volume
 
   const handleVolumeChange = (e) => {
     const volume = e.target.value;
     setCurrentVolume(volume);
-    onVolumeChange(volume); // Apelează funcția pentru a actualiza volumul în Audio
+    onVolumeChange(volume); // Update volume in Audio
   };
 
   return (
@@ -31,7 +30,7 @@ function Settings({ onVolumeChange }) {
             min='0'
             max='100'
             value={currentVolume}
-            onChange={handleVolumeChange} // Actualizează volumul
+            onChange={handleVolumeChange} // Update volume
           />
         </div>
       </Modal>

@@ -1,17 +1,21 @@
 import { useState } from 'react';
-import Audio from './Audio';
 import Settings from './Settings';
+import Audio from './Audio';
 
-const ParentComponent = () => {
-  const [volume, setVolume] = useState(50); // Valoare inițială a volumului
+function App() {
+  const [volumes, setVolume] = useState(50); // Initial volume
+
+  // Update volume
+  const handleVolumeChange = (newVolume) => {
+    setVolume(newVolume);
+  };
 
   return (
     <div>
-      <h1>Player Audio</h1>
-      <Audio volume={volume} /> {/* Transmite volumul către componenta Audio */}
-      <Settings onVolumeChange={setVolume} /> {/* Transmite funcția de schimbare a volumului */}
+      <Settings onVolumeChange={handleVolumeChange} />
+      <Audio volumes={volumes} />
     </div>
   );
-};
+}
 
-export default ParentComponent;
+export default App;
