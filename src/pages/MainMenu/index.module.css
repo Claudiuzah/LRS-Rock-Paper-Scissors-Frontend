@@ -26,7 +26,7 @@
 }
 
 body {
-  background-image: url('.iamages/bg.png');
+  background-image: url('./images/bg.png');
 }
 .centeredenu {
   position: absolute;
@@ -187,9 +187,9 @@ body {
 }
 
 .signOutButton {
-  position: absolute;  
-  top: 13px;  
-  right: 71px;    
+  position: absolute;
+  top: 13px;
+  right: 71px;
   background-color: black;
   color: white;
   font-size: 20px;
