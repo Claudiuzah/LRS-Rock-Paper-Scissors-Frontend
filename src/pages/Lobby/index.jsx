@@ -10,24 +10,16 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal, ScrollArea } from '@mantine/core';
 import MultiPly from '../../components/MultiPlayer2v2';
 import { WS_URL } from '../../components/constants';
-// import { getRandomAvatar } from 'src/components/randomAvatar.jsx';
 
 function LobbyRoom() {
-  // const navigate = useNavigate();
-  // const auth = useAuthUser();
-  // const authHeader = useAuthHeader();
-  // const [playersList, setPlayersList] = useState([]);
-  // const [playersLb, setPlayersLb] = useState([]);
-
-  // const [opened, { open, close }] = useDisclosure(false);
   const [allPlayers, setAllPlayers] = useState([]); // List of all players
   const [lobbyPlayers, setLobbyPlayers] = useState([]); // List of players in the lobby
-  // const [maxPlayers, setMaxPlayers] = useState(4);
   const auth = useAuthUser();
   const authHeader = useAuthHeader();
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
   const [readyPlayers, setReadyPlayers] = useState(new Set());
+  const [readyPlayer, setReadyPlayer] = useState(new Set());
   const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
@@ -61,6 +53,11 @@ function LobbyRoom() {
   useEffect(() => {
     if (lastJsonMessage) {
       console.log('New message received: ', lastJsonMessage);
+
+      if (lastJsonMessage.type == 'readyPlayers') {
+        const allReadyPlayers = new Set(lastJsonMessage.readyPlayers || []);
+        setReadyPlayers(allReadyPlayers);
+      }
 
       if (lastJsonMessage.type === 'allPlayersUpdate') {
         // Update the list of all players
@@ -100,13 +97,6 @@ function LobbyRoom() {
     }
   }, [lastJsonMessage]);
 
-  // const updateMaxPlayers = () => {
-  //   sendJsonMessage({
-  //     event: 'updateMaxPlayers',
-  //     data: { maxPlayers },
-  //   });
-  // };
-
   useEffect(() => {
     if (!auth) {
       navigate('/auth');
@@ -119,18 +109,26 @@ function LobbyRoom() {
   if (!auth) return null;
 
   const handleReadyClick = () => {
-    setReadyPlayers((prev) => {
-      const newReadyPlayers = new Set(prev);
-      if (newReadyPlayers.has(auth.name)) {
-        newReadyPlayers.delete(auth.name); // Toggle off if already ready
-      } else {
-        newReadyPlayers.add(auth.name); // Mark as ready
-      }
-      return newReadyPlayers;
-    });
+    if (!readyPlayer) {
+      setReadyPlayer(true);
+      sendJsonMessage({
+        event: 'player ready',
+        data: {
+          name: auth.name,
+          ready: true,
+        },
+      });
+    } else {
+      setReadyPlayer(false);
+      sendJsonMessage({
+        event: 'player ready',
+        data: {
+          name: auth.name,
+          ready: false,
+        },
+      });
+    }
   };
-
-  const allPlayersReady = readyPlayers.size === lobbyPlayers.length;
 
   return (
     <main className={styles.background}>
@@ -203,8 +201,10 @@ function LobbyRoom() {
                             alt='Player Profile'
                           />
                           {player}
-                          {readyPlayers.has(player) && (
+                          {readyPlayers.has(player) ? (
                             <span className={styles.readyText}> (Ready)</span>
+                          ) : (
+                            <span className={styles.readyText}></span>
                           )}
                         </strong>
                       </div>
@@ -239,11 +239,22 @@ function LobbyRoom() {
                 </Modal>
 
                 <button onClick={handleReadyClick} className={styles.playButton}>
-                  {readyPlayers.has(auth.name) ? 'Unready' : 'Ready'}
+                  {readyPlayer ? 'Unready' : 'Ready'}
                 </button>
-                {allPlayersReady && (
+                {readyPlayers.size == lobbyPlayers.length && (
                   <button onClick={open} className={styles.playButton}>
                     Start Game
+                  </button>
+                )}
+                {lobbyPlayers.length >= 2 ? (
+                  readyPlayers.length == lobbyPlayers.length && (
+                    <button onClick={open} className={styles.playButton}>
+                      Start Game
+                    </button>
+                  )
+                ) : (
+                  <button onClick={close} className={styles.playButton}>
+                    Waiting for players...
                   </button>
                 )}
               </div>
