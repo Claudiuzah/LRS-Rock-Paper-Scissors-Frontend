@@ -18,8 +18,8 @@ function LobbyRoom() {
   const authHeader = useAuthHeader();
   const navigate = useNavigate();
   const [opened, { open, close }] = useDisclosure(false);
-  const [readyPlayers, setReadyPlayers] = useState(new Set());
-  const [readyPlayer, setReadyPlayer] = useState(new Set());
+  const [readyPlayers, setReadyPlayers] = useState([]);
+  const [readyPlayer, setReadyPlayer] = useState(false);
   const [avatar, setAvatar] = useState('images/avatar.png'); // Avatar implicit
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
@@ -55,7 +55,7 @@ function LobbyRoom() {
       console.log('New message received: ', lastJsonMessage);
 
       if (lastJsonMessage.type == 'readyPlayers') {
-        const allReadyPlayers = new Set(lastJsonMessage.readyPlayers || []);
+        const allReadyPlayers = lastJsonMessage.readyPlayers || [];
         setReadyPlayers(allReadyPlayers);
       }
 
@@ -109,25 +109,14 @@ function LobbyRoom() {
   if (!auth) return null;
 
   const handleReadyClick = () => {
-    if (!readyPlayer) {
-      setReadyPlayer(true);
-      sendJsonMessage({
-        event: 'player ready',
-        data: {
-          name: auth.name,
-          ready: true,
-        },
-      });
-    } else {
-      setReadyPlayer(false);
-      sendJsonMessage({
-        event: 'player ready',
-        data: {
-          name: auth.name,
-          ready: false,
-        },
-      });
-    }
+    setReadyPlayer(!readyPlayer);
+    sendJsonMessage({
+      event: 'player ready',
+      data: {
+        name: auth.name,
+        ready: !readyPlayer,
+      },
+    });
   };
 
   return (
@@ -201,7 +190,8 @@ function LobbyRoom() {
                             alt='Player Profile'
                           />
                           {player}
-                          {readyPlayers.has(player) ? (
+                          {readyPlayers.length >= 1 &&
+                          readyPlayers.some((state) => state === player) ? (
                             <span className={styles.readyText}> (Ready)</span>
                           ) : (
                             <span className={styles.readyText}></span>
@@ -214,6 +204,7 @@ function LobbyRoom() {
                   <div className={styles.playerCard}>No players connected</div>
                 )}
               </div>
+
               <div>
                 <Modal
                   opened={opened}
@@ -223,12 +214,15 @@ function LobbyRoom() {
                   radius={0}
                   transitionProps={{ transition: 'fade', duration: 200 }}
                   styles={{
+                    body: {
+                      backgroundImage: 'url(/images/bg.png)',
+                      width: '100%',
+                      height: '100%',
+                      maxHeight: '94vh',
+                    },
                     modal: {
-                      backgroundImage: 'url(public/images/bg.png)',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      color: 'white', // Change text color for better readability
-                      padding: '20px', // Add some padding Change this to your desired background color
+                      color: 'white',
+                      padding: '20px',
                     },
                     header: {
                       backgroundColor: '#ccc', // Optional: Change header background color
@@ -247,7 +241,7 @@ function LobbyRoom() {
                   </button>
                 )}
                 {lobbyPlayers.length >= 2 ? (
-                  readyPlayers.length == lobbyPlayers.length && (
+                  readyPlayers.length === lobbyPlayers.length && (
                     <button onClick={open} className={styles.playButton}>
                       Start Game
                     </button>
