@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Quicksand', sans-serif;
-}
+
 .groupContainerMenu {
   display: flex;
   flex-direction: column;
@@ -25,9 +20,6 @@
   margin-top: 45%;
 }
 
-body {
-  background-image: url('.iamages/bg.png');
-}
 .centeredenu {
   position: absolute;
   top: 50%;
@@ -194,9 +186,9 @@ body {
 }
 
 .signOutButton {
-  position: absolute;  
-  top: 13px;  
-  right: 71px;    
+  position: absolute;
+  top: 13px;
+  right: 71px;
   background-color: black;
   color: white;
   font-size: 20px;

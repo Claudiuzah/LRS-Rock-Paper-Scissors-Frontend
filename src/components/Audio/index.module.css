@@ -1,5 +1,5 @@
 .audioButton {
-  background-image: url('video/audio_off.gif');
+  background-image: url('./video/audio_off.gif');
   background-size: cover;
   width: 60px;
   height: 60px;
@@ -14,5 +14,5 @@
 }
 
 .audioButton.playing {
-  background-image: url('video/audio_on.gif');
+  background-image: url('./video/audio_on.gif');
 }
