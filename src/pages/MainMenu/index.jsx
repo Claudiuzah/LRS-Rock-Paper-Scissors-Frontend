@@ -40,6 +40,7 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
   const [currentVolume, setCurrentVolume] = useState(0);
+  const [isOn, setIsOn] = useState(false);
   const navigate = useNavigate();
   const auth = useAuthUser();
   const [showAvatars, setShowAvatars] = useState(false);
@@ -131,25 +132,37 @@ function MainMenu() {
         withCloseButton={false}
         centered={true}
         lockScroll={false}
-        title='Settings'
       >
         <div>
-          <h3>Volum</h3>
+          <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>Volum</h3>
+          <button
+            onClick={() => {
+              setIsOn(!isOn);
+              setCurrentVolume(isOn ? 0 : 100);
+            }}
+            className={styles.toggleButton}
+          >
+            {isOn ? 'ON' : 'OFF'}
+          </button>
           <div className={styles.volumeControl}>
+            <span className={styles.volumePercent}>{currentVolume}%</span>
             <input
               type='range'
               min='0'
               max='100'
               value={currentVolume}
-              onChange={(e) => setCurrentVolume(e.target.value)}
+              onChange={(e) => {
+                const newVolume = parseInt(e.target.value, 10);
+                setCurrentVolume(newVolume);
+                setIsOn(newVolume > 0);
+              }}
             />
-            <span className={styles.volumePercent}>{currentVolume}%</span>
           </div>
           <button
             className={styles.chooseAvatarButton}
             onClick={() => setShowAvatars(!showAvatars)}
           >
-            Alegeți Avatarul
+            AVATARS
           </button>
           {showAvatars && (
             <div className={styles.avatarSelection}>

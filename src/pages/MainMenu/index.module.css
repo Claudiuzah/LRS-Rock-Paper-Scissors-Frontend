@@ -178,12 +178,19 @@ body {
 
 .volumeControl {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+}
+.volumeControl input[type='range'] {
+  width: 80%; 
+  max-width: 300px;
+  margin-top: 10px;
 }
 
 .volumePercent {
-  margin-left: 10px;
-  font-weight: bold;
+  margin-top: 5px;
+  font-size: 1rem;
 }
 
 .signOutButton {
@@ -205,6 +212,11 @@ body {
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .avatarButton {
@@ -222,23 +234,41 @@ body {
 }
 
 .avatarButton img:hover {
-  transform: scale(1.1); /* Efect de mărire pe hover */
+  transform: scale(1.1); 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .chooseAvatarButton {
-  display: block; /* Pentru a permite centrare */
-  margin: 20px auto; /* Centrat pe orizontală și cu spațiu sus-jos */
-  background-color: black; /* Fundal de culoare similară */
-  color: white; /* Text alb */
-  font-size: 18px; /* Ajustează dimensiunea textului după preferință */
-  padding: 10px 20px; /* Spațiu interior */
-  border: none; /* Elimină bordura implicită */
-  border-radius: 20px; /* Rotunjire similară */
+  display: block;
+  margin: 20px auto; 
+  background-color: black;
+  color: white;
+  font-size: 18px; 
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.7s ease; /* Tranziție pentru hover */
+  transition: background-color 0.7s ease;
 }
 
 .chooseAvatarButton:hover {
-  background-color: rgb(226, 107, 38); /* Culoare de hover similară */
+  background-color: rgb(226, 107, 38);
+}
+
+.toggleButton {
+  display: block;
+  margin: 20px auto; /* Centrează butonul */
+  padding: 10px 20px;
+  background-color: black; /* Culoare de fundal */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.toggleButton:hover {
+  background-color: rgb(226, 107, 38); /* Culoare la hover */
 }

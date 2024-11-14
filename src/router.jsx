@@ -5,7 +5,7 @@ import MainMenu from 'src/pages/MainMenu';
 import Register from 'src/pages/SignUp';
 import SinglePlayer from 'src/pages/SinglePlayer';
 import LobbyRoom from 'src/pages/Lobby';
-import Audio from 'src/pages/Audio';
+import Audio from 'src/components/Audio';
 // import MultiPlayer from 'src/pages/MultiPlayer';
 import LeaderBoard from 'src/pages/leaderboard';
 
