@@ -17,7 +17,6 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 //     share: false,
 //     shouldReconnect: () => true,
 //   });
-
 //   useEffect(() => {
 //     if (readyState === ReadyState.OPEN) {
 //       sendJsonMessage({
@@ -39,8 +38,6 @@ import useSignOut from 'react-auth-kit/hooks/useSignOut';
 // }
 function MainMenu() {
   const [opened, { open, close }] = useDisclosure(false);
-  const [currentVolume, setCurrentVolume] = useState(0);
-  const [isOn, setIsOn] = useState(false);
   const navigate = useNavigate();
   const auth = useAuthUser();
   const [showAvatars, setShowAvatars] = useState(false);
@@ -49,8 +46,30 @@ function MainMenu() {
     setSelectedAvatar(avatarPath); // Setează avatarul în state
     localStorage.setItem('selectedAvatar', avatarPath); // Salvează avatarul în Local Storage
   };
+  const [showSounds, setShowSounds] = useState(false);
+  // const [selectedSounds, setSelectedSounds] = useState([]);
+  // const handleSoundButtonClick = (soundName) => {
+  //   setSelectedSounds((prevSelected) => {
+  //     // Dacă butonul este deja selectat, îl eliminăm din listă (deselectare)
+  //     if (prevSelected.includes(soundName)) {
+  //       return prevSelected.filter((sound) => sound !== soundName);
+  //     }
+  //     // Dacă nu este selectat, îl adăugăm (selectare)
+  //     return [...prevSelected, soundName];
+  //   });
+  // };
 
   // const authHeader = useAuthHeader();
+  const soundButtons = ['rockSound', 'paperSound', 'scrissorsSound'];
+
+  const [selectedButtons, setSelectedButtons] = useState([false, false, false]);
+  const toggleButton = (index) => {
+    setSelectedButtons((prev) => {
+      const newSelection = [...prev]; // Copiază starea actuală
+      newSelection[index] = !newSelection[index]; // Inversează starea doar pentru butonul apăsat
+      return newSelection;
+    });
+  };
 
   const signOut = useSignOut();
 
@@ -134,35 +153,11 @@ function MainMenu() {
         lockScroll={false}
       >
         <div>
-          <h3 style={{ textAlign: 'center', marginBottom: '10px' }}>Volum</h3>
-          <button
-            onClick={() => {
-              setIsOn(!isOn);
-              setCurrentVolume(isOn ? 0 : 100);
-            }}
-            className={styles.toggleButton}
-          >
-            {isOn ? 'ON' : 'OFF'}
-          </button>
-          <div className={styles.volumeControl}>
-            <span className={styles.volumePercent}>{currentVolume}%</span>
-            <input
-              type='range'
-              min='0'
-              max='100'
-              value={currentVolume}
-              onChange={(e) => {
-                const newVolume = parseInt(e.target.value, 10);
-                setCurrentVolume(newVolume);
-                setIsOn(newVolume > 0);
-              }}
-            />
-          </div>
           <button
             className={styles.chooseAvatarButton}
             onClick={() => setShowAvatars(!showAvatars)}
           >
-            AVATARS
+            <h3>AVATARS</h3>
           </button>
           {showAvatars && (
             <div className={styles.avatarSelection}>
@@ -175,6 +170,46 @@ function MainMenu() {
                   <img src={`images/avatari/A${i + 1}.png`} alt={`Avatar A${i + 1}`} />
                 </button>
               ))}
+            </div>
+          )}
+          <button className={styles.soundToggleButton} onClick={() => setShowSounds(!showSounds)}>
+            <h3>Buttons sound</h3>
+          </button>
+          {showSounds && (
+            <div className={styles.soundButtonsContainer}>
+              {soundButtons.map((sound, index) => (
+                <button
+                  key={index}
+                  className={`${styles.soundButton} ${selectedButtons[index] ? styles.selected : ''}`}
+                  onClick={() => toggleButton(index)}
+                >
+                  <img src={`public/images/${sound}.png`} alt={`sound ${sound}`} />
+                </button>
+              ))}
+              {/* <button
+                className={`${styles.soundButton} ${
+                  selectedSounds.includes('rock') ? styles.selected : ''
+                }`}
+                onClick={() => handleSoundButtonClick('rock')}
+              >
+                <img src={`public/images/rockSound.png`} alt={'sound'} />
+              </button>
+              <button
+                className={`${styles.soundButton} ${
+                  selectedSounds.includes('rock') ? styles.selected : ''
+                }`}
+                onClick={() => handleSoundButtonClick('rock')}
+              >
+                <img src={`public/images/paperSound.png`} alt={'sound'} />
+              </button>
+              <button
+                className={`${styles.soundButton} ${
+                  selectedSounds.includes('rock') ? styles.selected : ''
+                }`}
+                onClick={() => handleSoundButtonClick('rock')}
+              >
+                <img src={`public/images/scrissorsSound.png`} alt={'sound'} />
+              </button> */}
             </div>
           )}
         </div>

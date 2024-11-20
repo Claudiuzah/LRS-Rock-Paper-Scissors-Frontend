@@ -235,8 +235,8 @@
   margin: 20px auto; 
   background-color: black;
   color: white;
-  font-size: 18px; 
-  padding: 10px 20px;
+  font-size: 17px; 
+  padding: 9px 20px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -263,4 +263,78 @@
 
 .toggleButton:hover {
   background-color: rgb(226, 107, 38); /* Culoare la hover */
+}
+
+.soundButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.soundButton img {
+  width: 80px;
+  height: 80px;
+  border-radius: 80%;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.soundButton img:hover {
+  transform: scale(1.1); 
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+}
+.soundButton.selected img {
+  border-color: rgb(226, 107, 38); /* Culoare portocalie */
+  border-width: 10px; /* Bordură mai groasă */
+  /* background-color: rgba(226, 107, 38, 0.5); */
+  border-style: solid;
+  border-radius: 50%;
+  transform: scale(1.2); /* Mărește puțin butonul pentru un efect vizual */
+  transition: transform 0.3s ease;
+}
+
+.soundButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px; 
+}
+
+.soundToggleButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.soundToggleButton:hover {
+  background-color: rgb(226, 107, 38);
+}
+
+.soundButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.soundButton img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.soundButton img:hover {
+  transform: scale(1.1);
 }
