@@ -41,12 +41,14 @@ function MainMenu() {
   const navigate = useNavigate();
   const auth = useAuthUser();
   const [showAvatars, setShowAvatars] = useState(false);
+  const [showAvatarsAV, setShowAvatarsAV] = useState(false);
+
   const [selectedAvatar, setSelectedAvatar] = useState('images/avatar.png'); // Avatarul selectat
   const handleAvatarSelection = (avatarPath) => {
     setSelectedAvatar(avatarPath); // Setează avatarul în state
     localStorage.setItem('selectedAvatar', avatarPath); // Salvează avatarul în Local Storage
   };
-  const [showSounds, setShowSounds] = useState(false);
+  const [showSounds] = useState(false);
   // const [selectedSounds, setSelectedSounds] = useState([]);
   // const handleSoundButtonClick = (soundName) => {
   //   setSelectedSounds((prevSelected) => {
@@ -96,6 +98,7 @@ function MainMenu() {
         onClick={() => {
           signOut();
           navigate('/auth');
+          new Audio('/audio/scissorssound.wav').play();
         }}
         className={styles.signOutButton}
       >
@@ -108,20 +111,37 @@ function MainMenu() {
           <div className={styles.buttonsBoxMenu}>
             <div className={styles.formMenu}>
               <Link to='/single'>
-                <button className={styles.buttonMenu}>
+                <button
+                  className={styles.buttonMenu}
+                  onClick={() => {
+                    new Audio('/audio/scissorssound.wav').play();
+                  }}
+                >
                   <span>Singleplayer</span>
                   <img src='video/player.gif' className={styles.playerGifMenu} />
                 </button>
               </Link>
               <Link to='/lobby'>
-                <button className={styles.buttonMenu}>
+                <button
+                  className={styles.buttonMenu}
+                  onClick={() => {
+                    new Audio('/audio/scissorssound.wav').play();
+                  }}
+                >
                   <span>Multiplayer</span>
                   <img src='video/player.gif' className={styles.multiplayerGif1Menu} />
                   <img src='video/player.gif' className={styles.multiplayerGif2Menu} />
                   <img src='video/player.gif' className={styles.multiplayerGif3Menu} />
                 </button>
               </Link>
-              <button type='button' onClick={open} className={styles.buttonMenu}>
+              <button
+                type='button'
+                onClick={() => {
+                  open();
+                  new Audio('/audio/scissorssound.wav').play();
+                }}
+                className={styles.buttonMenu}
+              >
                 <span>Settings</span>
                 <img src='video/settings.gif' className={styles.settingsGifMenu} />
               </button>
@@ -151,11 +171,20 @@ function MainMenu() {
         withCloseButton={false}
         centered={true}
         lockScroll={false}
+        // sx={{
+        //   // backgroundColor: red(0, 0, 0, 0.85)
+        //   borderRadius: 50px,
+        //   padding: 20px
+        //   color: white;
+        // }}
       >
-        <div>
+        <div className={styles.containerButoane}>
           <button
             className={styles.chooseAvatarButton}
-            onClick={() => setShowAvatars(!showAvatars)}
+            onClick={() => {
+              setShowAvatars(!showAvatars);
+              new Audio('/audio/scissorssound.wav').play();
+            }}
           >
             <h3>AVATARS</h3>
           </button>
@@ -165,16 +194,54 @@ function MainMenu() {
                 <button
                   key={i}
                   className={styles.avatarButton}
-                  onClick={() => handleAvatarSelection(`images/avatari/A${i + 1}.png`)}
+                  onClick={() => {
+                    handleAvatarSelection(`images/avatari/A${i + 1}.png`);
+                    new Audio('/audio/scissorssound.wav').play();
+                  }}
                 >
                   <img src={`images/avatari/A${i + 1}.png`} alt={`Avatar A${i + 1}`} />
                 </button>
               ))}
             </div>
           )}
-          <button className={styles.soundToggleButton} onClick={() => setShowSounds(!showSounds)}>
-            <h3>Buttons sound</h3>
+          <button
+            className={styles.chooseAvatarButtonMinimal}
+            onClick={() => {
+              setShowAvatarsAV(!showAvatarsAV);
+              new Audio('/audio/scissorssound.wav').play();
+            }}
+          >
+            <h5>*</h5>
           </button>
+          {showAvatarsAV && (
+            <div className={styles.avatarSelection}>
+              {Array.from({ length: 20 }, (_, i) => (
+                <button
+                  key={i}
+                  className={styles.avatarButton}
+                  onClick={() => {
+                    handleAvatarSelection(`images/avatari/AV${i + 1}.jpg`);
+                    new Audio('/audio/scissorssound.wav').play();
+                  }}
+                >
+                  <img src={`images/avatari/AV${i + 1}.jpg`} alt={`Avatar AV${i + 1}`} />
+                </button>
+              ))}
+            </div>
+          )}
+          <Link to='/lboard'>
+            <button
+              className={styles.chooseAvatarButton}
+              onClick={() => {
+                new Audio('/audio/scissorssound.wav').play();
+              }}
+            >
+              <h3>LEADERBOARD</h3>
+            </button>
+          </Link>
+          {/* <button className={styles.soundToggleButton} onClick={() => setShowSounds(!showSounds)}>
+            <h3>Buttons sound</h3>
+          </button> */}
           {showSounds && (
             <div className={styles.soundButtonsContainer}>
               {soundButtons.map((sound, index) => (
@@ -186,30 +253,6 @@ function MainMenu() {
                   <img src={`public/images/${sound}.png`} alt={`sound ${sound}`} />
                 </button>
               ))}
-              {/* <button
-                className={`${styles.soundButton} ${
-                  selectedSounds.includes('rock') ? styles.selected : ''
-                }`}
-                onClick={() => handleSoundButtonClick('rock')}
-              >
-                <img src={`public/images/rockSound.png`} alt={'sound'} />
-              </button>
-              <button
-                className={`${styles.soundButton} ${
-                  selectedSounds.includes('rock') ? styles.selected : ''
-                }`}
-                onClick={() => handleSoundButtonClick('rock')}
-              >
-                <img src={`public/images/paperSound.png`} alt={'sound'} />
-              </button>
-              <button
-                className={`${styles.soundButton} ${
-                  selectedSounds.includes('rock') ? styles.selected : ''
-                }`}
-                onClick={() => handleSoundButtonClick('rock')}
-              >
-                <img src={`public/images/scrissorsSound.png`} alt={'sound'} />
-              </button> */}
             </div>
           )}
         </div>

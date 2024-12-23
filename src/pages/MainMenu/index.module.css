@@ -338,3 +338,21 @@
 .soundButton img:hover {
   transform: scale(1.1);
 }
+
+.chooseAvatarButtonMinimal {
+  all: unset; /* Elimină toate stilurile implicite */
+  font-size: 2rem; /* Setează dimensiunea fontului */
+  cursor: pointer; /* Păstrează funcționalitatea de buton */
+}
+.containerButoane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  gap: 0px; 
+           
+}
+
+.buton {
+  margin:  0;
+}
+
