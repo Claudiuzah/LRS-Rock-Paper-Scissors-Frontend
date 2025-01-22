@@ -170,12 +170,19 @@
 
 .volumeControl {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  margin-top: 20px;
+}
+.volumeControl input[type='range'] {
+  width: 80%; 
+  max-width: 300px;
+  margin-top: 10px;
 }
 
 .volumePercent {
-  margin-left: 10px;
-  font-weight: bold;
+  margin-top: 5px;
+  font-size: 1rem;
 }
 
 .signOutButton {
@@ -197,6 +204,11 @@
   gap: 20px;
   justify-content: center;
   margin-top: 20px;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
 .avatarButton {
@@ -214,23 +226,133 @@
 }
 
 .avatarButton img:hover {
-  transform: scale(1.1); /* Efect de mărire pe hover */
+  transform: scale(1.1); 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .chooseAvatarButton {
-  display: block; /* Pentru a permite centrare */
-  margin: 20px auto; /* Centrat pe orizontală și cu spațiu sus-jos */
-  background-color: black; /* Fundal de culoare similară */
-  color: white; /* Text alb */
-  font-size: 18px; /* Ajustează dimensiunea textului după preferință */
-  padding: 10px 20px; /* Spațiu interior */
-  border: none; /* Elimină bordura implicită */
-  border-radius: 20px; /* Rotunjire similară */
+  display: block;
+  margin: 20px auto; 
+  background-color: black;
+  color: white;
+  font-size: 17px; 
+  padding: 9px 20px;
+  border: none;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.7s ease; /* Tranziție pentru hover */
+  transition: background-color 0.7s ease;
 }
 
 .chooseAvatarButton:hover {
-  background-color: rgb(226, 107, 38); /* Culoare de hover similară */
+  background-color: rgb(226, 107, 38);
 }
+
+.toggleButton {
+  display: block;
+  margin: 20px auto; /* Centrează butonul */
+  padding: 10px 20px;
+  background-color: black; /* Culoare de fundal */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.toggleButton:hover {
+  background-color: rgb(226, 107, 38); /* Culoare la hover */
+}
+
+.soundButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.soundButton img {
+  width: 80px;
+  height: 80px;
+  border-radius: 80%;
+  transition: transform 0.3s ease, border 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.soundButton img:hover {
+  transform: scale(1.1); 
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+}
+.soundButton.selected img {
+  border-color: rgb(226, 107, 38); /* Culoare portocalie */
+  border-width: 10px; /* Bordură mai groasă */
+  /* background-color: rgba(226, 107, 38, 0.5); */
+  border-style: solid;
+  border-radius: 50%;
+  transform: scale(1.2); /* Mărește puțin butonul pentru un efect vizual */
+  transition: transform 0.3s ease;
+}
+
+.soundButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px; 
+}
+
+.soundToggleButton {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.soundToggleButton:hover {
+  background-color: rgb(226, 107, 38);
+}
+
+.soundButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.soundButton img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.soundButton img:hover {
+  transform: scale(1.1);
+}
+
+.chooseAvatarButtonMinimal {
+  all: unset; /* Elimină toate stilurile implicite */
+  font-size: 2rem; /* Setează dimensiunea fontului */
+  cursor: pointer; /* Păstrează funcționalitatea de buton */
+}
+.containerButoane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  gap: 0px; 
+           
+}
+
+.buton {
+  margin:  0;
+}
+

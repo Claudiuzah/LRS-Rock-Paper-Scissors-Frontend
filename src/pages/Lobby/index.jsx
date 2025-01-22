@@ -124,7 +124,12 @@ function LobbyRoom() {
       <div className={styles.centerMultiplayer}>
         <div className={styles.leftLobby}>
           <Link to='/menu'>
-            <button className={styles.exitButtonLobby}>
+            <button
+              className={styles.exitButtonLobby}
+              onClick={() => {
+                new Audio('/audio/scissorssound.wav').play();
+              }}
+            >
               <img src='video/exist.gif' className={styles.exitGifLobby} alt='Exit' />
             </button>
           </Link>
@@ -232,7 +237,13 @@ function LobbyRoom() {
                   <MultiPly players={lobbyPlayers} />
                 </Modal>
 
-                <button onClick={handleReadyClick} className={styles.playButton}>
+                <button
+                  onClick={() => {
+                    handleReadyClick;
+                    new Audio('/audio/scissorssound.wav').play();
+                  }}
+                  className={styles.playButton}
+                >
                   {readyPlayer ? 'Unready' : 'Ready'}
                 </button>
                 {readyPlayers.size == lobbyPlayers.length && (
