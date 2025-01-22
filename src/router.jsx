@@ -8,6 +8,7 @@ import LobbyRoom from 'src/pages/Lobby';
 import Audio from 'src/components/Audio';
 // import MultiPlayer from 'src/pages/MultiPlayer';
 import LeaderBoard from 'src/pages/leaderboard';
+import Game from './pages/SinglePlayer/components/Game';
 
 const router = createBrowserRouter([
   {
@@ -31,8 +32,12 @@ const router = createBrowserRouter([
     element: <LobbyRoom />,
   },
   {
-    path: '/single',
+    path: '/single/*',
     element: <SinglePlayer />,
+  },
+  {
+    path: '/game/',
+    element: <Game />,
   },
   // {
   //   path: '/multiplayer',
